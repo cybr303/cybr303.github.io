@@ -10,9 +10,9 @@
     <meta property="og:image" content="img/projects/fitpup-laravel/cover.jpg">
     <!-- Aplica el tema guardado antes de pintar para evitar un parpadeo -->
     <script>try{if(localStorage.getItem("portfolio-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
-    <link rel="icon" href="img/battery.svg?v=10" type="image/svg+xml">
+    <link rel="icon" href="img/battery.svg?v=11" type="image/svg+xml">
     <link rel="preload" href="fonts/syncopate-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=10">
+    <link rel="stylesheet" href="css/style.css?v=11">
     <title>303/AIDEN - Portfolio</title>
 </head>
 
@@ -49,7 +49,7 @@
                                     <p class="hero-role" data-role-visible></p>
                                 </div>
                                 <div class="screen-logo">
-                                    <img src="img/logo.svg?v=10" alt="" width="200" height="200">
+                                    <img src="img/logo.svg?v=11" alt="" width="200" height="200">
                                 </div>
                             </div>
                             <div class="screen-scan" aria-hidden="true"></div>
@@ -94,8 +94,12 @@
                 <div class="filters" role="group" aria-labelledby="projects-title" data-filters data-reveal></div>
             </div>
 
-            <div class="marquee" data-reveal>
-                <div class="marquee__track" data-marquee role="list"></div>
+            <div class="carousel" data-carousel data-reveal>
+                <button class="carousel__btn carousel__btn--prev icon-btn" type="button" data-carousel-prev data-i18n-attr="aria-label:projects.prev,title:projects.prev">←</button>
+                <div class="marquee marquee--js">
+                    <div class="marquee__track" data-marquee role="list"></div>
+                </div>
+                <button class="carousel__btn carousel__btn--next icon-btn" type="button" data-carousel-next data-i18n-attr="aria-label:projects.next,title:projects.next">→</button>
             </div>
             <p class="container marquee__empty" data-empty hidden data-i18n="projects.empty"></p>
         </section>
@@ -103,10 +107,10 @@
 
     <div data-include="footer"></div>
 
-    <script src="data/profile.js?v=10"></script>
-    <script src="data/projects.js?v=10"></script>
-    <script src="js/i18n.js?v=10"></script>
-    <script src="js/main.js?v=10"></script>
-    <script src="js/sections.js?v=10"></script>
+    <script src="data/profile.js?v=11"></script>
+    <script src="data/projects.js?v=11"></script>
+    <script src="js/i18n.js?v=11"></script>
+    <script src="js/main.js?v=11"></script>
+    <script src="js/sections.js?v=11"></script>
 </body>
 </html>

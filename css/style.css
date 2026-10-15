@@ -483,6 +483,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* La pista contiene dos copias idénticas: al llegar a la mitad vuelve al inicio sin que se note */
 @keyframes marquee { to { transform: translateX(calc(-50% - 10px)); } }
 .marquee--auto { margin-top: 8px; }
+/* Carrusel de proyectos: lo mueve JS (sections.js) para poder avanzar y retroceder con las flechas */
+.carousel { position: relative; }
+.marquee--js .marquee__track { will-change: transform; }
+.carousel__btn { position: absolute; top: calc(50% - 7px); z-index: 2; transform: translateY(-50%); color: var(--text); box-shadow: 0 6px 20px -8px rgb(0 0 0 / 0.5); }
+.carousel__btn--prev { left: max(16px, calc((100% - 1920px) / 2 + 16px)); }
+.carousel__btn--next { right: max(16px, calc((100% - 1920px) / 2 + 16px)); }
 .marquee--auto:hover .marquee__track { animation-play-state: running; }
 .marquee__empty { color: var(--muted); padding: 40px 0; text-align: center; }
 
@@ -812,4 +818,5 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   [data-reveal] { opacity: 1; transform: none; }
   .glitch::before, .glitch::after { display: none; }
   .marquee { overflow-x: auto; }
+  .marquee--js { overflow: hidden; }
 }
