@@ -164,10 +164,55 @@
       const html = lap.map((p, i) => this.card(p, i >= list.length)).join("");
       const copy = lap.map((p) => this.card(p, true)).join("");
       track.innerHTML = html + copy;
-      track.style.setProperty("--duration", `${lap.length * this.SECONDS_PER_CARD}s`);
-      track.classList.remove("is-running");
-      void track.offsetWidth; // reinicia la animación
-      track.classList.add("is-running");
+      this.offset = 0;
+      this.anim = null;
+      this.measure();
+    },
+
+    /* Movimiento: lo hace JS (no una animación CSS) para que las flechas puedan
+       avanzar o retroceder una tarjeta y luego seguir el desplazamiento automático */
+    offset: 0, // píxeles desplazados hacia la izquierda
+    anim: null, // salto en curso de una flecha: { from, to, start }
+    paused: false,
+    JUMP_MS: 450,
+
+    measure() {
+      const track = $("[data-marquee]");
+      const card = track.querySelector(".project-card");
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      this.step = card ? card.getBoundingClientRect().width + gap : 0; // una tarjeta + hueco
+      this.half = (track.scrollWidth + gap) / 2; // ancho de una vuelta (la pista lleva dos copias)
+    },
+
+    apply() {
+      const track = $("[data-marquee]");
+      if (this.half > 0) this.offset = ((this.offset % this.half) + this.half) % this.half;
+      track.style.transform = `translateX(${-this.offset}px)`;
+    },
+
+    jump(dir) {
+      if (!this.step) return;
+      const base = this.anim ? this.anim.to : this.offset; // clics seguidos se acumulan
+      // Alinea con el borde de una tarjeta para que no quede cortada
+      const target = dir > 0 ? (Math.floor(base / this.step + 0.01) + 1) * this.step : (Math.ceil(base / this.step - 0.01) - 1) * this.step;
+      if (App.reduceMotion) { this.offset = target; this.anim = null; this.apply(); return; }
+      this.anim = { from: this.offset, to: target, start: performance.now() };
+    },
+
+    tick(now) {
+      const dt = Math.min(now - (this.last || now), 100) / 1000;
+      this.last = now;
+      if (this.anim) {
+        const k = Math.min((now - this.anim.start) / this.JUMP_MS, 1);
+        const ease = 1 - Math.pow(1 - k, 3);
+        this.offset = this.anim.from + (this.anim.to - this.anim.from) * ease;
+        if (k === 1) { this.offset = this.anim.to; this.anim = null; }
+        this.apply();
+      } else if (!this.paused && !App.reduceMotion && this.step && !document.hidden) {
+        this.offset += (this.step / this.SECONDS_PER_CARD) * dt;
+        this.apply();
+      }
+      requestAnimationFrame((t) => this.tick(t));
     },
 
     setFilter(key) {
@@ -186,6 +231,16 @@
         const btn = e.target.closest("[data-filter]");
         if (btn) this.setFilter(btn.dataset.filter);
       });
+
+      // Se pausa con el ratón encima (flechas incluidas) o al navegar con el teclado
+      const carousel = $("[data-carousel]");
+      const sync = () => { this.paused = carousel.matches(":hover") || !!carousel.querySelector(":focus-visible"); };
+      ["mouseenter", "mouseleave", "focusin", "focusout"].forEach((ev) => carousel.addEventListener(ev, () => setTimeout(sync)));
+      $("[data-carousel-prev]").addEventListener("click", () => this.jump(-1));
+      $("[data-carousel-next]").addEventListener("click", () => this.jump(1));
+      window.addEventListener("resize", () => { this.measure(); this.apply(); });
+      window.addEventListener("load", () => this.measure()); // las portadas pueden cambiar el ancho
+      requestAnimationFrame((t) => this.tick(t));
     },
   };
 

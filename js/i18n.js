@@ -21,7 +21,9 @@ window.I18N = {
     "hero.cta.contact": "Hablemos",
 
     "projects.heading": "Proyectos",
-    "projects.intro": "Pasa el ratón por encima para pausar y haz clic en un proyecto para abrir su ficha.",
+    "projects.intro": "Pasa el ratón por encima para pausar, usa las flechas para avanzar o volver atrás y haz clic en un proyecto para abrir su ficha.",
+    "projects.prev": "Proyecto anterior",
+    "projects.next": "Proyecto siguiente",
     "projects.all": "Todos",
     "projects.open": "Ver proyecto",
     "projects.empty": "No hay proyectos en esta categoría todavía.",
@@ -98,7 +100,9 @@ window.I18N = {
     "hero.cta.contact": "Let's talk",
 
     "projects.heading": "Projects",
-    "projects.intro": "Hover to pause and click a project to open its overview.",
+    "projects.intro": "Hover to pause, use the arrows to move forward or back, and click a project to open its overview.",
+    "projects.prev": "Previous project",
+    "projects.next": "Next project",
     "projects.all": "All",
     "projects.open": "View project",
     "projects.empty": "No projects in this category yet.",
