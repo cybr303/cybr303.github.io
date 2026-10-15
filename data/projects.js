@@ -77,8 +77,47 @@ window.PROJECTS = [
     "links": {}
   },
   {
+    "id": "identidad-marca",
+    "date": "2026-03",
+    "categories": ["graphic", "branding"],
+    "title": { "es": "Identidad visual: Greenbite y AXON", "en": "Visual identity: Greenbite and AXON" },
+    "subtitle": { "es": "Dos identidades de marca · práctica de diseño", "en": "Two brand identities · design coursework" },
+    "summary": {
+      "es": "Dos identidades completas, de la investigación al manual de uso: Greenbite, una marca de comida rápida saludable para foodtruck, y AXON, mi propio estudio de diseño y desarrollo web, que es la identidad de este portfolio.",
+      "en": "Two complete identities, from research to usage guidelines: Greenbite, a healthy fast food brand for a food truck, and AXON, my own design and web development studio, which is the identity of this portfolio."
+    },
+    "cover": "img/projects/identidad-marca/cover.jpg",
+    "gallery": [
+      { "src": "img/projects/identidad-marca/02.jpg", "caption": { "es": "Greenbite · logotipo final", "en": "Greenbite · final logo" } },
+      { "src": "img/projects/identidad-marca/03.jpg", "caption": { "es": "Greenbite · isotipo", "en": "Greenbite · brand mark" } },
+      { "src": "img/projects/identidad-marca/04.jpg", "caption": { "es": "Greenbite · aplicaciones: bolsa kraft, tote, vasos, envoltorios, papelería y caja", "en": "Greenbite · applications: kraft bag, tote, cups, wrappers, stationery and food box" } },
+      { "src": "img/projects/identidad-marca/05.jpg", "caption": { "es": "Greenbite · prototipos explorados", "en": "Greenbite · explored prototypes" } },
+      { "src": "img/projects/identidad-marca/06.jpg", "caption": { "es": "Greenbite · prototipos finales", "en": "Greenbite · final prototypes" } },
+      { "src": "img/projects/identidad-marca/07.jpg", "caption": { "es": "Greenbite · usos según fondo", "en": "Greenbite · usage on different backgrounds" } },
+      { "src": "img/projects/identidad-marca/08.jpg", "caption": { "es": "AXON · logotipo final", "en": "AXON · final logo" } },
+      { "src": "img/projects/identidad-marca/09.jpg", "caption": { "es": "AXON · isotipo", "en": "AXON · brand mark" } },
+      { "src": "img/projects/identidad-marca/10.jpg", "caption": { "es": "AXON · aplicaciones: rótulo, tarjeta y papelería", "en": "AXON · applications: building sign, business card and stationery" } },
+      { "src": "img/projects/identidad-marca/11.jpg", "caption": { "es": "AXON · prototipo A, descartado", "en": "AXON · prototype A, discarded" } },
+      { "src": "img/projects/identidad-marca/12.jpg", "caption": { "es": "AXON · prototipo B, elegido, con su isotipo", "en": "AXON · prototype B, chosen, with its brand mark" } },
+      { "src": "img/projects/identidad-marca/13.jpg", "caption": { "es": "AXON · usos según fondo", "en": "AXON · usage on different backgrounds" } }
+    ],
+    "time": { "es": "Curso 2025/2026", "en": "2025/2026 school year" },
+    "role": { "es": "Práctica de CFGS Diseño y Edición de Publicaciones · diseño completo", "en": "Publishing design diploma coursework · full design" },
+    "tools": ["Illustrator"],
+    "goal": {
+      "es": "El encargo pedía dos identidades visuales con todo el proceso: briefing, concepto, bocetos, prototipos, logotipo, isotipo, paleta, usos según fondo y mockups. Greenbite es comida rápida saludable en Madrid, en foodtruck y para llevar, pensada para profesionales de 25 a 40 años. Descarté los símbolos de producto literal porque cualquier negocio de comida podría usarlos, y me quedé con un sello circular: una hoja que también es un cucurucho de papel, con una serif orgánica en arco y una paleta de verdes y tierras. AXON es mi propio estudio de diseño y desarrollo web. El nombre viene del axón de la neurona, y el logotipo interviene la X: sus cuatro brazos se acercan sin tocarse y dejan un hueco en forma de rombo, como una sinapsis. Elegí ese prototipo frente a una X inclinada, que era más decorativa que conceptual.",
+      "en": "The brief asked for two visual identities with the full process: briefing, concept, sketches, prototypes, logo, brand mark, palette, background usage and mockups. Greenbite is healthy fast food in Madrid, sold from a food truck and as take-away, aimed at professionals aged 25 to 40. I ruled out literal product symbols because any food business could use them, and settled on a circular badge: a leaf that is also a paper cone, with an organic serif set in an arc and a palette of greens and earth tones. AXON is my own design and web development studio. The name comes from the neuron's axon, and the logo intervenes the X: its four arms come close without touching and leave a diamond-shaped gap, like a synapse. I chose that prototype over a tilted X, which was more decorative than conceptual."
+    },
+    "highlights": [
+      { "es": "Dos marcas con públicos opuestos: cercana y natural frente a técnica y brutalista", "en": "Two brands for opposite audiences: warm and natural versus technical and brutalist" },
+      { "es": "Sistema completo: logotipo, isotipo, paleta, tipografía y usos según fondo", "en": "Full system: logo, brand mark, palette, typography and background usage" },
+      { "es": "AXON (Signal Blue #0057FF e IBM Plex Mono) es la identidad de este portfolio", "en": "AXON (Signal Blue #0057FF and IBM Plex Mono) is the identity of this portfolio" }
+    ],
+    "links": {}
+  },
+  {
     "id": "gestalt",
-    "date": "2026-01",
+    "date": "2026-02",
     "categories": ["graphic", "branding"],
     "title": { "es": "Leyes de la Gestalt", "en": "Gestalt laws" },
     "subtitle": { "es": "Logotipo, cartel y portada · práctica de diseño", "en": "Logo, poster and book cover · design coursework" },
