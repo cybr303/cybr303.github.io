@@ -21,9 +21,9 @@ La cabecera, el menú y el footer (contacto) son comunes y se generan desde `js/
 
 Directamente en GitHub o en el ordenador y hacer `git push`. (el progreso se ve en la pestaña **Actions**).
 
-> **Importante — caché del navegador:** los `.html` cargan el CSS y el JS con `?v=9`.
+> **Importante — caché del navegador:** los `.html` cargan el CSS y el JS con `?v=10`.
 > Cuando cambies un archivo `.css` o `.js` (incluidos los de `data/`), sube ese número
-> en los 3 `.html` (busca y reemplaza `?v=9` por `?v=10`). Si no, algunos visitantes
+> en los 3 `.html` (busca y reemplaza `?v=10` por `?v=11`). Si no, algunos visitantes
 > pueden ver una mezcla de archivos nuevos y viejos durante un rato.
 
 | Quiero cambiar…                                       | Dónde                                                        |
@@ -50,7 +50,7 @@ Directamente en GitHub o en el ordenador y hacer `git push`. (el progreso se ve 
 - **Lo más fácil:** subir el icono en formato SVG con el mismo nombre, `img/battery.svg`.
 - **Si es PNG u otro nombre:** subirlo a `img/` y cambia esta línea en los 3 archivos `.html`:
   ```html
-  <link rel="icon" href="img/battery.svg?v=9" type="image/svg+xml">
+  <link rel="icon" href="img/battery.svg?v=10" type="image/svg+xml">
   ```
   por, por ejemplo:
   ```html

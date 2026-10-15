@@ -22,8 +22,8 @@ window.PROJECTS = [
     "title": { "es": "FitPup", "en": "FitPup" },
     "subtitle": { "es": "Plataforma web · versión Laravel", "en": "Web platform · Laravel version" },
     "summary": {
-      "es": "Plataforma de entrenamiento, nutrición y enriquecimiento para perros, con cuentas de usuario, progreso y suscripción premium.",
-      "en": "Training, nutrition and enrichment platform for dogs, with user accounts, progress tracking and a premium subscription."
+      "es": "Plataforma para dueños de perros que quieren entrenar en positivo: cursos con progreso, nutrición, enriquecimiento ambiental, comunidad y un plan premium.",
+      "en": "A platform for dog owners who want to train with positive methods: courses with progress tracking, nutrition, enrichment, a community and a premium plan."
     },
     "cover": "img/projects/fitpup-laravel/cover.jpg",
     "gallery": [
@@ -33,18 +33,20 @@ window.PROJECTS = [
       { "src": "img/projects/fitpup-laravel/05.jpg", "caption": { "es": "Versión móvil", "en": "Mobile version" } }
     ],
     "time": { "es": "4 semanas · may – jun 2025", "en": "4 weeks · May – Jun 2025" },
-    "role": { "es": "Diseño y desarrollo full-stack", "en": "Full-stack design & development" },
+    "role": { "es": "Proyecto final de DAW · diseño y desarrollo full-stack en solitario", "en": "DAW final project · solo full-stack design & development" },
     "tools": ["Laravel 12", "PHP 8", "MySQL", "Blade", "Alpine.js", "Tailwind", "Stripe", "Docker", "Render"],
     "goal": {
-      "es": "El objetivo era convertir el prototipo estático de FitPup en una aplicación real: registro con verificación por email, perfiles de perro, cursos con seguimiento de progreso, planes de nutrición, comunidad y un plan premium con pagos mediante Stripe, desplegada con Docker en Render.",
-      "en": "The goal was to turn the static FitPup prototype into a real application: sign-up with email verification, dog profiles, courses with progress tracking, nutrition plans, a community and a premium plan with Stripe payments, deployed with Docker on Render."
+      "es": "La información sobre entrenamiento en positivo y enriquecimiento está dispersa entre vídeos, foros y blogs. FitPup la reúne en un solo sitio y te deja seguir tu progreso en cada curso. Partí de mi prototipo estático y lo convertí en una aplicación Laravel con cuentas verificadas por email, perfiles de perro, cursos con seguimiento, guías de nutrición y suplementos, actividades de enriquecimiento y una comunidad con publicaciones y comentarios, desplegada con Docker en Render. La integración de pagos con Stripe quedó a medias: el checkout funciona, pero la activación del plan por webhook no llegó a tiempo para la entrega.",
+      "en": "Information on positive training and enrichment is scattered across videos, forums and blogs. FitPup brings it together and lets you track your progress in each course. I took my static prototype and turned it into a Laravel app with email-verified accounts, dog profiles, courses with progress tracking, nutrition and supplement guides, enrichment activities and a community with posts and comments, deployed with Docker on Render. The Stripe integration stayed half-done: checkout works, but activating the plan through the webhook didn't make it in time for the deadline."
     },
     "highlights": [
-      { "es": "Autenticación con Laravel Breeze y recuperación de contraseña", "en": "Authentication with Laravel Breeze and password recovery" },
-      { "es": "Modelo de datos con migraciones y seeders para todo el contenido", "en": "Data model with migrations and seeders for all content" },
-      { "es": "Checkout y webhooks de Stripe para el plan premium", "en": "Stripe checkout and webhooks for the premium plan" }
+      { "es": "Modelo de datos de 11 entidades (perros, cursos, progreso, nutrición, comunidad, suscripciones) con migraciones y seeders", "en": "11-entity data model (dogs, courses, progress, nutrition, community, subscriptions) with migrations and seeders" },
+      { "es": "Registro con verificación por email, recuperación de contraseña y rutas protegidas", "en": "Sign-up with email verification, password recovery and protected routes" },
+      { "es": "Seguimiento del progreso del usuario en cada curso", "en": "Per-user progress tracking for each course" },
+      { "es": "Checkout de suscripción con Stripe en 3 niveles", "en": "Three-tier subscription checkout with Stripe" },
+      { "es": "Despliegue con Docker en Render", "en": "Deployed with Docker on Render" }
     ],
-    "links": { "live": "https://fitpup.onrender.com" }
+    "links": { "live": "https://fitpup.onrender.com", "repo": "https://github.com/cybr303/FitPup" }
   },
   {
     "id": "fitpup-static",
@@ -71,6 +73,121 @@ window.PROJECTS = [
     "highlights": [
       { "es": "Sistema de color con variables CSS", "en": "Colour system with CSS custom properties" },
       { "es": "Diseño responsive con Bootstrap", "en": "Responsive layout with Bootstrap" }
+    ],
+    "links": {}
+  },
+  {
+    "id": "axon",
+    "date": "2026-04",
+    "categories": ["graphic", "branding"],
+    "title": { "es": "AXON", "en": "AXON" },
+    "subtitle": { "es": "Identidad y manual de marca de mi estudio · práctica de diseño", "en": "Identity and brand guidelines for my studio · design coursework" },
+    "summary": {
+      "es": "La identidad de AXON, mi estudio de diseño y desarrollo web: del logotipo al manual de identidad corporativa completo, con normas de uso, color, tipografía y aplicaciones físicas y digitales. Es la identidad de este portfolio.",
+      "en": "The identity of AXON, my design and web development studio: from the logo to a complete brand guidelines manual, with usage rules, colour, typography and print and digital applications. It is the identity of this portfolio."
+    },
+    "cover": "img/projects/axon/cover.jpg",
+    "gallery": [
+      { "src": "img/projects/axon/02.jpg", "caption": { "es": "Portada del manual", "en": "Manual cover" } },
+      { "src": "img/projects/axon/03.jpg", "caption": { "es": "Logotipo e isotipo", "en": "Logo and brand mark" } },
+      { "src": "img/projects/axon/04.jpg", "caption": { "es": "Construcción, retícula y tamaños mínimos", "en": "Construction, grid and minimum sizes" } },
+      { "src": "img/projects/axon/05.jpg", "caption": { "es": "Versiones correctas", "en": "Correct versions" } },
+      { "src": "img/projects/axon/06.jpg", "caption": { "es": "Usos incorrectos", "en": "Incorrect uses" } },
+      { "src": "img/projects/axon/07.jpg", "caption": { "es": "Colores corporativos", "en": "Brand colours" } },
+      { "src": "img/projects/axon/08.jpg", "caption": { "es": "Tipografía corporativa: IBM Plex Mono", "en": "Brand typeface: IBM Plex Mono" } },
+      { "src": "img/projects/axon/09.jpg", "caption": { "es": "Patrón gráfico y texturas", "en": "Graphic pattern and textures" } },
+      { "src": "img/projects/axon/10.jpg", "caption": { "es": "Tarjeta de visita", "en": "Business card" } },
+      { "src": "img/projects/axon/11.jpg", "caption": { "es": "Tarjeta de identidad", "en": "ID badge" } },
+      { "src": "img/projects/axon/12.jpg", "caption": { "es": "Papel de carta y propuesta", "en": "Letterhead and proposal" } },
+      { "src": "img/projects/axon/13.jpg", "caption": { "es": "Merchandising", "en": "Merchandise" } },
+      { "src": "img/projects/axon/14.jpg", "caption": { "es": "Firma de email", "en": "Email signature" } },
+      { "src": "img/projects/axon/15.jpg", "caption": { "es": "Redes sociales", "en": "Social media" } },
+      { "src": "img/projects/axon/16.jpg", "caption": { "es": "Web corporativa", "en": "Studio website" } },
+      { "src": "img/projects/axon/17.jpg", "caption": { "es": "Proceso: prototipo A, descartado", "en": "Process: prototype A, discarded" } },
+      { "src": "img/projects/axon/18.jpg", "caption": { "es": "Proceso: prototipo B, elegido, con su isotipo", "en": "Process: prototype B, chosen, with its brand mark" } }
+    ],
+    "time": { "es": "Curso 2025/2026 · dos prácticas (marzo y abril)", "en": "2025/2026 school year · two assignments (March and April)" },
+    "role": { "es": "Práctica de CFGS Diseño y Edición de Publicaciones · naming, identidad y manual", "en": "Publishing design diploma coursework · naming, identity and guidelines" },
+    "tools": ["Illustrator", "InDesign"],
+    "goal": {
+      "es": "AXON es un estudio unipersonal que une diseño gráfico y desarrollo web, para creativos, pequeños negocios y startups que no quieren coordinar a un diseñador y a un desarrollador por separado. El nombre viene del axón de la neurona, y el logotipo interviene la X: sus cuatro brazos se acercan sin tocarse y dejan un hueco en forma de rombo, como una sinapsis. Lo elegí frente a una X inclinada, que era más decorativa que conceptual. En la segunda práctica corregí el logotipo antes de hacer el manual: acerqué la X a la A, la estreché y, como el hueco entre A y X seguía pareciendo mayor que el resto, probé cinco soluciones y cambié la A, la O y la N a Aktiv Grotesk. Después maqueté en InDesign el manual de identidad: construcción, área de seguridad, versiones, usos incorrectos, paleta fría (Signal Blue, Axon Black, Static White), IBM Plex Mono, patrón, fotografía y aplicaciones, de la tarjeta de visita a la web.",
+      "en": "AXON is a one-person studio that combines graphic design and web development, for creatives, small businesses and startups who don't want to coordinate a designer and a developer separately. The name comes from the neuron's axon, and the logo intervenes the X: its four arms come close without touching and leave a diamond-shaped gap, like a synapse. I chose it over a tilted X, which was more decorative than conceptual. In the second assignment I refined the logo before building the manual: I moved the X closer to the A and narrowed it, and since the A–X gap still looked wider than the rest, I tested five fixes and switched the A, O and N to Aktiv Grotesk. Then I laid out the brand guidelines in InDesign: construction, clear space, versions, incorrect uses, a cold palette (Signal Blue, Axon Black, Static White), IBM Plex Mono, pattern, photography and applications, from the business card to the website."
+    },
+    "highlights": [
+      { "es": "Manual de identidad completo, en versión para imprenta (con sangrado) y para web", "en": "Complete brand guidelines, in a print version (with bleed) and a web version" },
+      { "es": "Corrección óptica del logotipo: cinco soluciones probadas y una argumentada", "en": "Optical refinement of the logo: five fixes tested and one argued for" },
+      { "es": "Aplicaciones físicas y digitales: papelería, merchandising, email, redes, favicon y web", "en": "Print and digital applications: stationery, merchandise, email, social, favicon and website" },
+      { "es": "Es la identidad de este portfolio: Signal Blue #0057FF e IBM Plex Mono", "en": "It is the identity of this portfolio: Signal Blue #0057FF and IBM Plex Mono" }
+    ],
+    "links": {}
+  },
+  {
+    "id": "greenbite",
+    "date": "2026-03",
+    "categories": ["graphic", "branding"],
+    "title": { "es": "Greenbite", "en": "Greenbite" },
+    "subtitle": { "es": "Identidad visual para comida rápida saludable · práctica de diseño", "en": "Visual identity for healthy fast food · design coursework" },
+    "summary": {
+      "es": "Identidad visual completa para Greenbite, una marca ficticia de comida rápida saludable que vende en foodtruck y para llevar en Madrid: logotipo, isotipo, paleta, usos según fondo y aplicaciones.",
+      "en": "A complete visual identity for Greenbite, a fictional healthy fast food brand selling from a food truck and as take-away in Madrid: logo, brand mark, palette, background usage and applications."
+    },
+    "cover": "img/projects/greenbite/cover.jpg",
+    "gallery": [
+      { "src": "img/projects/greenbite/02.jpg", "caption": { "es": "Logotipo final", "en": "Final logo" } },
+      { "src": "img/projects/greenbite/03.jpg", "caption": { "es": "Isotipo", "en": "Brand mark" } },
+      { "src": "img/projects/greenbite/04.jpg", "caption": { "es": "Aplicaciones: bolsa kraft, tote, vasos, envoltorios, papelería y caja", "en": "Applications: kraft bag, tote, cups, wrappers, stationery and food box" } },
+      { "src": "img/projects/greenbite/05.jpg", "caption": { "es": "Prototipos explorados", "en": "Explored prototypes" } },
+      { "src": "img/projects/greenbite/06.jpg", "caption": { "es": "Prototipos finales", "en": "Final prototypes" } },
+      { "src": "img/projects/greenbite/07.jpg", "caption": { "es": "Usos según fondo", "en": "Usage on different backgrounds" } }
+    ],
+    "time": { "es": "Curso 2025/2026", "en": "2025/2026 school year" },
+    "role": { "es": "Práctica de CFGS Diseño y Edición de Publicaciones · diseño completo", "en": "Publishing design diploma coursework · full design" },
+    "tools": ["Illustrator"],
+    "goal": {
+      "es": "El encargo pedía una identidad visual con todo el proceso: briefing, concepto, bocetos, prototipos, logotipo, isotipo, paleta, usos según fondo y mockups. Greenbite vende comida rápida saludable en Madrid, en foodtruck y para llevar, a profesionales de 25 a 40 años. Empecé por la tipografía y exploré tres rutas para el símbolo: iconos de producto, un monograma gb y un arco mediterráneo. Descarté los iconos de producto literal porque cualquier negocio de comida podría usarlos. Llevé cuatro prototipos a la recta final y elegí el sello circular: una hoja que también es un cucurucho de papel, con una serif orgánica en arco y una paleta de verdes y tierras.",
+      "en": "The brief asked for a visual identity with the full process: briefing, concept, sketches, prototypes, logo, brand mark, palette, background usage and mockups. Greenbite sells healthy fast food in Madrid, from a food truck and as take-away, to professionals aged 25 to 40. I started with the typography and explored three routes for the symbol: product icons, a gb monogram and a Mediterranean arch. I ruled out literal product icons because any food business could use them. Four prototypes made the shortlist and I chose the circular badge: a leaf that is also a paper cone, with an organic serif set in an arc and a palette of greens and earth tones."
+    },
+    "highlights": [
+      { "es": "Un símbolo con doble lectura: hoja y cucurucho de comida para llevar", "en": "A symbol with a double reading: a leaf and a take-away paper cone" },
+      { "es": "Cuatro prototipos evaluados contra el briefing antes de elegir", "en": "Four prototypes weighed against the brief before choosing" },
+      { "es": "Sistema completo: logotipo, isotipo, paleta y usos según fondo", "en": "Full system: logo, brand mark, palette and background usage" }
+    ],
+    "links": {}
+  },
+  {
+    "id": "gestalt",
+    "date": "2026-02",
+    "categories": ["graphic", "branding"],
+    "title": { "es": "Leyes de la Gestalt", "en": "Gestalt laws" },
+    "subtitle": { "es": "Logotipo, cartel y portada · práctica de diseño", "en": "Logo, poster and book cover · design coursework" },
+    "summary": {
+      "es": "Tres piezas vectoriales, cada una construida sobre una ley de la Gestalt: el logotipo de FitPup (cierre), un cartel de Steven Universe (pregnancia) y una portada de Alicia en el País de las Maravillas (semejanza).",
+      "en": "Three vector pieces, each built on one Gestalt law: the FitPup logo (closure), a Steven Universe poster (prägnanz) and an Alice in Wonderland book cover (similarity)."
+    },
+    "cover": "img/projects/gestalt/cover.jpg",
+    "gallery": [
+      { "src": "img/projects/gestalt/02.jpg", "caption": { "es": "FitPup · ley de cierre", "en": "FitPup · law of closure" } },
+      { "src": "img/projects/gestalt/03.jpg", "caption": { "es": "Steven Universe · ley de pregnancia", "en": "Steven Universe · law of prägnanz" } },
+      { "src": "img/projects/gestalt/04.jpg", "caption": { "es": "Alicia · ley de semejanza", "en": "Alice · law of similarity" } },
+      { "src": "img/projects/gestalt/05.jpg", "caption": { "es": "Mockup: taza FitPup", "en": "Mockup: FitPup mug" } },
+      { "src": "img/projects/gestalt/06.jpg", "caption": { "es": "Mockup: sello FitPup", "en": "Mockup: FitPup stamp" } },
+      { "src": "img/projects/gestalt/07.jpg", "caption": { "es": "Mockup: cartel en mupi", "en": "Mockup: street poster" } },
+      { "src": "img/projects/gestalt/08.jpg", "caption": { "es": "Mockup: libro", "en": "Mockup: book" } },
+      { "src": "img/projects/gestalt/09.jpg", "caption": { "es": "Proceso FitPup: de boceto a logo", "en": "FitPup process: sketch to logo" } },
+      { "src": "img/projects/gestalt/10.jpg", "caption": { "es": "Proceso del cartel", "en": "Poster process" } },
+      { "src": "img/projects/gestalt/11.jpg", "caption": { "es": "Proceso de la portada", "en": "Cover process" } }
+    ],
+    "time": { "es": "Curso 2025/2026", "en": "2025/2026 school year" },
+    "role": { "es": "Práctica de CFGS Diseño y Edición de Publicaciones · diseño completo", "en": "Publishing design diploma coursework · full design" },
+    "tools": ["Illustrator"],
+    "goal": {
+      "es": "El encargo era diseñar tres piezas gráficas aplicando las leyes de la Gestalt, con bocetos a mano, prototipo, diseño final vectorial y mockups. Para FitPup quería un logo deportivo y no \"tierno\": unas orejas de perro sin contorno inferior que el ojo cierra solo, con Bebas Neue para la fuerza atlética. El cartel anuncia una nueva temporada de Steven Universe reduciendo cada personaje a un solo rasgo y agrupándolos dentro de la gema de Steven. La portada de Alicia usa un patrón de rombos con iconos del libro y resalta en rojo los palos de la baraja, que se leen como una sola figura.",
+      "en": "The brief was to design three graphic pieces applying Gestalt laws, with hand sketches, a prototype, a final vector design and mockups. For FitPup I wanted a sporty logo rather than a \"cute\" one: dog ears with no bottom outline that the eye closes on its own, set in Bebas Neue for athletic weight. The poster announces a new Steven Universe season by reducing each character to a single trait and grouping them inside Steven's gem. The Alice cover uses a diamond pattern of icons from the book and picks out the card suits in red, so they read as a single figure."
+    },
+    "highlights": [
+      { "es": "Una ley distinta por pieza: cierre, pregnancia y semejanza", "en": "One law per piece: closure, prägnanz and similarity" },
+      { "es": "Proceso completo: bocetos a mano, iteraciones digitales y mockups", "en": "Full process: hand sketches, digital iterations and mockups" },
+      { "es": "El logo de FitPup es la identidad de mi proyecto web", "en": "The FitPup logo is the identity of my web project" }
     ],
     "links": {}
   },
