@@ -22,8 +22,8 @@ window.PROJECTS = [
     "title": { "es": "FitPup", "en": "FitPup" },
     "subtitle": { "es": "Plataforma web · versión Laravel", "en": "Web platform · Laravel version" },
     "summary": {
-      "es": "Plataforma de entrenamiento, nutrición y enriquecimiento para perros, con cuentas de usuario, progreso y suscripción premium.",
-      "en": "Training, nutrition and enrichment platform for dogs, with user accounts, progress tracking and a premium subscription."
+      "es": "Plataforma para dueños de perros que quieren entrenar en positivo: cursos con progreso, nutrición, enriquecimiento ambiental, comunidad y un plan premium.",
+      "en": "A platform for dog owners who want to train with positive methods: courses with progress tracking, nutrition, enrichment, a community and a premium plan."
     },
     "cover": "img/projects/fitpup-laravel/cover.jpg",
     "gallery": [
@@ -33,18 +33,20 @@ window.PROJECTS = [
       { "src": "img/projects/fitpup-laravel/05.jpg", "caption": { "es": "Versión móvil", "en": "Mobile version" } }
     ],
     "time": { "es": "4 semanas · may – jun 2025", "en": "4 weeks · May – Jun 2025" },
-    "role": { "es": "Diseño y desarrollo full-stack", "en": "Full-stack design & development" },
+    "role": { "es": "Proyecto final de DAW · diseño y desarrollo full-stack en solitario", "en": "DAW final project · solo full-stack design & development" },
     "tools": ["Laravel 12", "PHP 8", "MySQL", "Blade", "Alpine.js", "Tailwind", "Stripe", "Docker", "Render"],
     "goal": {
-      "es": "El objetivo era convertir el prototipo estático de FitPup en una aplicación real: registro con verificación por email, perfiles de perro, cursos con seguimiento de progreso, planes de nutrición, comunidad y un plan premium con pagos mediante Stripe, desplegada con Docker en Render.",
-      "en": "The goal was to turn the static FitPup prototype into a real application: sign-up with email verification, dog profiles, courses with progress tracking, nutrition plans, a community and a premium plan with Stripe payments, deployed with Docker on Render."
+      "es": "La información sobre entrenamiento en positivo y enriquecimiento está dispersa entre vídeos, foros y blogs. FitPup la reúne en un solo sitio y te deja seguir tu progreso en cada curso. Partí de mi prototipo estático y lo convertí en una aplicación Laravel con cuentas verificadas por email, perfiles de perro, cursos con seguimiento, guías de nutrición y suplementos, actividades de enriquecimiento y una comunidad con publicaciones y comentarios, desplegada con Docker en Render. La integración de pagos con Stripe quedó a medias: el checkout funciona, pero la activación del plan por webhook no llegó a tiempo para la entrega.",
+      "en": "Information on positive training and enrichment is scattered across videos, forums and blogs. FitPup brings it together and lets you track your progress in each course. I took my static prototype and turned it into a Laravel app with email-verified accounts, dog profiles, courses with progress tracking, nutrition and supplement guides, enrichment activities and a community with posts and comments, deployed with Docker on Render. The Stripe integration stayed half-done: checkout works, but activating the plan through the webhook didn't make it in time for the deadline."
     },
     "highlights": [
-      { "es": "Autenticación con Laravel Breeze y recuperación de contraseña", "en": "Authentication with Laravel Breeze and password recovery" },
-      { "es": "Modelo de datos con migraciones y seeders para todo el contenido", "en": "Data model with migrations and seeders for all content" },
-      { "es": "Checkout y webhooks de Stripe para el plan premium", "en": "Stripe checkout and webhooks for the premium plan" }
+      { "es": "Modelo de datos de 11 entidades (perros, cursos, progreso, nutrición, comunidad, suscripciones) con migraciones y seeders", "en": "11-entity data model (dogs, courses, progress, nutrition, community, subscriptions) with migrations and seeders" },
+      { "es": "Registro con verificación por email, recuperación de contraseña y rutas protegidas", "en": "Sign-up with email verification, password recovery and protected routes" },
+      { "es": "Seguimiento del progreso del usuario en cada curso", "en": "Per-user progress tracking for each course" },
+      { "es": "Checkout de suscripción con Stripe en 3 niveles", "en": "Three-tier subscription checkout with Stripe" },
+      { "es": "Despliegue con Docker en Render", "en": "Deployed with Docker on Render" }
     ],
-    "links": { "live": "https://fitpup.onrender.com" }
+    "links": { "live": "https://fitpup.onrender.com", "repo": "https://github.com/cybr303/FitPup" }
   },
   {
     "id": "fitpup-static",
