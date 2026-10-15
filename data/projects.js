@@ -77,6 +77,43 @@ window.PROJECTS = [
     "links": {}
   },
   {
+    "id": "gestalt",
+    "date": "2026-01",
+    "categories": ["graphic", "branding"],
+    "title": { "es": "Leyes de la Gestalt", "en": "Gestalt laws" },
+    "subtitle": { "es": "Logotipo, cartel y portada · práctica de diseño", "en": "Logo, poster and book cover · design coursework" },
+    "summary": {
+      "es": "Tres piezas vectoriales, cada una construida sobre una ley de la Gestalt: el logotipo de FitPup (cierre), un cartel de Steven Universe (pregnancia) y una portada de Alicia en el País de las Maravillas (semejanza).",
+      "en": "Three vector pieces, each built on one Gestalt law: the FitPup logo (closure), a Steven Universe poster (prägnanz) and an Alice in Wonderland book cover (similarity)."
+    },
+    "cover": "img/projects/gestalt/cover.jpg",
+    "gallery": [
+      { "src": "img/projects/gestalt/02.jpg", "caption": { "es": "FitPup · ley de cierre", "en": "FitPup · law of closure" } },
+      { "src": "img/projects/gestalt/03.jpg", "caption": { "es": "Steven Universe · ley de pregnancia", "en": "Steven Universe · law of prägnanz" } },
+      { "src": "img/projects/gestalt/04.jpg", "caption": { "es": "Alicia · ley de semejanza", "en": "Alice · law of similarity" } },
+      { "src": "img/projects/gestalt/05.jpg", "caption": { "es": "Mockup: taza FitPup", "en": "Mockup: FitPup mug" } },
+      { "src": "img/projects/gestalt/06.jpg", "caption": { "es": "Mockup: sello FitPup", "en": "Mockup: FitPup stamp" } },
+      { "src": "img/projects/gestalt/07.jpg", "caption": { "es": "Mockup: cartel en mupi", "en": "Mockup: street poster" } },
+      { "src": "img/projects/gestalt/08.jpg", "caption": { "es": "Mockup: libro", "en": "Mockup: book" } },
+      { "src": "img/projects/gestalt/09.jpg", "caption": { "es": "Proceso FitPup: de boceto a logo", "en": "FitPup process: sketch to logo" } },
+      { "src": "img/projects/gestalt/10.jpg", "caption": { "es": "Proceso del cartel", "en": "Poster process" } },
+      { "src": "img/projects/gestalt/11.jpg", "caption": { "es": "Proceso de la portada", "en": "Cover process" } }
+    ],
+    "time": { "es": "Curso 2025/2026", "en": "2025/2026 school year" },
+    "role": { "es": "Práctica de CFGS Diseño y Edición de Publicaciones · diseño completo", "en": "Publishing design diploma coursework · full design" },
+    "tools": ["Illustrator"],
+    "goal": {
+      "es": "El encargo era diseñar tres piezas gráficas aplicando las leyes de la Gestalt, con bocetos a mano, prototipo, diseño final vectorial y mockups. Para FitPup quería un logo deportivo y no \"tierno\": unas orejas de perro sin contorno inferior que el ojo cierra solo, con Bebas Neue para la fuerza atlética. El cartel anuncia una nueva temporada de Steven Universe reduciendo cada personaje a un solo rasgo y agrupándolos dentro de la gema de Steven. La portada de Alicia usa un patrón de rombos con iconos del libro y resalta en rojo los palos de la baraja, que se leen como una sola figura.",
+      "en": "The brief was to design three graphic pieces applying Gestalt laws, with hand sketches, a prototype, a final vector design and mockups. For FitPup I wanted a sporty logo rather than a \"cute\" one: dog ears with no bottom outline that the eye closes on its own, set in Bebas Neue for athletic weight. The poster announces a new Steven Universe season by reducing each character to a single trait and grouping them inside Steven's gem. The Alice cover uses a diamond pattern of icons from the book and picks out the card suits in red, so they read as a single figure."
+    },
+    "highlights": [
+      { "es": "Una ley distinta por pieza: cierre, pregnancia y semejanza", "en": "One law per piece: closure, prägnanz and similarity" },
+      { "es": "Proceso completo: bocetos a mano, iteraciones digitales y mockups", "en": "Full process: hand sketches, digital iterations and mockups" },
+      { "es": "El logo de FitPup es la identidad de mi proyecto web", "en": "The FitPup logo is the identity of my web project" }
+    ],
+    "links": {}
+  },
+  {
     "id": "diseno-grafico",
     "date": "2024-12",
     "categories": ["graphic", "branding"],
