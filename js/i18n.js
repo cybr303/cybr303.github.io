@@ -29,6 +29,10 @@ window.I18N = {
     "status.load": "Carga",
     "status.viewport": "Ventana",
     "projects.count": "{n} proyectos",
+    "process.count": "{n} pasos",
+    "skills.count": "{n} herramientas",
+    "exp.count": "{n} entradas",
+    "hobbies.count": "{n} cosas",
     "hero.status": "disponible para trabajar",
     "hero.cta.contact": "Hablemos",
 
@@ -120,6 +124,10 @@ window.I18N = {
     "status.load": "Load",
     "status.viewport": "Viewport",
     "projects.count": "{n} projects",
+    "process.count": "{n} steps",
+    "skills.count": "{n} tools",
+    "exp.count": "{n} entries",
+    "hobbies.count": "{n} things",
     "hero.status": "open to work",
     "hero.cta.contact": "Let's talk",
 

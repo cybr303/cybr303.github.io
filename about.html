@@ -8,25 +8,25 @@
     <!-- Aplica el tema antes de pintar para evitar un parpadeo (claro por defecto) -->
     <script>(function(){var t;try{t=localStorage.getItem("portfolio-theme")}catch(e){}if(t!=="dark")document.documentElement.dataset.theme="light"})()</script>
     <link rel="icon" href="img/battery.svg?v=12" type="image/svg+xml">
-    <link rel="preload" href="fonts/syncopate-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css?v=12">
     <title>303/AIDEN - Portfolio</title>
 </head>
 
 <body data-page="about">
-    <div class="bg-fx" aria-hidden="true"><div class="bg-fx__grid"></div><div class="bg-fx__glow"></div><div class="bg-fx__marks"></div></div>
+    <div class="bg-fx" aria-hidden="true"><div class="bg-fx__cols"></div></div>
 
     <div data-include="header"></div>
 
     <main id="main" class="page">
 
-        <!-- ============ SOBRE MÍ (estilo "Hello, I'm Han") ============ -->
+        <!-- ============ SOBRE MÍ ============ -->
         <section class="section about-section" id="about" aria-labelledby="about-title">
-            <div class="outline-words" aria-hidden="true"><span>PORTFOLIO</span><span>PORTFOLIO</span><span>PORTFOLIO</span></div>
+            <div class="container">
+                <p class="section-index mono"><span>/01 <span data-i18n="about.heading"></span></span><span data-about-where></span></p>
+            </div>
             <div class="container about">
-                <div class="about__text text-panel" data-reveal>
-                    <span class="techbar" aria-hidden="true"></span>
-                    <p class="sub-title" data-i18n="about.heading"></p>
+                <div class="about__text" data-reveal>
                     <h1 class="about__hello" id="about-title"><span data-about-hello></span><br><span class="about__name" data-about-name></span></h1>
                     <p class="about__lead" data-about-lead></p>
                     <p class="about__body" data-about-body></p>
@@ -60,7 +60,7 @@
         <section class="section section--band" id="process" aria-labelledby="process-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <span class="techbar" aria-hidden="true"></span>
+                    <p class="section-index mono" aria-hidden="true"><span>/02</span><span data-count="process"></span></p>
                     <h2 class="section-title" id="process-title" data-reveal data-scramble><span data-i18n="process.heading"></span></h2>
                     <p class="section-intro" data-i18n="process.intro"></p>
                 </header>
@@ -72,7 +72,7 @@
         <section class="section" id="skills" aria-labelledby="skills-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <span class="techbar" aria-hidden="true"></span>
+                    <p class="section-index mono" aria-hidden="true"><span>/03</span><span data-count="skills"></span></p>
                     <h2 class="section-title" id="skills-title" data-reveal data-scramble><span data-i18n="skills.heading"></span></h2>
                 </header>
 
@@ -95,7 +95,7 @@
         <section class="section section--band" id="experience" aria-labelledby="exp-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <span class="techbar" aria-hidden="true"></span>
+                    <p class="section-index mono" aria-hidden="true"><span>/04</span><span data-count="exp"></span></p>
                     <h2 class="section-title" id="exp-title" data-reveal data-scramble><span data-i18n="exp.heading"></span></h2>
                 </header>
                 <ol class="timeline" data-experience></ol>
@@ -109,7 +109,7 @@
         <section class="section" id="hobbies" aria-labelledby="hobbies-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <span class="techbar" aria-hidden="true"></span>
+                    <p class="section-index mono" aria-hidden="true"><span>/05</span><span data-count="hobbies"></span></p>
                     <h2 class="section-title" id="hobbies-title" data-reveal data-scramble><span data-i18n="hobbies.heading"></span></h2>
                     <p class="section-intro" data-i18n="hobbies.intro"></p>
                 </header>

@@ -309,6 +309,7 @@
       $("[data-about-name]").textContent = tr(P.about.name);
       $("[data-about-lead]").textContent = tr(P.about.lead);
       $("[data-about-body]").textContent = tr(P.about.body);
+      $("[data-about-where]").textContent = tr(P.location);
       $("[data-linkedin]").href = P.linkedin;
       $("[data-linkedin-label]").textContent = P.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
       $("[data-about-tags]").innerHTML = (P.about.tags || []).map((tag, i) =>
@@ -479,9 +480,24 @@
 
   /* ---------------- Arranque ---------------- */
   const renderers = [about, process, skills, experience, hobbies].filter((s) => s.exists);
+  // Recuentos reales a la derecha del índice de cada sección (/02 ········ 4 pasos)
+  const COUNTS = {
+    process: () => (P.process || []).length,
+    skills: () => P.skills.length,
+    exp: () => P.experience.length + P.studies.length,
+    hobbies: () => (P.hobbies || []).length,
+  };
+  function renderCounts() {
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const n = COUNTS[el.dataset.count]?.();
+      if (n != null) el.textContent = t(`${el.dataset.count}.count`, { n });
+    });
+  }
+
   function renderAll() {
     if (hero.exists) hero.render();
     renderers.forEach((s) => s.render());
+    renderCounts();
     App.observeReveal();
   }
 
