@@ -14,8 +14,16 @@
     timer: null,
 
     render() {
-      $("[data-name]").textContent = P.name;
-      $("[data-name]").dataset.text = P.name;
+      // Nombre partido en letras para poder variar la anchura de cada una (eje wdth de Archivo)
+      const nameEl = $("[data-name]");
+      nameEl.setAttribute("aria-label", P.name);
+      nameEl.innerHTML = P.name.split(" ").map((word) =>
+        `<span class="hero-name__line" aria-hidden="true">${[...word].map((ch) => `<span class="hero-name__ch">${esc(ch)}</span>`).join("")}</span>`
+      ).join("");
+      $("[data-whoami]").textContent = P.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
+      $("[data-location]").textContent = tr(P.location);
+      const count = $("[data-project-count]");
+      if (count) count.textContent = t("projects.count", { n: window.PROJECTS.length });
       // Si no hay `role` en profile.js, la línea bajo el título se oculta
       const role = tr(P.role);
       $("[data-role]").textContent = role || tr(P.titles).join(" & ");
@@ -92,16 +100,65 @@
 
     clock() {
       const el = $("[data-clock]");
+      const local = $("[data-local-time]");
       const tick = () => {
-        el.textContent = new Date().toLocaleTimeString(App.lang === "es" ? "es-ES" : "en-GB", { hour: "2-digit", minute: "2-digit" });
+        const locale = App.lang === "es" ? "es-ES" : "en-GB";
+        el.textContent = new Date().toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
+        // Hora de Madrid, la del autor, aunque el visitante esté en otra zona
+        local.textContent = new Date().toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Europe/Madrid" }) + " CET";
       };
       tick();
-      setInterval(tick, 15000);
+      setInterval(tick, 1000);
+    },
+
+    // Cotas: miden el monitor de verdad y se actualizan al cambiar el tamaño de la ventana
+    dims() {
+      const mon = $(".monitor__bezel");
+      const w = $("[data-dim-w]");
+      const h = $("[data-dim-h]");
+      const update = () => {
+        const r = mon.getBoundingClientRect();
+        w.textContent = `${Math.round(r.width)} px`;
+        h.textContent = `${Math.round(r.height)} px`;
+        mon.closest("[data-machine]").style.setProperty("--bezel-h", `${r.height}px`);
+      };
+      update();
+      if ("ResizeObserver" in window) new ResizeObserver(update).observe(mon);
+    },
+
+    // Anchura de las letras del nombre según la distancia al cursor
+    pointer() {
+      const section = $(".hero");
+      const chars = () => section.querySelectorAll(".hero-name__ch");
+      let raf = 0;
+      let last = null;
+      const frame = () => {
+        raf = 0;
+        if (!last) return;
+        const { x, y } = last;
+        if (App.reduceMotion || !matchMedia("(hover: hover)").matches) return;
+        chars().forEach((ch) => {
+          const r = ch.getBoundingClientRect();
+          const d = Math.hypot(x - (r.left + r.width / 2), (y - (r.top + r.height / 2)) * 1.6);
+          const k = Math.max(0, 1 - d / 300);
+          ch.style.fontStretch = `${Math.round(62 + k * 50)}%`;
+        });
+      };
+      section.addEventListener("pointermove", (e) => {
+        last = { x: e.clientX, y: e.clientY };
+        if (!raf) raf = requestAnimationFrame(frame);
+      }, { passive: true });
+      section.addEventListener("pointerleave", () => {
+        last = null;
+        chars().forEach((ch) => (ch.style.fontStretch = ""));
+      });
     },
 
     init() {
       this.boot();
       this.clock();
+      this.dims();
+      this.pointer();
     },
   };
 
@@ -135,7 +192,7 @@
       const hidden = copy ? ` aria-hidden="true"` : "";
       const tab = copy ? ` tabindex="-1"` : "";
       return `
-      <article class="project-card"${hidden} data-glow>
+      <article class="project-card"${hidden}>
         <a class="project-card__link" href="project.html?id=${encodeURIComponent(p.id)}"${tab} draggable="false">
           <div class="project-card__media">
             <img src="${esc(p.cover)}" alt="" loading="lazy" draggable="false">
@@ -252,6 +309,7 @@
       $("[data-about-name]").textContent = tr(P.about.name);
       $("[data-about-lead]").textContent = tr(P.about.lead);
       $("[data-about-body]").textContent = tr(P.about.body);
+      $("[data-about-where]").textContent = tr(P.location);
       $("[data-linkedin]").href = P.linkedin;
       $("[data-linkedin-label]").textContent = P.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
       $("[data-about-tags]").innerHTML = (P.about.tags || []).map((tag, i) =>
@@ -422,9 +480,24 @@
 
   /* ---------------- Arranque ---------------- */
   const renderers = [about, process, skills, experience, hobbies].filter((s) => s.exists);
+  // Recuentos reales a la derecha del índice de cada sección (/02 ········ 4 pasos)
+  const COUNTS = {
+    process: () => (P.process || []).length,
+    skills: () => P.skills.length,
+    exp: () => P.experience.length + P.studies.length,
+    hobbies: () => (P.hobbies || []).length,
+  };
+  function renderCounts() {
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const n = COUNTS[el.dataset.count]?.();
+      if (n != null) el.textContent = t(`${el.dataset.count}.count`, { n });
+    });
+  }
+
   function renderAll() {
     if (hero.exists) hero.render();
     renderers.forEach((s) => s.render());
+    renderCounts();
     App.observeReveal();
   }
 
@@ -434,13 +507,7 @@
 
   document.addEventListener("langchange", () => {
     renderAll();
-    if (hero.exists) {
-      hero.restartTitles();
-      const name = $("[data-name]");
-      name.classList.remove("glitch-once");
-      void name.offsetWidth;
-      name.classList.add("glitch-once");
-    }
+    if (hero.exists) hero.restartTitles();
     if (projects.exists) { projects.renderFilters(); projects.render(); }
     // Vuelve a "descifrar" los títulos visibles con el nuevo idioma
     document.querySelectorAll("[data-scramble].is-visible").forEach((el) => App.scramble(el.querySelector("[data-i18n]") || el));

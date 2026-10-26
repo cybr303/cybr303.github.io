@@ -4,81 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio de Aiden Jiménez, desarrollador web y diseñador gráfico.">
-    <meta name="theme-color" content="#0a0a0f">
+    <meta name="theme-color" content="#f2f2f8">
     <meta property="og:title" content="303/AIDEN - Portfolio">
     <meta property="og:description" content="Desarrollador web & diseñador gráfico · Web developer & graphic designer">
     <meta property="og:image" content="img/projects/fitpup-laravel/cover.jpg">
-    <!-- Aplica el tema guardado antes de pintar para evitar un parpadeo -->
-    <script>try{if(localStorage.getItem("portfolio-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
-    <link rel="icon" href="img/battery.svg?v=11" type="image/svg+xml">
-    <link rel="preload" href="fonts/syncopate-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=11">
+    <!-- Aplica el tema antes de pintar para evitar un parpadeo (claro por defecto) -->
+    <script>(function(){var t;try{t=localStorage.getItem("portfolio-theme")}catch(e){}if(t!=="dark")document.documentElement.dataset.theme="light"})()</script>
+    <link rel="icon" href="img/battery.svg?v=12" type="image/svg+xml">
+    <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/style.css?v=12">
     <title>303/AIDEN - Portfolio</title>
 </head>
 
 <body data-page="home">
-    <div class="bg-fx" aria-hidden="true"><div class="bg-fx__grid"></div><div class="bg-fx__glow"></div><div class="bg-fx__marks"></div></div>
+    <div class="bg-fx" aria-hidden="true"><div class="bg-fx__cols"></div></div>
 
     <div data-include="header"></div>
 
     <main id="main">
 
-        <!-- ============ HOME / MONITOR ============ -->
+        <!-- ============ HOME ============ -->
         <section class="hero" aria-labelledby="hero-name">
-            <div class="hero__watermark" aria-hidden="true">303</div>
-            <span class="hud hud--tl" aria-hidden="true"></span><span class="hud hud--tr" aria-hidden="true"></span>
-            <span class="hud hud--bl" aria-hidden="true"></span><span class="hud hud--br" aria-hidden="true"></span>
-            <div class="container hero__inner">
-                <div class="monitor">
-                    <!-- Monitor CRT retro -->
-                    <div class="monitor__bezel">
-                        <div class="monitor__screen">
-                            <div class="screen-bar mono" aria-hidden="true">
-                                <span class="screen-bar__dots"><i></i><i></i><i></i></span>
-                                <span>~/portfolio — zsh</span>
-                                <span class="screen-bar__clock" data-clock></span>
-                            </div>
-                            <div class="screen-body">
-                                <div class="screen-text">
-                                    <p class="boot mono" aria-hidden="true">&gt; <span data-boot></span></p>
-                                    <h1 class="hero-name glitch" id="hero-name" data-name></h1>
-                                    <p class="hero-titles mono">
-                                        <span class="sr-only" data-role></span>
-                                        <span aria-hidden="true"><span class="hero-titles__prompt">$</span> <span data-typed></span><span class="caret">▍</span></span>
-                                    </p>
-                                    <p class="hero-role" data-role-visible></p>
-                                </div>
-                                <div class="screen-logo">
-                                    <img src="img/logo.svg?v=11" alt="" width="200" height="200">
-                                </div>
-                            </div>
-                            <div class="screen-scan" aria-hidden="true"></div>
-                            <div class="screen-glare" aria-hidden="true"></div>
-                        </div>
-                        <div class="monitor__chin" aria-hidden="true">
-                            <span class="monitor__brand mono">303·PC</span>
-                            <span class="monitor__vents"></span>
-                            <span class="monitor__knobs"><i></i><i></i></span>
-                            <span class="monitor__power"><span class="monitor__led"></span></span>
-                        </div>
-
-                        <aside class="sticky-note">
-                            <span class="sticky-note__tape" aria-hidden="true"></span>
-                            <p data-sticky-text></p>
-                        </aside>
-                    </div>
-                    <div class="monitor__neck" aria-hidden="true"></div>
-                    <div class="computer-case" aria-hidden="true">
-                        <span class="computer-case__label mono">303/AIDEN</span>
-                        <span class="computer-case__floppy"><i></i></span>
-                        <span class="computer-case__leds"><i></i><i></i></span>
-                        <span class="computer-case__vents"></span>
-                    </div>
+            <div class="container">
+                <div class="hero__rail mono" aria-hidden="true">
+                    <span class="hero__index">/00</span>
+                    <span data-i18n="hero.index"></span>
                 </div>
 
-                <div class="hero__cta">
-                    <p class="status-pill" data-status hidden><span class="status-pill__dot"></span><span data-i18n="hero.status"></span></p>
-                    <a class="btn btn--primary btn--lg" href="#contact"><span data-i18n="hero.cta.contact"></span> <span class="btn__arrow" aria-hidden="true">→</span></a>
+                <div class="hero__grid">
+                    <div class="hero__main">
+                        <h1 class="hero-name" id="hero-name" data-name></h1>
+                        <p class="hero-role" data-role-visible></p>
+
+                        <dl class="spec mono">
+                            <div class="spec__row"><dt data-i18n="hero.spec.role"></dt><dd data-role></dd></div>
+                            <div class="spec__row"><dt data-i18n="hero.spec.base"></dt><dd data-location></dd></div>
+                            <div class="spec__row"><dt data-i18n="hero.spec.time"></dt><dd data-local-time></dd></div>
+                            <div class="spec__row" data-status hidden><dt data-i18n="hero.spec.status"></dt><dd class="spec__open"><span class="status-dot"></span><span data-i18n="hero.status"></span></dd></div>
+                        </dl>
+
+                        <a class="btn btn--primary btn--lg" href="#contact"><span data-i18n="hero.cta.contact"></span> <span class="btn__arrow" aria-hidden="true">↗</span></a>
+                    </div>
+
+                    <figure class="machine" data-machine>
+                        <div class="monitor">
+                            <div class="monitor__bezel">
+                                <div class="monitor__screen">
+                                    <div class="screen-bar mono" aria-hidden="true">
+                                        <span class="screen-bar__dots"><i></i><i></i><i></i></span>
+                                        <span>~/portfolio — zsh</span>
+                                        <span class="screen-bar__clock" data-clock></span>
+                                    </div>
+                                    <div class="screen-body mono" aria-hidden="true">
+                                        <div class="screen-text">
+                                            <p class="boot">&gt; <span data-boot></span></p>
+                                            <p class="term"><span class="term__prompt">$</span> whoami</p>
+                                            <p class="term term--out" data-whoami></p>
+                                            <p class="term"><span class="term__prompt">$</span> cat role.txt</p>
+                                            <p class="term term--out hero-titles"><span data-typed></span><span class="caret">▍</span></p>
+                                        </div>
+                                        <div class="screen-logo">
+                                            <img class="screen-logo__light" src="img/logo.svg?v=12" alt="" width="200" height="200">
+                                            <img class="screen-logo__ink" src="img/logo-ink.svg?v=12" alt="" width="200" height="200">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="monitor__chin" aria-hidden="true">
+                                    <span class="monitor__brand mono">303·PC</span>
+                                    <span class="monitor__vents"></span>
+                                    <span class="monitor__knobs"><i></i><i></i></span>
+                                    <span class="monitor__power"><span class="monitor__led"></span></span>
+                                </div>
+
+                                <aside class="sticky-note">
+                                    <span class="sticky-note__tape" aria-hidden="true"></span>
+                                    <p data-sticky-text></p>
+                                </aside>
+                            </div>
+                            <div class="monitor__neck" aria-hidden="true"></div>
+                            <div class="computer-case" aria-hidden="true">
+                                <span class="computer-case__label mono">303/AIDEN</span>
+                                <span class="computer-case__floppy"><i></i></span>
+                                <span class="computer-case__leds"><i></i><i></i></span>
+                                <span class="computer-case__vents"></span>
+                            </div>
+                        </div>
+                        <!-- Cotas reales del monitor (las mide js/sections.js) -->
+                        <span class="dim dim--w mono" aria-hidden="true"><span data-dim-w></span></span>
+                        <span class="dim dim--h mono" aria-hidden="true"><span data-dim-h></span></span>
+                    </figure>
                 </div>
             </div>
         </section>
@@ -87,7 +101,7 @@
         <section class="section section--projects section--band" id="projects" aria-labelledby="projects-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <span class="techbar" aria-hidden="true"></span>
+                    <p class="section-index mono" aria-hidden="true"><span>/01</span><span data-project-count></span></p>
                     <h2 class="section-title" id="projects-title" data-reveal data-scramble><span data-i18n="projects.heading"></span></h2>
                     <p class="section-intro" data-i18n="projects.intro"></p>
                 </header>
@@ -107,10 +121,10 @@
 
     <div data-include="footer"></div>
 
-    <script src="data/profile.js?v=11"></script>
-    <script src="data/projects.js?v=11"></script>
-    <script src="js/i18n.js?v=11"></script>
-    <script src="js/main.js?v=11"></script>
-    <script src="js/sections.js?v=11"></script>
+    <script src="data/profile.js?v=12"></script>
+    <script src="data/projects.js?v=12"></script>
+    <script src="js/i18n.js?v=12"></script>
+    <script src="js/main.js?v=12"></script>
+    <script src="js/sections.js?v=12"></script>
 </body>
 </html>
