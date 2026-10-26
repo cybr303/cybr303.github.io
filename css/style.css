@@ -332,12 +332,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero { position: relative; padding: calc(var(--header-h) + clamp(20px, 4vw, 40px)) 0 clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
 /* Raíl superior: índice, coordenadas reales del cursor y referencia de archivo */
 .hero__rail {
-  display: grid; grid-template-columns: auto 1fr auto auto; gap: 24px; align-items: baseline;
+  display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: baseline;
   padding-bottom: 12px; border-bottom: 1px solid var(--line);
   font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
 }
 .hero__index { color: var(--accent); }
-.hero__coords { font-variant-numeric: tabular-nums; min-width: 17ch; }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-top: clamp(28px, 5vw, 56px); }
 .hero__main { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; min-width: 0; }
 
@@ -451,13 +450,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .dim--h::after { content: ""; position: absolute; inset: 0 2px; border-block: 1px solid var(--accent); }
 .dim--h > span { writing-mode: vertical-rl; transform: rotate(180deg); padding: 8px 0; }
 .hero__main { position: relative; z-index: 1; }
-
-/* Anotaciones numeradas, estilo ficha de objeto */
-.notes { position: absolute; inset: 0; pointer-events: none; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.note { position: absolute; display: flex; gap: 8px; align-items: baseline; white-space: nowrap; }
-.note b { color: var(--accent); font-weight: 600; }
-.note--1 { right: 48px; top: calc(100% + 18px); }
-.note--2 { right: 48px; top: calc(100% + 38px); }
 
 /* Post-it: lo único hecho "a mano", a propósito */
 .sticky-note {
@@ -804,13 +796,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .hide-sm { display: none; }
   .header-link, .lang-toggle { padding: 0 9px; }
   .header-actions { gap: 4px; }
-  .hero__rail { grid-template-columns: auto 1fr; }
-  .hero__coords, .hero__ref { display: none; }
   .hero-name { font-size: clamp(3.6rem, 21vw, 6rem); }
   .machine { padding-right: 0; }
   .dim--h { display: none !important; }
   .dim--w { right: 0; }
-  .note--1, .note--2 { right: 0; }
   .screen-body { grid-template-columns: 1fr 72px; }
   .screen-bar__clock { display: none; }
   .sticky-note { left: auto; right: -6px; bottom: -48px; width: 140px; font-size: 1.1rem; padding: 18px 12px 14px; }

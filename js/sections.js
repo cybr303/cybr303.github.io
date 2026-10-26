@@ -126,11 +126,9 @@
       if ("ResizeObserver" in window) new ResizeObserver(update).observe(mon);
     },
 
-    // Coordenadas del cursor y anchura de las letras del nombre según la distancia al cursor
+    // Anchura de las letras del nombre según la distancia al cursor
     pointer() {
-      const coords = $("[data-coords]");
       const section = $(".hero");
-      const pad = (n) => String(Math.max(0, Math.round(n))).padStart(4, "0");
       const chars = () => section.querySelectorAll(".hero-name__ch");
       let raf = 0;
       let last = null;
@@ -138,7 +136,6 @@
         raf = 0;
         if (!last) return;
         const { x, y } = last;
-        coords.textContent = `X ${pad(x)} · Y ${pad(y + scrollY)}`;
         if (App.reduceMotion || !matchMedia("(hover: hover)").matches) return;
         chars().forEach((ch) => {
           const r = ch.getBoundingClientRect();
