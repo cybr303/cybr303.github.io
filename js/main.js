@@ -158,12 +158,11 @@
     return `
     <footer class="site-footer" id="contact">
       <div class="container">
-        <div class="footer-panel text-panel">
-          <h2 class="footer-title">
-            <span class="footer-title__a" data-i18n="footer.like"></span>
-            <span class="footer-title__b glitch" data-i18n="footer.talk"></span>
-          </h2>
-        </div>
+        <p class="section-index mono" aria-hidden="true"><span>/99</span><span data-i18n="nav.contact"></span></p>
+        <h2 class="footer-title">
+          <span class="footer-title__a" data-i18n="footer.like"></span>
+          <span class="footer-title__b" data-i18n="footer.talk"></span>
+        </h2>
         <div class="footer-actions">
           <a class="btn btn--primary" href="mailto:${App.esc(P.email)}">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
@@ -185,6 +184,14 @@
           <p>© ${range} ${App.esc(P.name)}. <span data-i18n="footer.rights"></span></p>
           <a class="footer-top" href="#top" data-to-top><span data-i18n="footer.top"></span> ↑</a>
         </div>
+      </div>
+      <!-- Barra de estado: todos los datos son reales y se miden en el navegador -->
+      <div class="statusbar mono" role="group" data-i18n-attr="aria-label:status.label">
+        <span class="statusbar__item statusbar__item--ok"><span class="status-dot"></span><span data-i18n="status.static"></span></span>
+        <span class="statusbar__item"><span data-i18n="status.build"></span> <a data-stat-commit href="${App.esc(P.github || "#")}" target="_blank" rel="noopener">······</a></span>
+        <span class="statusbar__item"><span data-i18n="status.weight"></span> <b data-stat-weight>—</b></span>
+        <span class="statusbar__item"><span data-i18n="status.load"></span> <b data-stat-load>—</b></span>
+        <span class="statusbar__item statusbar__item--vp"><span data-i18n="status.viewport"></span> <b data-stat-vp>—</b></span>
       </div>
       <div class="toast" role="status" aria-live="polite" data-toast></div>
     </footer>`;
@@ -210,7 +217,7 @@
       App.setLang(App.lang === "es" ? "en" : "es");
     });
 
-    // Tema: oscuro por defecto, claro opcional (se recuerda la elección)
+    // Tema: claro por defecto, oscuro opcional (se recuerda la elección)
     const root = document.documentElement;
     const themeColor = document.querySelector('meta[name="theme-color"]');
     const applyTheme = (theme) => {
@@ -281,6 +288,48 @@
     });
   }
 
+  /* ---------- Barra de estado (datos reales del navegador y del repo) ---------- */
+  function initStatus() {
+    const $s = (sel) => document.querySelector(sel);
+    const vp = $s("[data-stat-vp]");
+    const setVp = () => { if (vp) vp.textContent = `${innerWidth}×${innerHeight}`; };
+    setVp();
+    addEventListener("resize", setVp, { passive: true });
+
+    // Peso transferido y tiempo de carga, medidos con la Performance API
+    addEventListener("load", () => setTimeout(() => {
+      const nav = performance.getEntriesByType("navigation")[0];
+      const res = performance.getEntriesByType("resource");
+      const bytes = [nav, ...res].reduce((sum, e) => sum + ((e && (e.transferSize || e.encodedBodySize)) || 0), 0);
+      const w = $s("[data-stat-weight]");
+      if (w && bytes) w.textContent = bytes > 1e6 ? `${(bytes / 1e6).toFixed(2)} MB` : `${Math.round(bytes / 1024)} KB`;
+      const l = $s("[data-stat-load]");
+      if (l && nav && nav.loadEventStart) l.textContent = `${(nav.loadEventStart / 1000).toFixed(2)} s`;
+    }, 0));
+
+    // Último commit publicado (API pública de GitHub; se guarda en la sesión para no repetir la consulta)
+    const link = $s("[data-stat-commit]");
+    const repo = P.repo;
+    if (!link || !repo) return;
+    const show = (c) => {
+      link.textContent = c.sha.slice(0, 7);
+      link.href = `https://github.com/${repo}/commit/${c.sha}`;
+      link.title = new Date(c.date).toLocaleString(App.lang === "es" ? "es-ES" : "en-GB");
+    };
+    try {
+      const cached = JSON.parse(sessionStorage.getItem("portfolio-commit"));
+      if (cached && cached.sha) return show(cached);
+    } catch (e) {}
+    fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`)
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then(([c]) => {
+        const data = { sha: c.sha, date: c.commit.committer.date };
+        show(data);
+        try { sessionStorage.setItem("portfolio-commit", JSON.stringify(data)); } catch (e) {}
+      })
+      .catch(() => { link.textContent = "main"; });
+  }
+
   /* ---------- Animaciones ---------- */
   // Efecto "descifrado" de texto: letras aleatorias que se resuelven
   function scramble(el, finalText, { duration = 700 } = {}) {
@@ -338,6 +387,7 @@
   applyI18n();
   initHeader();
   initFooter();
+  initStatus();
   initGlow();
   document.addEventListener("DOMContentLoaded", () => observeReveal());
   window.addEventListener("load", () => document.body.classList.add("is-loaded"));

@@ -22,6 +22,8 @@ window.PROFILE = {
   email: "cybr303@gmail.com",
   linkedin: "https://www.linkedin.com/in/tu-usuario/",
   github: "https://github.com/cybr303",
+  // Repositorio de esta web: la barra de estado del footer muestra su último commit
+  repo: "cybr303/cybr303.github.io",
   cv: {
     es: "documentos/AidenJimenez_CV.pdf",
     en: "documentos/AidenJimenez_CV.pdf",
