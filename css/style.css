@@ -611,7 +611,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .skills { display: grid; grid-template-columns: 1.7fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: start; }
 /* Retícula de iconos con líneas compartidas, como una hoja de contactos */
-.skill-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-left: 1px solid var(--line); }
+.skill-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-left: 1px solid var(--line); background: var(--surface-solid); }
+/* Fondo sólido en las columnas de skills para que la retícula del fondo no se cruce con el texto */
+.skills > div { background: var(--surface-solid); border: 1px solid var(--line); padding: 18px 20px 22px; }
+.skills .skill-grid { border-top: 0; }
 .skill {
   aspect-ratio: 1; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
