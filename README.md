@@ -14,7 +14,6 @@ Publicado con GitHub Pages en **https://cybr303.github.io**.
 
 La identidad visual se inspira en AXON (Signal Blue `#0057FF`, IBM Plex Mono, tipografía
 ancha, retícula y barras técnicas). Tema claro por defecto y oscuro con el botón de la cabecera. Títulos en Archivo (anchura variable); Syncopate solo en la marca.
-En la home, `?monitor=crt` muestra el monitor CRT original y `?monitor=flat` (por defecto) la versión en línea técnica.
 
 La cabecera, el menú y el footer (contacto) son comunes y se generan desde `js/main.js`.
 

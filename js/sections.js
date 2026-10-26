@@ -111,12 +111,6 @@
       setInterval(tick, 1000);
     },
 
-    // Variante del monitor para comparar: ?monitor=crt (el de siempre) o ?monitor=flat (línea técnica)
-    variant() {
-      const v = new URLSearchParams(location.search).get("monitor");
-      $("[data-machine]").classList.toggle("machine--flat", v !== "crt");
-    },
-
     // Cotas: miden el monitor de verdad y se actualizan al cambiar el tamaño de la ventana
     dims() {
       const mon = $(".monitor__bezel");
@@ -132,11 +126,9 @@
       if ("ResizeObserver" in window) new ResizeObserver(update).observe(mon);
     },
 
-    // Coordenadas del cursor y anchura de las letras del nombre según la distancia al cursor
+    // Anchura de las letras del nombre según la distancia al cursor
     pointer() {
-      const coords = $("[data-coords]");
       const section = $(".hero");
-      const pad = (n) => String(Math.max(0, Math.round(n))).padStart(4, "0");
       const chars = () => section.querySelectorAll(".hero-name__ch");
       let raf = 0;
       let last = null;
@@ -144,7 +136,6 @@
         raf = 0;
         if (!last) return;
         const { x, y } = last;
-        coords.textContent = `X ${pad(x)} · Y ${pad(y + scrollY)}`;
         if (App.reduceMotion || !matchMedia("(hover: hover)").matches) return;
         chars().forEach((ch) => {
           const r = ch.getBoundingClientRect();
@@ -164,7 +155,6 @@
     },
 
     init() {
-      this.variant();
       this.boot();
       this.clock();
       this.dims();
@@ -319,6 +309,7 @@
       $("[data-about-name]").textContent = tr(P.about.name);
       $("[data-about-lead]").textContent = tr(P.about.lead);
       $("[data-about-body]").textContent = tr(P.about.body);
+      $("[data-about-where]").textContent = tr(P.location);
       $("[data-linkedin]").href = P.linkedin;
       $("[data-linkedin-label]").textContent = P.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
       $("[data-about-tags]").innerHTML = (P.about.tags || []).map((tag, i) =>
@@ -489,9 +480,24 @@
 
   /* ---------------- Arranque ---------------- */
   const renderers = [about, process, skills, experience, hobbies].filter((s) => s.exists);
+  // Recuentos reales a la derecha del índice de cada sección (/02 ········ 4 pasos)
+  const COUNTS = {
+    process: () => (P.process || []).length,
+    skills: () => P.skills.length,
+    exp: () => P.experience.length + P.studies.length,
+    hobbies: () => (P.hobbies || []).length,
+  };
+  function renderCounts() {
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const n = COUNTS[el.dataset.count]?.();
+      if (n != null) el.textContent = t(`${el.dataset.count}.count`, { n });
+    });
+  }
+
   function renderAll() {
     if (hero.exists) hero.render();
     renderers.forEach((s) => s.render());
+    renderCounts();
     App.observeReveal();
   }
 
