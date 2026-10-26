@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="303 logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0057ff"/><stop offset="1" stop-color="#3380ff"/></linearGradient>
+  </defs>
+  <path d="M40 20h120l20 20v120l-20 20H40l-20-20V40z" fill="none" stroke="url(#g)" stroke-width="4"/>
+  <path d="M52 34h96M52 166h96" stroke="#0057ff" stroke-width="2" stroke-dasharray="4 6" opacity=".6"/>
+  <g fill="none" stroke="url(#g)" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M44 72h28v22H52m20 0v22H44"/>
+    <path d="M86 72h28v44H86z"/>
+    <path d="M128 72h28v22h-20m20 0v22h-28"/>
+  </g>
+  <text x="100" y="150" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="6" fill="#0a0a0f">AIDEN</text>
+</svg>

@@ -111,12 +111,6 @@
       setInterval(tick, 1000);
     },
 
-    // Variante del monitor para comparar: ?monitor=crt (el de siempre) o ?monitor=flat (línea técnica)
-    variant() {
-      const v = new URLSearchParams(location.search).get("monitor");
-      $("[data-machine]").classList.toggle("machine--flat", v !== "crt");
-    },
-
     // Cotas: miden el monitor de verdad y se actualizan al cambiar el tamaño de la ventana
     dims() {
       const mon = $(".monitor__bezel");
@@ -164,7 +158,6 @@
     },
 
     init() {
-      this.variant();
       this.boot();
       this.clock();
       this.dims();

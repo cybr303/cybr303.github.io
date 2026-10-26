@@ -344,10 +344,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* Nombre gigante: Archivo estrecha; cada letra se ensancha al acercar el cursor */
 .hero-name {
   font-family: var(--f-title); font-weight: 800; font-stretch: 62%; text-transform: uppercase;
-  font-size: clamp(4rem, 10vw, 9.6rem); line-height: 0.88; letter-spacing: -0.01em; color: var(--text);
-  display: flex; flex-direction: column; animation: fade-up 0.8s var(--ease) both;
+  font-size: clamp(4rem, 10vw, 9.6rem); line-height: 0.9; letter-spacing: -0.01em; color: var(--text);
+  display: flex; flex-direction: column; gap: 0.16em; animation: fade-up 0.8s var(--ease) both;
 }
 .hero-name__line { display: block; white-space: nowrap; }
+/* Hueco para que la tilde de JIMÉNEZ no toque la línea de arriba */
+.hero-name__line + .hero-name__line { padding-top: 0.06em; }
 .hero-name__line + .hero-name__line { color: var(--accent); }
 .hero-name__ch { display: inline-block; font-stretch: 62%; transition: font-stretch 0.35s var(--ease); }
 .hero-role { color: var(--muted); font-family: var(--f-mono); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -367,54 +369,53 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(12px); } }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* Variante C: el CRT de siempre, sin el halo azul */
+/* Monitor redibujado como plano técnico: línea fina y sombra dura en Signal Blue */
 .monitor__bezel {
-  position: relative; padding: 22px 22px 0; border-radius: 20px 20px 12px 12px;
-  background: linear-gradient(165deg, #2a2e3c 0%, #1a1d28 45%, #11131b 100%);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.08), inset 0 -6px 0 rgb(0 0 0 / 0.35), 0 10px 0 #0b0c12, 0 30px 60px -30px rgb(0 0 0 / 0.6);
+  position: relative; padding: 22px 22px 0; border-radius: 14px 14px 6px 6px;
+  background: var(--bg); border: 1.5px solid var(--text); box-shadow: 8px 8px 0 var(--signal);
 }
 .monitor__screen {
-  position: relative; overflow: hidden; border-radius: 16px / 20px; aspect-ratio: 16 / 10; color: #f2f2f8;
+  position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 16 / 10; color: var(--text);
+  border: 1.5px solid var(--text);
   background:
-    linear-gradient(rgb(0 87 255 / 0.07) 1px, transparent 1px) 0 0 / 32px 32px,
-    linear-gradient(90deg, rgb(0 87 255 / 0.07) 1px, transparent 1px) 0 0 / 32px 32px,
-    #06070c;
-  box-shadow: 0 0 0 3px #07080d, 0 0 0 7px #222533, inset 0 0 60px rgb(0 0 0 / 0.8);
+    linear-gradient(rgb(var(--accent-rgb) / 0.12) 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(90deg, rgb(var(--accent-rgb) / 0.12) 1px, transparent 1px) 0 0 / 16px 16px,
+    var(--surface-solid);
   display: flex; flex-direction: column;
 }
 .monitor__chin { display: flex; align-items: center; gap: 16px; height: 50px; padding: 0 6px; }
-.monitor__brand { font-size: 0.68rem; letter-spacing: 0.3em; color: #8899cc; }
-.monitor__vents { flex: 1; height: 12px; background: repeating-linear-gradient(90deg, #0b0c12 0 3px, transparent 3px 8px); opacity: 0.8; }
+.monitor__brand { font-size: 0.68rem; letter-spacing: 0.3em; color: var(--text); }
+.monitor__vents, .computer-case__vents { flex: 1; background: repeating-linear-gradient(90deg, var(--text) 0 1.5px, transparent 1.5px 7px); opacity: 0.5; }
+.monitor__vents { height: 12px; }
 .monitor__knobs { display: inline-flex; gap: 8px; }
-.monitor__knobs i { width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #3a3f52, #12141c); }
-.monitor__power { position: relative; width: 24px; height: 16px; border-radius: 3px; background: #0d0f16; box-shadow: inset 0 1px 2px #000; }
-.monitor__led { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: #3380ff; transform: translate(-50%, -50%); animation: blink 3s steps(1) infinite; }
+.monitor__knobs i { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--text); }
+.monitor__power { position: relative; width: 24px; height: 16px; border-radius: 3px; border: 1.5px solid var(--text); }
+.monitor__led { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: var(--signal); transform: translate(-50%, -50%); animation: blink 3s steps(1) infinite; }
 .monitor__screen.is-on { animation: power-on 0.6s ease-out; }
 @keyframes power-on {
-  0% { filter: brightness(3) saturate(0); clip-path: inset(49% 0 49% 0); }
-  40% { filter: brightness(2); clip-path: inset(0 0 0 0); }
-  100% { filter: none; }
+  0% { clip-path: inset(49% 0 49% 0); }
+  40% { clip-path: inset(0 0 0 0); }
 }
-.screen-scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.03) 0 1px, transparent 1px 3px); }
 .screen-bar {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 10px 16px 8px; font-size: 0.66rem; letter-spacing: 0.1em; color: #8899cc;
-  border-bottom: 1px solid rgb(136 153 204 / 0.15);
+  padding: 10px 16px 8px; font-size: 0.66rem; letter-spacing: 0.1em; color: var(--muted);
+  border-bottom: 1.5px solid var(--text);
 }
 .screen-bar__dots { display: inline-flex; gap: 6px; }
-.screen-bar__dots i { width: 9px; height: 9px; background: #2a3044; }
-.screen-bar__dots i:nth-child(1) { background: #0057ff; }
-.screen-bar__dots i:nth-child(2) { background: #3380ff; }
-.screen-bar__dots i:nth-child(3) { background: #8899cc; }
+.screen-bar__dots i { width: 9px; height: 9px; border: 1.5px solid var(--text); }
+.screen-bar__dots i:nth-child(1) { background: var(--signal); border-color: var(--signal); }
 .screen-body { flex: 1; display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(12px, 2.4vw, 28px); align-items: center; padding: clamp(12px, 2.6vw, 30px); font-size: clamp(0.64rem, 0.95vw, 0.82rem); }
 .screen-text { display: grid; gap: 4px; min-width: 0; }
-.boot { color: #8899cc; margin-bottom: 8px; letter-spacing: 0.04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.term { color: #c5cae0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.term__prompt { color: #8899cc; }
-.term--out { color: #3380ff; margin-bottom: 6px; }
-.caret { color: #3380ff; animation: blink 1s steps(1) infinite; margin-left: 1px; }
-.screen-logo { aspect-ratio: 1; border: 1px solid rgb(51 128 255 / 0.4); display: grid; place-items: center; padding: 12%; position: relative; }
+.boot { color: var(--muted); margin-bottom: 8px; letter-spacing: 0.04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.term { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.term__prompt { color: var(--muted); }
+.term--out { color: var(--accent); margin-bottom: 6px; }
+.caret { color: var(--accent); animation: blink 1s steps(1) infinite; margin-left: 1px; }
+.screen-logo { aspect-ratio: 1; border: 1.5px dashed var(--accent); display: grid; place-items: center; padding: 12%; position: relative; }
 .screen-logo img { width: 100%; height: auto; }
+/* El logo tiene el texto en blanco: en el tema claro se usa la versión en tinta */
+.screen-logo__ink, :root[data-theme="light"] .screen-logo__light { display: none; }
+:root[data-theme="light"] .screen-logo__ink { display: block; }
 
 .monitor__screen.is-booting .term,
 .monitor__screen.is-booting .screen-logo { opacity: 0; }
@@ -424,67 +425,32 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .monitor__screen.is-on .term:nth-child(5) { animation-delay: 0.3s; }
 .monitor__screen.is-on .screen-logo { animation: fade-up 0.6s 0.15s var(--ease) both; }
 
-.monitor__neck { width: 22%; height: 30px; margin-inline: auto; background: linear-gradient(180deg, #0b0c12, #1a1d28 40%, #13151e); clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%); }
+.monitor__neck { width: 16%; height: 30px; margin-inline: auto; border-inline: 1.5px solid var(--text); }
 .computer-case {
   display: flex; align-items: center; gap: 16px; width: 86%; height: 60px; margin-inline: auto; padding: 0 20px;
-  border-radius: 8px 8px 5px 5px; background: linear-gradient(180deg, #252937 0%, #171a24 60%, #0f1118 100%);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.07), 0 8px 0 #0a0b10, 0 24px 40px -20px rgb(0 0 0 / 0.6);
+  border-radius: 6px; background: var(--bg); border: 1.5px solid var(--text); box-shadow: 8px 8px 0 var(--signal);
 }
-.computer-case__label { font-size: 0.64rem; letter-spacing: 0.25em; color: #8899cc; }
-.computer-case__floppy { position: relative; width: 130px; height: 22px; border-radius: 3px; background: #10121a; box-shadow: inset 0 1px 3px #000; }
-.computer-case__floppy::before { content: ""; position: absolute; left: 12px; right: 12px; top: 9px; height: 3px; background: #05060a; }
-.computer-case__floppy i { position: absolute; right: 8px; bottom: 4px; width: 12px; height: 5px; background: #3a3f52; }
+.computer-case__label { font-size: 0.64rem; letter-spacing: 0.25em; color: var(--text); }
+.computer-case__floppy { position: relative; width: 130px; height: 22px; border-radius: 3px; border: 1.5px solid var(--text); }
+.computer-case__floppy::before { content: ""; position: absolute; left: 12px; right: 12px; top: 9px; height: 1.5px; background: var(--text); }
+.computer-case__floppy i { position: absolute; right: 8px; bottom: 4px; width: 12px; height: 5px; background: var(--text); }
 .computer-case__leds { display: inline-flex; gap: 8px; }
-.computer-case__leds i { width: 8px; height: 4px; background: #3380ff; }
-.computer-case__leds i:nth-child(2) { background: #8899cc; animation: blink 1.4s steps(1) infinite; }
-.computer-case__vents { flex: 1; height: 22px; background: repeating-linear-gradient(90deg, #0b0c12 0 3px, transparent 3px 7px); opacity: 0.8; }
+.computer-case__leds i { width: 8px; height: 4px; background: var(--signal); }
+.computer-case__leds i:nth-child(2) { background: var(--text); animation: blink 1.4s steps(1) infinite; }
+.computer-case__vents { height: 22px; }
 
-/* Variante B: el mismo monitor redibujado como plano técnico, en línea fina */
-.machine--flat .monitor__bezel { background: var(--bg); border: 1.5px solid var(--text); border-radius: 14px 14px 6px 6px; box-shadow: 8px 8px 0 var(--signal); }
-.machine--flat .monitor__screen {
-  border-radius: 8px; box-shadow: none; border: 1.5px solid var(--text); color: var(--text);
-  background:
-    linear-gradient(rgb(var(--accent-rgb) / 0.12) 1px, transparent 1px) 0 0 / 16px 16px,
-    linear-gradient(90deg, rgb(var(--accent-rgb) / 0.12) 1px, transparent 1px) 0 0 / 16px 16px,
-    var(--surface-solid);
-}
-.machine--flat .screen-scan { display: none; }
-.machine--flat .screen-bar { color: var(--muted); border-bottom: 1.5px solid var(--text); }
-.machine--flat .screen-bar__dots i { background: none; border: 1.5px solid var(--text); }
-.machine--flat .screen-bar__dots i:nth-child(1) { background: var(--signal); border-color: var(--signal); }
-.machine--flat .boot, .machine--flat .term__prompt { color: var(--muted); }
-.machine--flat .term { color: var(--text); }
-.machine--flat .term--out, .machine--flat .caret { color: var(--accent); }
-.machine--flat .screen-logo { border: 1.5px dashed var(--accent); }
-:root:not([data-theme="light"]) .machine--flat .screen-logo img { filter: none; }
-.machine--flat .monitor__brand { color: var(--text); }
-.machine--flat .monitor__vents, .machine--flat .computer-case__vents { background: repeating-linear-gradient(90deg, var(--text) 0 1.5px, transparent 1.5px 7px); opacity: 0.5; }
-.machine--flat .monitor__knobs i { background: none; border: 1.5px solid var(--text); }
-.machine--flat .monitor__power { background: none; box-shadow: none; border: 1.5px solid var(--text); }
-.machine--flat .monitor__led { background: var(--signal); }
-.machine--flat .monitor__neck { background: none; border-inline: 1.5px solid var(--text); clip-path: none; width: 16%; }
-.machine--flat .computer-case { background: var(--bg); border: 1.5px solid var(--text); border-radius: 6px; box-shadow: 8px 8px 0 var(--signal); }
-.machine--flat .computer-case__label { color: var(--text); }
-.machine--flat .computer-case__floppy { background: none; box-shadow: none; border: 1.5px solid var(--text); }
-.machine--flat .computer-case__floppy::before { background: var(--text); height: 1.5px; }
-.machine--flat .computer-case__floppy i { background: var(--text); }
-.machine--flat .computer-case__leds i { background: var(--signal); }
-.machine--flat .computer-case__leds i:nth-child(2) { background: var(--text); }
-
-/* Cotas con el tamaño real en píxeles (solo en la variante plana) */
-.dim { display: none; position: absolute; font-size: 0.66rem; letter-spacing: 0.08em; color: var(--accent); }
-.machine--flat .dim { display: block; }
+/* Cotas con el tamaño real del monitor en píxeles (las mide js/sections.js) */
+.dim { position: absolute; font-size: 0.66rem; letter-spacing: 0.08em; color: var(--accent); }
 .dim::before { content: ""; position: absolute; border: 0 solid var(--accent); }
 .dim--w { left: 0; right: 48px; top: -26px; text-align: center; }
 .dim--w::before { left: 0; right: 0; top: 50%; border-top-width: 1px; z-index: -1; }
 .dim--w > span, .dim--h > span { background: var(--bg); padding: 0 8px; position: relative; }
 .dim--w::after { content: ""; position: absolute; inset: 4px 0; border-inline: 1px solid var(--accent); }
-.dim--h { right: 8px; top: 0; height: var(--bezel-h, 66%); width: 16px; display: none; }
-.hero__main { position: relative; z-index: 1; }
-.machine--flat .dim--h { display: flex; align-items: center; justify-content: center; }
+.dim--h { right: 8px; top: 0; height: var(--bezel-h, 66%); width: 16px; display: flex; align-items: center; justify-content: center; }
 .dim--h::before { top: 0; bottom: 0; left: 50%; border-left-width: 1px; }
 .dim--h::after { content: ""; position: absolute; inset: 0 2px; border-block: 1px solid var(--accent); }
 .dim--h > span { writing-mode: vertical-rl; transform: rotate(180deg); padding: 8px 0; }
+.hero__main { position: relative; z-index: 1; }
 
 /* Anotaciones numeradas, estilo ficha de objeto */
 .notes { position: absolute; inset: 0; pointer-events: none; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
