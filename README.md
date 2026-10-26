@@ -24,7 +24,7 @@ Directamente en GitHub o en el ordenador y hacer `git push`. (el progreso se ve 
 
 > **Importante — caché del navegador:** los `.html` cargan el CSS y el JS con `?v=12`.
 > Cuando cambies un archivo `.css` o `.js` (incluidos los de `data/`), sube ese número
-> en los 3 `.html` (busca y reemplaza `?v=12` por `?v=12`). Si no, algunos visitantes
+> en los 3 `.html` (busca y reemplaza `?v=12` por `?v=13`). Si no, algunos visitantes
 > pueden ver una mezcla de archivos nuevos y viejos durante un rato.
 
 | Quiero cambiar…                                       | Dónde                                                        |
@@ -51,7 +51,7 @@ Directamente en GitHub o en el ordenador y hacer `git push`. (el progreso se ve 
 - **Lo más fácil:** subir el icono en formato SVG con el mismo nombre, `img/battery.svg`.
 - **Si es PNG u otro nombre:** subirlo a `img/` y cambia esta línea en los 3 archivos `.html`:
   ```html
-  <link rel="icon" href="img/battery.svg?v=11" type="image/svg+xml">
+  <link rel="icon" href="img/battery.svg?v=12" type="image/svg+xml">
   ```
   por, por ejemplo:
   ```html
