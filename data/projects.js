@@ -5,6 +5,13 @@
    un bloque y cambia los valores. Se ordenan por `date` (más reciente primero).
 
    categories → claves de window.PROJECT_CATEGORIES (filtros de la web)
+
+   Campos opcionales de la ficha (si faltan, esa sección no aparece):
+   headline  → título de la sección Contexto
+   statement → frase corta que resume el problema
+   system    → { title, label?, nodes: [{ title, text, tags? }], core? } (banda azul)
+   before / after → { src, title, caption } y delta: [cambios] (antes / después)
+   result    → frase de la sección Resultado
    ========================================================================== */
 window.PROJECT_CATEGORIES = {
   web: { es: "Desarrollo web", en: "Web development" },
@@ -36,8 +43,8 @@ window.PROJECTS = [
     "role": { "es": "Proyecto final de DAW · diseño y desarrollo full-stack en solitario", "en": "DAW final project · solo full-stack design & development" },
     "tools": ["Laravel 12", "PHP 8", "MySQL", "Blade", "Alpine.js", "Tailwind", "Stripe", "Docker", "Render"],
     "goal": {
-      "es": "La información sobre entrenamiento en positivo y enriquecimiento está dispersa entre vídeos, foros y blogs. FitPup la reúne en un solo sitio y te deja seguir tu progreso en cada curso. Partí de mi prototipo estático y lo convertí en una aplicación Laravel con cuentas verificadas por email, perfiles de perro, cursos con seguimiento, guías de nutrición y suplementos, actividades de enriquecimiento y una comunidad con publicaciones y comentarios, desplegada con Docker en Render. La integración de pagos con Stripe quedó a medias: el checkout funciona, pero la activación del plan por webhook no llegó a tiempo para la entrega.",
-      "en": "Information on positive training and enrichment is scattered across videos, forums and blogs. FitPup brings it together and lets you track your progress in each course. I took my static prototype and turned it into a Laravel app with email-verified accounts, dog profiles, courses with progress tracking, nutrition and supplement guides, enrichment activities and a community with posts and comments, deployed with Docker on Render. The Stripe integration stayed half-done: checkout works, but activating the plan through the webhook didn't make it in time for the deadline."
+      "es": "La información sobre entrenamiento en positivo y enriquecimiento está dispersa entre vídeos, foros y blogs. FitPup la reúne en un solo sitio y te deja seguir tu progreso en cada curso. Partí de mi prototipo estático y lo convertí en una aplicación Laravel con cuentas verificadas por email, perfiles de perro, cursos con seguimiento, guías de nutrición y suplementos, actividades de enriquecimiento y una comunidad con publicaciones y comentarios, desplegada con Docker en Render.",
+      "en": "Information on positive training and enrichment is scattered across videos, forums and blogs. FitPup brings it together and lets you track your progress in each course. I took my static prototype and turned it into a Laravel app with email-verified accounts, dog profiles, courses with progress tracking, nutrition and supplement guides, enrichment activities and a community with posts and comments, deployed with Docker on Render."
     },
     "highlights": [
       { "es": "Modelo de datos de 11 entidades (perros, cursos, progreso, nutrición, comunidad, suscripciones) con migraciones y seeders", "en": "11-entity data model (dogs, courses, progress, nutrition, community, subscriptions) with migrations and seeders" },
@@ -46,6 +53,67 @@ window.PROJECTS = [
       { "es": "Checkout de suscripción con Stripe en 3 niveles", "en": "Three-tier subscription checkout with Stripe" },
       { "es": "Despliegue con Docker en Render", "en": "Deployed with Docker on Render" }
     ],
+    "headline": { "es": "Del prototipo a la plataforma", "en": "From prototype to platform" },
+    "statement": { "es": "La información sobre entrenamiento en positivo está dispersa entre vídeos, foros y blogs. FitPup la reúne y te deja seguir tu progreso.", "en": "Information on positive training is scattered across videos, forums and blogs. FitPup brings it together and lets you track your progress." },
+    "system": {
+      "title": { "es": "La arquitectura", "en": "The architecture" },
+      "label": { "es": "Modelo de datos · migraciones y seeders", "en": "Data model · migrations and seeders" },
+      "core": {
+        "title": { "es": "Laravel 12", "en": "Laravel 12" },
+        "text": { "es": "Blade y Alpine.js en el front, MySQL detrás, empaquetado en Docker.", "en": "Blade and Alpine.js on the front end, MySQL behind it, packaged with Docker." }
+      },
+      "nodes": [
+        {
+          "title": { "es": "Cuentas", "en": "Accounts" },
+          "text": { "es": "Registro, verificación por email y recuperación de contraseña.", "en": "Sign-up, email verification and password recovery." },
+          "tags": ["users"]
+        },
+        {
+          "title": { "es": "Perros", "en": "Dogs" },
+          "text": { "es": "Cada usuario crea los perfiles de sus perros.", "en": "Each user creates profiles for their dogs." },
+          "tags": ["dogs"]
+        },
+        {
+          "title": { "es": "Cursos", "en": "Courses" },
+          "text": { "es": "Entrenamientos con progreso guardado.", "en": "Training courses with saved progress." },
+          "tags": ["trainings", "training_progress", "progress_tracking"]
+        },
+        {
+          "title": { "es": "Nutrición y enriquecimiento", "en": "Nutrition & enrichment" },
+          "text": { "es": "Guías, suplementos, planes y actividades.", "en": "Guides, supplements, plans and activities." },
+          "tags": ["nutrition", "nutrition_guides", "supplements", "user_nutrition_plans", "enriquecimiento"]
+        },
+        {
+          "title": { "es": "Comunidad", "en": "Community" },
+          "text": { "es": "Publicaciones y comentarios.", "en": "Posts and comments." },
+          "tags": ["community", "comment"]
+        },
+        {
+          "title": { "es": "Suscripciones", "en": "Subscriptions" },
+          "text": { "es": "Tres planes con checkout de Stripe.", "en": "Three plans with Stripe checkout." },
+          "tags": ["plans", "user_subscriptions", "payment"]
+        }
+      ]
+    },
+    "before": {
+      "src": "img/projects/fitpup-static/cover.jpg",
+      "title": { "es": "FitPup v1", "en": "FitPup v1" },
+      "caption": { "es": "Prototipo estático · HTML, CSS y Bootstrap", "en": "Static prototype · HTML, CSS & Bootstrap" }
+    },
+    "after": {
+      "src": "img/projects/fitpup-laravel/cover.jpg",
+      "title": { "es": "FitPup Laravel", "en": "FitPup Laravel" },
+      "caption": { "es": "Aplicación con base de datos, desplegada", "en": "App with a database, deployed" }
+    },
+    "delta": [
+      { "es": "Cuentas y verificación", "en": "Accounts and verification" },
+      { "es": "Perfiles de perro", "en": "Dog profiles" },
+      { "es": "Progreso por curso", "en": "Progress per course" },
+      { "es": "Comunidad", "en": "Community" },
+      { "es": "Pagos con Stripe", "en": "Stripe payments" },
+      { "es": "Docker + Render", "en": "Docker + Render" }
+    ],
+    "result": { "es": "Misma idea, ahora con datos reales.", "en": "Same idea, now with real data." },
     "links": { "live": "https://fitpup.onrender.com", "repo": "https://github.com/cybr303/FitPup" }
   },
   {
@@ -119,6 +187,51 @@ window.PROJECTS = [
       { "es": "Aplicaciones físicas y digitales: papelería, merchandising, email, redes, favicon y web", "en": "Print and digital applications: stationery, merchandise, email, social, favicon and website" },
       { "es": "Es la identidad de este portfolio: Signal Blue #0057FF e IBM Plex Mono", "en": "It is the identity of this portfolio: Signal Blue #0057FF and IBM Plex Mono" }
     ],
+    "headline": { "es": "Un estudio, dos oficios", "en": "One studio, two crafts" },
+    "statement": { "es": "AXON es un estudio unipersonal que une diseño gráfico y desarrollo web, para quien no quiere coordinar a un diseñador y a un desarrollador por separado.", "en": "AXON is a one-person studio that combines graphic design and web development, for people who don't want to coordinate a designer and a developer separately." },
+    "system": {
+      "title": { "es": "El sistema de marca", "en": "The brand system" },
+      "label": { "es": "Manual de identidad · versión imprenta y web", "en": "Brand guidelines · print and web versions" },
+      "nodes": [
+        {
+          "title": { "es": "Logotipo", "en": "Logo" },
+          "text": { "es": "Construcción, área de seguridad, tamaños mínimos, versiones y usos incorrectos.", "en": "Construction, clear space, minimum sizes, versions and incorrect uses." }
+        },
+        {
+          "title": { "es": "Color", "en": "Colour" },
+          "text": { "es": "Signal Blue #0057FF, Axon Black y Static White.", "en": "Signal Blue #0057FF, Axon Black and Static White." }
+        },
+        {
+          "title": { "es": "Tipografía", "en": "Typography" },
+          "text": { "es": "IBM Plex Mono como corporativa; Aktiv Grotesk en la A, la O y la N del logotipo.", "en": "IBM Plex Mono as the brand typeface; Aktiv Grotesk for the A, O and N in the logo." }
+        },
+        {
+          "title": { "es": "Patrón y fotografía", "en": "Pattern & photography" },
+          "text": { "es": "Patrón gráfico, texturas y estilo de fotografía.", "en": "Graphic pattern, textures and photography style." }
+        }
+      ],
+      "core": {
+        "title": { "es": "Aplicaciones", "en": "Applications" },
+        "text": { "es": "Tarjeta de visita, identificación, papel de carta, merchandising, firma de email, redes sociales, favicon y web.", "en": "Business card, ID badge, letterhead, merchandise, email signature, social media, favicon and website." }
+      }
+    },
+    "before": {
+      "src": "img/projects/axon/17.jpg",
+      "title": { "es": "Prototipo A", "en": "Prototype A" },
+      "caption": { "es": "X inclinada · descartado", "en": "Tilted X · discarded" }
+    },
+    "after": {
+      "src": "img/projects/axon/18.jpg",
+      "title": { "es": "Prototipo B", "en": "Prototype B" },
+      "caption": { "es": "X en forma de sinapsis · elegido y corregido", "en": "Synapse-shaped X · chosen and refined" }
+    },
+    "delta": [
+      { "es": "X más cerca de la A", "en": "X moved closer to the A" },
+      { "es": "X más estrecha", "en": "Narrower X" },
+      { "es": "5 soluciones probadas para el hueco A–X", "en": "5 fixes tested for the A–X gap" },
+      { "es": "A, O y N en Aktiv Grotesk", "en": "A, O and N in Aktiv Grotesk" }
+    ],
+    "result": { "es": "Una marca que uso todos los días: la de este portfolio.", "en": "A brand I use every day: this portfolio's." },
     "links": {}
   },
   {
@@ -152,6 +265,49 @@ window.PROJECTS = [
       { "es": "Cuatro prototipos evaluados contra el briefing antes de elegir", "en": "Four prototypes weighed against the brief before choosing" },
       { "es": "Sistema completo: logotipo, isotipo, paleta y usos según fondo", "en": "Full system: logo, brand mark, palette and background usage" }
     ],
+    "headline": { "es": "Una hoja que también es un cucurucho", "en": "A leaf that is also a paper cone" },
+    "statement": { "es": "Comida rápida saludable en foodtruck y para llevar, para profesionales de 25 a 40 años en Madrid. El símbolo tenía que contar las dos cosas.", "en": "Healthy fast food from a food truck and to take away, for professionals aged 25 to 40 in Madrid. The symbol had to say both things." },
+    "system": {
+      "title": { "es": "El sistema de marca", "en": "The brand system" },
+      "nodes": [
+        {
+          "title": { "es": "Símbolo", "en": "Symbol" },
+          "text": { "es": "Sello circular con una hoja que también es un cucurucho de papel.", "en": "A circular badge with a leaf that is also a paper cone." }
+        },
+        {
+          "title": { "es": "Tipografía", "en": "Typography" },
+          "text": { "es": "Serif orgánica en arco.", "en": "An organic serif set in an arc." }
+        },
+        {
+          "title": { "es": "Color", "en": "Colour" },
+          "text": { "es": "Verdes y tierras.", "en": "Greens and earth tones." }
+        },
+        {
+          "title": { "es": "Usos según fondo", "en": "Background usage" },
+          "text": { "es": "Versiones para fondos claros, oscuros y de color.", "en": "Versions for light, dark and coloured backgrounds." }
+        }
+      ],
+      "core": {
+        "title": { "es": "Aplicaciones", "en": "Applications" },
+        "text": { "es": "Bolsa kraft, tote, vasos, envoltorios, papelería y caja.", "en": "Kraft bag, tote, cups, wrappers, stationery and food box." }
+      }
+    },
+    "before": {
+      "src": "img/projects/greenbite/05.jpg",
+      "title": { "es": "Prototipos explorados", "en": "Explored prototypes" },
+      "caption": { "es": "Iconos de producto, monograma gb y arco mediterráneo", "en": "Product icons, gb monogram and Mediterranean arch" }
+    },
+    "after": {
+      "src": "img/projects/greenbite/02.jpg",
+      "title": { "es": "Sello circular", "en": "Circular badge" },
+      "caption": { "es": "Elegido por su doble lectura", "en": "Chosen for its double reading" }
+    },
+    "delta": [
+      { "es": "Fuera los iconos literales", "en": "Literal icons ruled out" },
+      { "es": "Cuatro prototipos finalistas", "en": "Four shortlisted prototypes" },
+      { "es": "Elegido el sello", "en": "The badge chosen" }
+    ],
+    "result": { "es": "Un símbolo con doble lectura, listo para el foodtruck.", "en": "A symbol with a double reading, ready for the food truck." },
     "links": {}
   },
   {
@@ -189,6 +345,41 @@ window.PROJECTS = [
       { "es": "Proceso completo: bocetos a mano, iteraciones digitales y mockups", "en": "Full process: hand sketches, digital iterations and mockups" },
       { "es": "El logo de FitPup es la identidad de mi proyecto web", "en": "The FitPup logo is the identity of my web project" }
     ],
+    "headline": { "es": "Tres piezas, tres leyes", "en": "Three pieces, three laws" },
+    "statement": { "es": "Cada pieza se apoya en una ley de la percepción: el ojo cierra, simplifica o agrupa lo que ve.", "en": "Each piece rests on one law of perception: the eye closes, simplifies or groups what it sees." },
+    "system": {
+      "title": { "es": "Las leyes", "en": "The laws" },
+      "nodes": [
+        {
+          "title": { "es": "Cierre", "en": "Closure" },
+          "text": { "es": "Logotipo de FitPup: orejas de perro sin contorno inferior, con Bebas Neue.", "en": "FitPup logo: dog ears with no bottom outline, set in Bebas Neue." }
+        },
+        {
+          "title": { "es": "Pregnancia", "en": "Prägnanz" },
+          "text": { "es": "Cartel de Steven Universe: cada personaje reducido a un rasgo, dentro de la gema de Steven.", "en": "Steven Universe poster: each character reduced to one trait, inside Steven's gem." }
+        },
+        {
+          "title": { "es": "Semejanza", "en": "Similarity" },
+          "text": { "es": "Portada de Alicia: patrón de rombos con los palos de la baraja en rojo.", "en": "Alice cover: a diamond pattern with the card suits in red." }
+        }
+      ]
+    },
+    "before": {
+      "src": "img/projects/gestalt/09.jpg",
+      "title": { "es": "Boceto a mano", "en": "Hand sketch" },
+      "caption": { "es": "Proceso del logotipo de FitPup", "en": "FitPup logo process" }
+    },
+    "after": {
+      "src": "img/projects/gestalt/02.jpg",
+      "title": { "es": "Logotipo vectorial", "en": "Vector logo" },
+      "caption": { "es": "FitPup · ley de cierre", "en": "FitPup · law of closure" }
+    },
+    "delta": [
+      { "es": "De orejas tiernas a logo deportivo", "en": "From cute ears to a sporty logo" },
+      { "es": "Sin contorno inferior", "en": "No bottom outline" },
+      { "es": "Tipografía Bebas Neue", "en": "Bebas Neue typeface" }
+    ],
+    "result": { "es": "El logotipo de FitPup nació aquí.", "en": "The FitPup logo was born here." },
     "links": {}
   },
   {
