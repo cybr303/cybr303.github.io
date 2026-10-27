@@ -893,7 +893,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 @media (max-width: 420px) {
   .skill-grid { grid-template-columns: repeat(3, 1fr); }
-  .brand { font-size: 0.95rem; }
+  /* Cabecera compacta: a 375px los botones se salían ~9px por la derecha */
+  .site-header { gap: 8px; }
+  .brand { font-size: 0.85rem; }
+  .header-link, .lang-toggle { padding: 0 7px; letter-spacing: 0.04em; }
+  .theme-toggle, .menu-btn { width: 38px; }
+  .sticky-note { right: 12px; }
 }
 
 /* Menos movimiento si el usuario lo prefiere */
