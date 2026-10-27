@@ -24,7 +24,7 @@ Directamente en GitHub o en el ordenador y hacer `git push`. (el progreso se ve 
 
 > **Importante — caché del navegador:** los `.html` cargan el CSS y el JS con `?v=14`.
 > Cuando cambies un archivo `.css` o `.js` (incluidos los de `data/`), sube ese número
-> en los 3 `.html` (busca y reemplaza `?v=14` por `?v=14`). Si no, algunos visitantes
+> en los 5 `.html` (busca y reemplaza `?v=14` por `?v=15`). Si no, algunos visitantes
 > pueden ver una mezcla de archivos nuevos y viejos durante un rato.
 
 | Quiero cambiar…                                       | Dónde                                                        |
