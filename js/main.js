@@ -112,7 +112,8 @@
   const home = page === "home" ? "" : "index.html";
   // En "Sobre mí" los enlaces son anclas de la propia página; desde el resto llevan a about.html
   const aboutBase = page === "about" ? "" : "about.html";
-  const menuLink = (href, key) => `<li><a href="${href}" data-i18n="${key}"></a></li>`;
+  // current: enlace a la página en la que estamos (se marca como actual)
+  const menuLink = (href, key, current) => `<li><a href="${href}" data-i18n="${key}"${current ? ' class="is-current" aria-current="page"' : ""}></a></li>`;
 
   function headerHTML() {
     return `
@@ -146,6 +147,7 @@
           ${menuLink(`${aboutBase}#skills`, "nav.skills")}
           ${menuLink(`${aboutBase}#experience`, "nav.experience")}
           ${menuLink(`${aboutBase}#hobbies`, "nav.hobbies")}
+          ${menuLink("brand.html", "nav.brand", page === "brand")}
           ${menuLink("#contact", "nav.contact")}
         </ul>
       </div>
