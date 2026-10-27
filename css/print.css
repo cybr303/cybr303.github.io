@@ -5,7 +5,7 @@
    Sin fondos oscuros aunque esté activo el tema oscuro.
    ========================================================================== */
 
-@page { size: A4; margin: 14mm 14mm 18mm; }
+@page { size: A4; margin: 12mm 14mm 16mm; }
 
 /* Tokens del papel: los del tema claro, con el gris sustituido por tinta (el azul es el único color) */
 :root, :root[data-theme="light"] {
@@ -51,7 +51,7 @@ a { text-decoration: none; }
 .section-title[data-print-only] { display: flex !important; }
 
 /* ---------- Cabecera: nombre + rol + ficha de contacto ---------- */
-.print-cv { margin-bottom: 7mm; break-inside: avoid; }
+.print-cv { margin-bottom: 5mm; break-inside: avoid; }
 .print-cv__rail {
   display: flex; justify-content: space-between; gap: 16px; padding-bottom: 2mm; margin-bottom: 4mm;
   border-bottom: 1px solid var(--text); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text);
@@ -96,11 +96,11 @@ a { text-decoration: none; }
   font-family: var(--f-mono); font-weight: 500; font-size: 7pt; letter-spacing: 0.1em; color: var(--accent);
   transform: translateY(-0.4em);
 }
-.section-title--sm { margin-top: 4.5mm; }
+.section-title--sm { margin-top: 3.5mm; }
 #experience .section-title::before { content: "/02"; }
 #experience .section-title--sm::before { content: "/03"; }
 #skills .section-title::before { content: "/04"; }
-/* Premios: en papel van en la columna lateral (hay sitio y el CV cabe en una hoja) */
+/* Otros eventos: en papel van en la columna lateral (hay sitio y el CV cabe en una hoja) */
 #experience .section-title--awards, [data-awards] { display: none !important; }
 .print-awards[data-print-only] { display: block !important; }
 .print-awards .tl-item__row { display: block; }
@@ -108,11 +108,11 @@ a { text-decoration: none; }
 .print-awards .tl-item__tasks li + li::before { content: none; }
 
 /* Perfil */
-.about__body { max-width: none; color: var(--text-2); font-size: 1rem; margin-bottom: 4.5mm; }
+.about__body { max-width: none; color: var(--text-2); font-size: 1rem; margin-bottom: 3.5mm; }
 
 /* ---------- Experiencia y estudios ---------- */
 .timeline { border-top: 0; }
-.tl-item { padding: 1.6mm 0 1.9mm; border-bottom: 1px solid var(--line); break-inside: avoid; }
+.tl-item { padding: 1.3mm 0 1.6mm; border-bottom: 1px solid var(--line); break-inside: avoid; }
 .tl-item:first-child { padding-top: 0; }
 .tl-item__row { gap: 3mm; }
 .tl-item__title { font-size: 11pt; font-stretch: 75%; line-height: 1; }

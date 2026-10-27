@@ -415,7 +415,7 @@
             ${e.start ? `<time datetime="${esc(e.start)}">${esc(App.formatYM(e.start))}</time> | ` : ""}${e.end ? `<time datetime="${esc(e.end)}">${esc(App.formatYM(e.end))}</time>` : `<span class="is-now">${esc(t("exp.present"))}</span>`}
           </p>
         </div>
-        <p class="tl-item__place">${esc(tr(e.place))}${e.start ? ` <span class="tl-item__dur mono">· ${esc(App.duration(e.start, e.end))}</span>` : ""}</p>
+        <p class="tl-item__place">${esc(tr(e.place))}${/-/.test(e.start) ? ` <span class="tl-item__dur mono">· ${esc(App.duration(e.start, e.end))}</span>` : ""}</p>
         ${tasks ? `<ul class="tl-item__tasks">${tasks}</ul>` : ""}
       </li>`;
     },

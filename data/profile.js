@@ -44,8 +44,8 @@ window.PROFILE = {
     ],
     lead: { es: "Desarrollador web & diseñador gráfico", en: "Web developer & graphic designer" },
     body: {
-      es: "Tengo un perfil híbrido: me formo en Desarrollo de Aplicaciones Web y en Diseño y Edición de Publicaciones Impresas y Multimedia. Combino el desarrollo front-end con una mirada de diseño UI/UX, así que puedo llevar un proyecto desde la arquitectura de la aplicación hasta su identidad visual. Participé en el HP Codewars Madrid 2023 y ya he aplicado lo que sé en proyectos reales.",
-      en: "I have a hybrid profile: I'm training in both Web Application Development and Print & Multimedia Publishing Design. I combine front-end development with a UI/UX design eye, so I can take a project from the application's architecture to its visual identity. I took part in HP Codewars Madrid 2023 and have already put what I know to work on real projects.",
+      es: "Tengo un perfil híbrido: soy Técnico Superior en Desarrollo de Aplicaciones Web y estudio Diseño y Edición de Publicaciones Impresas y Multimedia. Combino el desarrollo front-end con una mirada de diseño UI/UX, así que puedo llevar un proyecto desde la arquitectura de la aplicación hasta su identidad visual. Participé en el HP Codewars Madrid 2023 y ya he aplicado lo que sé en proyectos reales.",
+      en: "I have a hybrid profile: I hold a Higher Diploma in Web Application Development and I'm studying Print & Multimedia Publishing Design. I combine front-end development with a UI/UX design eye, so I can take a project from the application's architecture to its visual identity. I took part in HP Codewars Madrid 2023 and have already put what I know to work on real projects.",
     },
   },
 
@@ -139,14 +139,14 @@ window.PROFILE = {
     },
   ],
 
-  // Experiencia laboral — la más reciente primero.
-  // Si no se sabe el mes de inicio, deja `start: null`: solo se muestra el fin (o "Actualidad").
+  // Experiencia laboral (se ordena sola, la más reciente primero).
+  // Si no se sabe el inicio, deja `start: null`: solo se muestra el fin (o "Actualidad").
   experience: [
     {
       title: { es: "Asistente técnico", en: "Technical assistant" },
       place: "Working Capital Management Group S.A. · Madrid",
-      start: null,
-      end: null,
+      start: "2023-04",
+      end: "2023-07",
       tasks: [
         { es: "Soporte técnico a teleoperadores", en: "Tech support for call-centre agents" },
         { es: "Scripts en PHP para automatizar tareas", en: "PHP scripts to automate tasks" },
@@ -188,7 +188,7 @@ window.PROFILE = {
     },
   ],
 
-  // Formación (`end` puede ser solo el año de titulación, "AAAA")
+  // Formación (las fechas pueden ser solo el año, "AAAA")
   studies: [
     {
       title: {
@@ -196,7 +196,7 @@ window.PROFILE = {
         en: "Higher Diploma in Print & Multimedia Publishing Design",
       },
       place: "IES Virgen de la Paloma · Madrid",
-      start: null,
+      start: "2025",
       end: "2027",
     },
     {
@@ -205,15 +205,24 @@ window.PROFILE = {
         en: "Higher Diploma in Web Application Development",
       },
       place: "IES Rosa Chacel · Madrid",
-      start: null,
-      end: "2026",
+      start: "2023",
+      end: "2025",
       tasks: [
         { es: "Proyecto final: FitPup", en: "Final project: FitPup" },
       ],
     },
+    {
+      title: {
+        es: "Técnico en Sistemas Microinformáticos y Redes",
+        en: "Vocational Diploma in Computer Systems and Networks",
+      },
+      place: "IES Rosa Chacel · Madrid",
+      start: "2021",
+      end: "2023",
+    },
   ],
 
-  // Premios y reconocimientos
+  // Otros eventos (competiciones, premios…)
   awards: [
     {
       title: { es: "HP Codewars Madrid 2023", en: "HP Codewars Madrid 2023" },
