@@ -10,7 +10,11 @@
    headline  → título de la sección Contexto
    statement → frase corta que resume el problema
    system    → { title, label?, nodes: [{ title, text, tags? }], core? } (banda azul)
-   before / after → { src, title, caption } y delta: [cambios] (antes / después)
+   schema    → { tables: [{ name, col (0–3), cols: ["id:pk", "user_id:fk", "email:uq", …] }],
+                 relations: [[tablaPadre, "tablaHija.columnaFK", "1-N"]] } (diagrama de BD tras Sistema)
+   construction → { title, viewBox: [w, h], module, axis, angle, angleAt: [x, y], paths: [d…] } (logo dibujándose)
+   before / after → { src, title, caption } y delta: [cambios] (antes / después).
+                 Si las dos imágenes tienen proporciones parecidas se muestran con un comparador deslizable.
    result    → frase de la sección Resultado
    ========================================================================== */
 window.PROJECT_CATEGORIES = {
@@ -93,6 +97,41 @@ window.PROJECTS = [
           "text": { "es": "Tres planes con checkout de Stripe.", "en": "Three plans with Stripe checkout." },
           "tags": ["plans", "user_subscriptions", "payment"]
         }
+      ]
+    },
+    "schema": {
+      "tables": [
+        { "name": "users", "col": 1, "cols": ["id:pk", "nombre", "email:uq", "email_verified_at", "stripe_customer_id", "password", "foto_perfil", "fecha_registro"] },
+        { "name": "dogs", "col": 2, "cols": ["id:pk", "usuario_id:fk", "nombre", "raza", "nivel_entrenamiento"] },
+        { "name": "training_progress", "col": 2, "cols": ["id:pk", "usuario_id:fk", "perro_id:fk", "entrenamiento_id:fk", "fecha_completado", "notas"] },
+        { "name": "progress_tracking", "col": 2, "cols": ["id:pk", "user_id:fk", "training_id:fk", "progress", "current_step", "completed"] },
+        { "name": "user_nutrition_plans", "col": 2, "cols": ["id:pk", "user_id:fk", "dog_id:fk", "activity_level", "diet_preference", "status"] },
+        { "name": "trainings", "col": 3, "cols": ["id:pk", "titulo", "dificultad", "premium", "pasos", "video_url"] },
+        { "name": "nutrition_guides", "col": 3, "cols": ["id:pk", "title", "category", "difficulty", "premium"] },
+        { "name": "supplements", "col": 3, "cols": ["id:pk", "name", "category", "dosage", "benefits"] },
+        { "name": "nutrition", "col": 1, "cols": ["id:pk", "titulo", "tipo", "ingredientes", "calorias_por_porcion"] },
+        { "name": "enriquecimiento", "col": 1, "cols": ["id:pk", "nombre_actividad", "tipo", "nivel_energia", "pasos", "imagen"] },
+        { "name": "community", "col": 0, "cols": ["id:pk", "usuario_id:fk", "titulo", "contenido", "categoria"] },
+        { "name": "comment", "col": 0, "cols": ["id:pk", "post_id:fk", "usuario_id:fk", "contenido"] },
+        { "name": "plans", "col": 0, "cols": ["id:pk", "tipo", "precio", "stripe_price_id"] },
+        { "name": "user_subscriptions", "col": 0, "cols": ["id:pk", "user_id:fk", "plan_id:fk", "fecha_inicio", "fecha_vencimiento", "estado"] },
+        { "name": "payment", "col": 0, "cols": ["id:pk", "usuario_id:fk", "suscripcion_id:fk", "monto", "metodo_pago"] }
+      ],
+      "relations": [
+        ["users", "dogs.usuario_id", "1-N"],
+        ["users", "community.usuario_id", "1-N"],
+        ["users", "comment.usuario_id", "1-N"],
+        ["community", "comment.post_id", "1-N"],
+        ["users", "training_progress.usuario_id", "1-N"],
+        ["dogs", "training_progress.perro_id", "1-N"],
+        ["trainings", "training_progress.entrenamiento_id", "1-N"],
+        ["users", "progress_tracking.user_id", "1-N"],
+        ["trainings", "progress_tracking.training_id", "1-N"],
+        ["users", "user_nutrition_plans.user_id", "1-N"],
+        ["dogs", "user_nutrition_plans.dog_id", "1-N"],
+        ["users", "user_subscriptions.user_id", "1-N"],
+        ["plans", "user_subscriptions.plan_id", "1-N"],
+        ["users", "payment.usuario_id", "1-N"]
       ]
     },
     "before": {
@@ -214,6 +253,20 @@ window.PROJECTS = [
         "title": { "es": "Aplicaciones", "en": "Applications" },
         "text": { "es": "Tarjeta de visita, identificación, papel de carta, merchandising, firma de email, redes sociales, favicon y web.", "en": "Business card, ID badge, letterhead, merchandise, email signature, social media, favicon and website." }
       }
+    },
+    "construction": {
+      "title": { "es": "Isotipo", "en": "Brand mark" },
+      "viewBox": [344, 312],
+      "module": 26,
+      "axis": 160,
+      "angle": 62,
+      "angleAt": [87, 160],
+      "paths": [
+        "M2 0H97L175 160H87Z",
+        "M258 0H343L260 160L211 81Z",
+        "M174 160H260L342 312H258Z",
+        "M87 160L129 236L89 312H0Z"
+      ]
     },
     "before": {
       "src": "img/projects/axon/17.jpg",
