@@ -106,6 +106,30 @@ window.I18N = {
     "project.archive": "Archivo",
     "project.archiveSub": "{n} imágenes",
     "project.zoom": "Ampliar imagen",
+
+    // CV imprimible (about.html + css/print.css)
+    "print.button": "Imprimir CV",
+    "print.download": "Descargar CV",
+    "print.doc": "Curriculum vitae",
+    "print.profile": "Perfil",
+    "print.email": "Email",
+    "print.github": "GitHub",
+    "print.web": "Web",
+    "print.printed": "impreso el",
+
+    // Página 404 (404.html)
+    "e404.title": "Página no encontrada",
+    "e404.kicker": "segmentation fault · error 404",
+    "e404.text": "La dirección que has pedido no existe o se ha movido. El sistema se ha detenido antes de cargar nada raro.",
+    "e404.path": "Ruta",
+    "e404.code": "Código",
+    "e404.state": "Estado",
+    "e404.stateValue": "proceso detenido",
+    "e404.panic": "kernel panic: página no encontrada",
+    "e404.fault": "segmentation fault (core dumped)",
+    "e404.hint": "pulsa Inicio para reiniciar",
+    "e404.home": "Inicio",
+    "e404.projects": "Proyectos",
   },
   en: {
     "meta.description": "Portfolio of Aiden Jiménez, web developer and graphic designer.",
@@ -213,5 +237,29 @@ window.I18N = {
     "project.archive": "Archive",
     "project.archiveSub": "{n} images",
     "project.zoom": "Enlarge image",
+
+    // Printable CV (about.html + css/print.css)
+    "print.button": "Print CV",
+    "print.download": "Download CV",
+    "print.doc": "Curriculum vitae",
+    "print.profile": "Profile",
+    "print.email": "Email",
+    "print.github": "GitHub",
+    "print.web": "Web",
+    "print.printed": "printed on",
+
+    // 404 page (404.html)
+    "e404.title": "Page not found",
+    "e404.kicker": "segmentation fault · error 404",
+    "e404.text": "The address you asked for doesn't exist or has moved. The system halted before loading anything weird.",
+    "e404.path": "Path",
+    "e404.code": "Code",
+    "e404.state": "Status",
+    "e404.stateValue": "process halted",
+    "e404.panic": "kernel panic: page not found",
+    "e404.fault": "segmentation fault (core dumped)",
+    "e404.hint": "press Home to reboot",
+    "e404.home": "Home",
+    "e404.projects": "Projects",
   },
 };
