@@ -121,10 +121,12 @@
       print(P.skills.map((s) => s.name).join(" · "));
     },
     contacto() {
-      const rows = [["email", P.email]];
-      if (P.github) rows.push(["github", P.github.replace(/^https?:\/\//, "")]);
-      const lines = cols(rows);
-      print([link(`mailto:${P.email}`, lines[0])].concat(P.github ? link(P.github, lines[1], true) : []));
+      const bare = (url) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+      const items = [["email", P.email, `mailto:${P.email}`, false]];
+      if (P.linkedin) items.push(["linkedin", bare(P.linkedin), P.linkedin, true]);
+      if (P.github) items.push(["github", bare(P.github), P.github, true]);
+      const lines = cols(items.map(([k, v]) => [k, v]));
+      print(items.map(([, , href, ext], i) => link(href, lines[i], ext)));
     },
     cv() {
       const href = tr(P.cv);

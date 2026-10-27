@@ -20,7 +20,6 @@ window.I18N = {
     "hero.index": "Índice — portfolio de desarrollo web y diseño gráfico",
     "hero.spec.role": "Rol",
     "hero.spec.base": "Base",
-    "hero.spec.time": "Hora local",
     "hero.spec.status": "Estado",
     "status.label": "Estado de la web",
     "status.static": "Web estática · sin frameworks",
@@ -57,6 +56,7 @@ window.I18N = {
     "skills.soft": "Soft skills",
     "exp.heading": "Experiencia",
     "exp.studies": "Estudios",
+    "exp.awards": "Premios",
     "exp.present": "Actualidad",
     "exp.year": "año",
     "exp.years": "años",
@@ -145,7 +145,7 @@ window.I18N = {
     "print.email": "Email",
     "print.github": "GitHub",
     "print.web": "Web",
-    "print.printed": "impreso el",
+    "print.linkedin": "LinkedIn",
 
     // Página 404 (404.html)
     "e404.title": "Página no encontrada",
@@ -283,7 +283,6 @@ window.I18N = {
     "hero.index": "Index — web development and graphic design portfolio",
     "hero.spec.role": "Role",
     "hero.spec.base": "Based in",
-    "hero.spec.time": "Local time",
     "hero.spec.status": "Status",
     "status.label": "Site status",
     "status.static": "Static site · no frameworks",
@@ -320,6 +319,7 @@ window.I18N = {
     "skills.soft": "Soft skills",
     "exp.heading": "Experience",
     "exp.studies": "Studies",
+    "exp.awards": "Awards",
     "exp.present": "Present",
     "exp.year": "yr",
     "exp.years": "yrs",
@@ -408,7 +408,7 @@ window.I18N = {
     "print.email": "Email",
     "print.github": "GitHub",
     "print.web": "Web",
-    "print.printed": "printed on",
+    "print.linkedin": "LinkedIn",
 
     // 404 page (404.html)
     "e404.title": "Page not found",

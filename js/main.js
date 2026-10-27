@@ -53,6 +53,7 @@
     },
     formatYM(ym) {
       if (!ym) return App.t("exp.present");
+      if (/^\d{4}$/.test(ym)) return ym; // solo el año (p. ej. año de titulación)
       const d = App.parseYM(ym);
       const locale = App.lang === "es" ? "es-ES" : "en-GB";
       return d.toLocaleDateString(locale, { month: "short", year: "numeric" }).replace(".", "");

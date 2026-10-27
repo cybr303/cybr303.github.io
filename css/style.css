@@ -1299,3 +1299,26 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .pj-cmp__cap strong { font-size: 1.1rem; }
   .pj-build__dims text, .pj-build__guides text { font-size: 14px; }
 }
+
+/* ===== fichas: diagrama de datos en blanco (más legible que sobre la banda azul) ===== */
+.pj-band.pj-band--er {
+  --er-ink: #0a0a0f; --er-blue: #0057ff;
+  margin-top: 0; border-top: 0; background-color: #fff; color: var(--er-ink);
+  background-image: linear-gradient(rgb(0 87 255 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(0 87 255 / 0.07) 1px, transparent 1px);
+}
+.pj-band--er .section-index { border-color: var(--er-ink); color: rgb(10 10 15 / 0.65); }
+.pj-band--er .section-index span:first-child { color: var(--er-blue); }
+.pj-band--er .pj-er__hint, .pj-band--er .pj-er__legend, .pj-band--er .pj-er__note { color: rgb(10 10 15 / 0.7); }
+.pj-band--er .pj-er { scrollbar-color: var(--er-blue) transparent; }
+.pj-band--er .pj-er__t { background: #fff; color: var(--er-ink); box-shadow: inset 0 0 0 1px var(--er-ink); }
+.pj-band--er .pj-er__t:focus-visible { outline-color: var(--er-blue); }
+.pj-band--er .pj-er__name { border-bottom-color: var(--er-ink); background: var(--er-ink); color: #fff; }
+.pj-band--er .pj-er__cols li { color: rgb(10 10 15 / 0.75); }
+.pj-band--er .pj-er__cols .is-pk, .pj-band--er .pj-er__cols .is-fk { color: var(--er-ink); }
+.pj-band--er .pj-er__cols b, .pj-band--er .pj-er__legend b { border-color: var(--er-blue); color: var(--er-blue); }
+.pj-band--er .pj-er__cols .is-pk b, .pj-band--er .pj-er__legend span:first-child b { background: var(--er-blue); color: #fff; border-color: var(--er-blue); }
+.pj-band--er .pj-er__rel path, .pj-band--er .pj-er__legend svg path { stroke: var(--er-blue); }
+.pj-band--er .pj-er__rel text { fill: var(--er-blue); }
+.pj-band--er .pj-er__t.is-hot .pj-er__name { background: var(--er-blue); color: #fff; }
+.pj-band--er .pj-er__rel.is-hot path { stroke: var(--er-ink); }
+.pj-band--er .pj-er__ref { color: var(--er-blue); }

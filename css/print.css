@@ -27,7 +27,7 @@
   color-scheme: light;
 }
 
-html { font-size: 9.6pt; scroll-behavior: auto; }
+html { font-size: 9pt; scroll-behavior: auto; }
 body {
   min-height: 0; overflow: visible; background: #fff; color: var(--text);
   font-size: 1rem; line-height: 1.42;
@@ -96,20 +96,26 @@ a { text-decoration: none; }
   font-family: var(--f-mono); font-weight: 500; font-size: 7pt; letter-spacing: 0.1em; color: var(--accent);
   transform: translateY(-0.4em);
 }
-.section-title--sm { margin-top: 6mm; }
+.section-title--sm { margin-top: 4.5mm; }
 #experience .section-title::before { content: "/02"; }
 #experience .section-title--sm::before { content: "/03"; }
 #skills .section-title::before { content: "/04"; }
+/* Premios: en papel van en la columna lateral (hay sitio y el CV cabe en una hoja) */
+#experience .section-title--awards, [data-awards] { display: none !important; }
+.print-awards[data-print-only] { display: block !important; }
+.print-awards .tl-item__row { display: block; }
+.print-awards .tl-item__leader { display: none; }
+.print-awards .tl-item__tasks li + li::before { content: none; }
 
 /* Perfil */
-.about__body { max-width: none; color: var(--text-2); font-size: 1rem; margin-bottom: 6mm; }
+.about__body { max-width: none; color: var(--text-2); font-size: 1rem; margin-bottom: 4.5mm; }
 
 /* ---------- Experiencia y estudios ---------- */
 .timeline { border-top: 0; }
-.tl-item { padding: 2.2mm 0 2.6mm; border-bottom: 1px solid var(--line); break-inside: avoid; }
+.tl-item { padding: 1.6mm 0 1.9mm; border-bottom: 1px solid var(--line); break-inside: avoid; }
 .tl-item:first-child { padding-top: 0; }
 .tl-item__row { gap: 3mm; }
-.tl-item__title { font-size: 12pt; font-stretch: 75%; line-height: 1; }
+.tl-item__title { font-size: 11pt; font-stretch: 75%; line-height: 1; }
 .tl-item__leader { border-bottom-color: var(--text-2); transform: translateY(-2px); }
 .tl-item__date { font-size: 0.78rem; color: var(--text); }
 .tl-item__date .is-now { padding: 0 1.2mm; }
@@ -140,7 +146,7 @@ a { text-decoration: none; }
 /* ---------- Pie técnico y marcas de corte (cajas de margen de @page: se repiten en cada hoja) ---------- */
 @page {
   @bottom-left {
-    content: var(--print-foot, "303/AIDEN");
+    content: var(--print-foot, "");
     vertical-align: top; padding-top: 3mm;
     font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.5pt; letter-spacing: 0.14em; text-transform: uppercase; color: #0a0a0f;
   }

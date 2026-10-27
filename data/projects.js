@@ -268,22 +268,6 @@ window.PROJECTS = [
         "M87 160L129 236L89 312H0Z"
       ]
     },
-    "before": {
-      "src": "img/projects/axon/17.jpg",
-      "title": { "es": "Prototipo A", "en": "Prototype A" },
-      "caption": { "es": "X inclinada · descartado", "en": "Tilted X · discarded" }
-    },
-    "after": {
-      "src": "img/projects/axon/18.jpg",
-      "title": { "es": "Prototipo B", "en": "Prototype B" },
-      "caption": { "es": "X en forma de sinapsis · elegido y corregido", "en": "Synapse-shaped X · chosen and refined" }
-    },
-    "delta": [
-      { "es": "X más cerca de la A", "en": "X moved closer to the A" },
-      { "es": "X más estrecha", "en": "Narrower X" },
-      { "es": "5 soluciones probadas para el hueco A–X", "en": "5 fixes tested for the A–X gap" },
-      { "es": "A, O y N en Aktiv Grotesk", "en": "A, O and N in Aktiv Grotesk" }
-    ],
     "result": { "es": "Una marca que uso todos los días: la de este portfolio.", "en": "A brand I use every day: this portfolio's." },
     "links": {}
   },
@@ -345,21 +329,6 @@ window.PROJECTS = [
         "text": { "es": "Bolsa kraft, tote, vasos, envoltorios, papelería y caja.", "en": "Kraft bag, tote, cups, wrappers, stationery and food box." }
       }
     },
-    "before": {
-      "src": "img/projects/greenbite/05.jpg",
-      "title": { "es": "Prototipos explorados", "en": "Explored prototypes" },
-      "caption": { "es": "Iconos de producto, monograma gb y arco mediterráneo", "en": "Product icons, gb monogram and Mediterranean arch" }
-    },
-    "after": {
-      "src": "img/projects/greenbite/02.jpg",
-      "title": { "es": "Sello circular", "en": "Circular badge" },
-      "caption": { "es": "Elegido por su doble lectura", "en": "Chosen for its double reading" }
-    },
-    "delta": [
-      { "es": "Fuera los iconos literales", "en": "Literal icons ruled out" },
-      { "es": "Cuatro prototipos finalistas", "en": "Four shortlisted prototypes" },
-      { "es": "Elegido el sello", "en": "The badge chosen" }
-    ],
     "result": { "es": "Un símbolo con doble lectura, listo para el foodtruck.", "en": "A symbol with a double reading, ready for the food truck." },
     "links": {}
   },
@@ -417,21 +386,6 @@ window.PROJECTS = [
         }
       ]
     },
-    "before": {
-      "src": "img/projects/gestalt/09.jpg",
-      "title": { "es": "Boceto a mano", "en": "Hand sketch" },
-      "caption": { "es": "Proceso del logotipo de FitPup", "en": "FitPup logo process" }
-    },
-    "after": {
-      "src": "img/projects/gestalt/02.jpg",
-      "title": { "es": "Logotipo vectorial", "en": "Vector logo" },
-      "caption": { "es": "FitPup · ley de cierre", "en": "FitPup · law of closure" }
-    },
-    "delta": [
-      { "es": "De orejas tiernas a logo deportivo", "en": "From cute ears to a sporty logo" },
-      { "es": "Sin contorno inferior", "en": "No bottom outline" },
-      { "es": "Tipografía Bebas Neue", "en": "Bebas Neue typeface" }
-    ],
     "result": { "es": "El logotipo de FitPup nació aquí.", "en": "The FitPup logo was born here." },
     "links": {}
   },
