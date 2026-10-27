@@ -904,3 +904,40 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .marquee { overflow-x: auto; }
   .marquee--js { overflow: hidden; }
 }
+
+/* ===== terminal ===== */
+/* Botón ">_ escribir" en la barra del monitor y terminal interactiva (js/terminal.js) */
+.screen-bar__end { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+/* Con el botón, el título de la ventana se recorta antes de partir la barra en dos líneas */
+.screen-bar > span:nth-child(2) { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.term-toggle {
+  font: inherit; letter-spacing: 0.08em; color: var(--text); background: transparent; cursor: pointer;
+  border: 1.5px solid var(--text); border-radius: var(--radius); padding: 2px 8px; line-height: 1.4; white-space: nowrap;
+}
+.term-toggle:hover, .term-toggle[aria-pressed="true"] { background: var(--signal); border-color: var(--signal); color: var(--on-signal); }
+.screen-body { cursor: text; }
+
+/* Activa: el registro ocupa toda la pantalla y hace scroll interno, la última línea siempre visible */
+.screen-body.is-term { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); align-items: stretch; min-height: 0; }
+.screen-body.is-term .screen-logo { display: none; }
+.screen-body.is-term .screen-text {
+  align-content: start; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent; padding: 2px 4px 2px 2px;
+}
+.term-log { display: grid; gap: 4px; min-width: 0; }
+.term-block { display: grid; margin-bottom: 6px; }
+.term-line { color: var(--text); white-space: pre-wrap; overflow-wrap: anywhere; }
+.term-line--out { color: var(--accent); }
+.term-line--err { color: var(--muted); }
+.term-line a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.term-line a:hover { color: var(--text); }
+
+.term-prompt { display: flex; align-items: center; gap: 0.6ch; padding: 1px 2px; overflow: visible; }
+.term-prompt[hidden] { display: none; }
+.term-prompt:focus-within { outline: 1.5px solid var(--accent); outline-offset: 0; }
+.term-input {
+  flex: 1; min-width: 0; font: inherit; color: var(--text); caret-color: var(--accent);
+  background: transparent; border: 0; padding: 0; outline: none;
+}
+/* Táctil: 16px evita que iOS haga zoom al enfocar el campo con el teclado virtual */
+@media (pointer: coarse) { .term-input { font-size: 16px; } }

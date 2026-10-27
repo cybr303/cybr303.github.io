@@ -79,7 +79,29 @@
     restartTitles() {
       clearTimeout(this.timer);
       $("[data-typed]").textContent = "";
+      if (this.stopped) return this.showStatic();
       this.loopTitles();
+    },
+
+    // La terminal interactiva (js/terminal.js) toma el control: se para la animación y
+    // queda el estado final fijo (arranque hecho y los títulos completos, sin cursor)
+    stop() {
+      if (this.stopped) return;
+      this.stopped = true;
+      this.token = null;
+      clearTimeout(this.timer);
+      this.booted = true;
+      $("[data-boot]").textContent = `${t("hero.boot")}...`;
+      const screen = $(".monitor__screen");
+      if (screen.classList.contains("is-booting")) {
+        screen.classList.remove("is-booting");
+        screen.classList.add("is-on");
+      }
+      this.showStatic();
+    },
+    showStatic() {
+      $("[data-typed]").textContent = tr(P.titles).join(" · ");
+      $(".hero-titles .caret").hidden = true;
     },
 
     async boot() {
@@ -91,6 +113,7 @@
         await this.type(bootEl, `${t("hero.boot")}...`, 30);
         await this.wait(250);
       }
+      if (this.stopped) return;
       this.booted = true;
       bootEl.textContent = `${t("hero.boot")}...`; // por si se cambió el idioma mientras tecleaba
       screen.classList.remove("is-booting");
@@ -501,7 +524,10 @@
     App.observeReveal();
   }
 
-  if (hero.exists) hero.init();
+  if (hero.exists) {
+    hero.init();
+    document.addEventListener("terminal:start", () => hero.stop());
+  }
   if (projects.exists) projects.init();
   renderAll();
 
