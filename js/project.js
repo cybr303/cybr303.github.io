@@ -352,9 +352,9 @@
                 <text x="${W / 2}" y="${-44}" text-anchor="middle">W = ${ratio} H</text>
                 <text x="${-44}" y="${H / 4}" text-anchor="middle" transform="rotate(-90 ${-44} ${H / 4})">H</text>
                 <text x="${W + 8}" y="${axis - 8}">${esc(t("pj.build.axis"))}</text>
-                <text x="${W + PR - 10}" y="${H + P - 12}" text-anchor="end">${esc(t("pj.build.grid"))}</text>
+                <text x="${W + PR - 10}" y="${H + P - 12}" text-anchor="end">${esc(t("pj.build.grid", { n: Math.round(H / m) }))}</text>
               </g>
-              <g class="pj-build__shapes">${c.paths.map((p, i) => `<path d="${esc(p)}" pathLength="1" style="--i:${i}"/>`).join("")}</g>
+              <g class="pj-build__shapes">${c.paths.map((p, i) => `<path d="${esc(p)}"${c.ink?.includes(i) ? ' class="is-ink"' : ""} pathLength="1" style="--i:${i}"/>`).join("")}</g>
             </svg>
             <figcaption class="mono"><span>${esc(tr(c.title))}</span><span>#0057FF</span></figcaption>
           </figure>

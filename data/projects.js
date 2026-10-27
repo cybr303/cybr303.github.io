@@ -12,7 +12,7 @@
    system    → { title, label?, nodes: [{ title, text, tags? }], core? } (banda azul)
    schema    → { tables: [{ name, col (0–3), cols: ["id:pk", "user_id:fk", "email:uq", …] }],
                  relations: [[tablaPadre, "tablaHija.columnaFK", "1-N"]] } (diagrama de BD tras Sistema)
-   construction → { title, viewBox: [w, h], module, axis, angle, angleAt: [x, y], paths: [d…] } (logo dibujándose)
+   construction → { title, viewBox: [w, h], module, axis, angle, angleAt: [x, y], ink?: [índices de paths en tinta], paths: [d…] } (logo dibujándose)
    before / after → { src, title, caption } y delta: [cambios] (antes / después).
                  Si las dos imágenes tienen proporciones parecidas se muestran con un comparador deslizable.
    result    → frase de la sección Resultado
@@ -255,17 +255,16 @@ window.PROJECTS = [
       }
     },
     "construction": {
-      "title": { "es": "Isotipo", "en": "Brand mark" },
-      "viewBox": [344, 312],
-      "module": 26,
-      "axis": 160,
-      "angle": 62,
-      "angleAt": [87, 160],
+      "title": { "es": "Logotipo", "en": "Logotype" },
+      "viewBox": [574, 127.5],
+      "module": 16,
+      "axis": 65.3,
+      "ink": [0, 2, 3],
       "paths": [
-        "M2 0H97L175 160H87Z",
-        "M258 0H343L260 160L211 81Z",
-        "M174 160H260L342 312H258Z",
-        "M87 160L129 236L89 312H0Z"
+        "M93 85.1L73.9 44.1L55.9 85.1ZM104.9 110L43.1 110L34.5 127.5L0 127.5L63.3 0L86.5 0L147.5 127.5L113.5 127.5ZM104.9 110",
+        "M147.5 0L186.8 0L219.1 65.3L253.5 65.3L234.9 32.7L253.5 0L288.4 2.3L254.5 69L288.4 127.5L253.5 127.5L218.7 65.7L184.4 65.4L201.3 95.8L184.5 127.5L147.5 127.5L183.6 64.8ZM147.5 0",
+        "M398.6 64.7C398.6 43.9 381.7 26.9 360.9 26.9C339.9 26.9 323.1 43.9 323.1 64.7C323.1 85.5 339.9 102.4 360.9 102.4C381.7 102.4 398.6 85.5 398.6 64.7M428 64.7C428 101.8 398 131.8 360.9 131.8C323.7 131.8 293.7 101.8 293.7 64.7C293.7 27.6 323.7 -2.6 360.9 -2.6C398 -2.6 428 27.6 428 64.7",
+        "M573.7 0L573.7 127.5L543.1 127.5L479.6 51.2L479.6 127.5L449 127.5L449 0L479.6 0L543.1 79.4L543.1 0ZM573.7 0"
       ]
     },
     "result": { "es": "Una marca que uso todos los días: la de este portfolio.", "en": "A brand I use every day: this portfolio's." },
