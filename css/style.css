@@ -945,7 +945,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background: transparent; border: 0; padding: 0; outline: none;
 }
 /* Táctil: 16px evita que iOS haga zoom al enfocar el campo con el teclado virtual */
-@media (pointer: coarse) { .term-input { font-size: 16px; } }
+@media (pointer: coarse) { .term-input { font-size: 16px; } .term-toggle { padding: 5px 10px; } }
+/* En móvil el post-it tapa la línea de comandos: se aparta mientras la terminal está activa */
+@media (max-width: 720px) {
+  .machine:has(.screen-body.is-term) .sticky-note { opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; }
+}
 /* ===== cv-imprimible ===== */
 /* Fila de acciones de "Sobre mí": LinkedIn + descargar el PDF + imprimir esta página como CV (css/print.css) */
 .about-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
@@ -995,6 +999,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .e404__glyph span { font-size: 1.6rem; }
   .e404__glyph small { display: none; }
   .e404__actions .btn { flex: 1 1 100%; }
+}
 /* ===== marca (brand.html) ===== */
 /* Manual de marca vivo: todo usa los tokens de arriba; prefijo bm- para no chocar con .brand de la cabecera */
 .bm-intro__grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 6vw, 80px); align-items: end; }
@@ -1169,6 +1174,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .bm-grid__col-dim { width: 25%; }
   .bm-wrong { gap: 10px; }
   .bm-wrong__item p { font-size: 0.68rem; }
+}
 /* ===== fichas: base de datos, comparador y construcción del logo ===== */
 /* Base de datos: plano técnico pegado a la banda de Sistema */
 .pj-band + .pj-band--er { margin-top: 0; border-top: 1px dashed rgb(242 242 248 / 0.45); }

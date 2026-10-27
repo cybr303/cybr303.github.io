@@ -258,7 +258,8 @@
     // Resalta la sección visible en el menú
     const links = [...menu.querySelectorAll('a[href^="#"]')];
     const sections = links.map((a) => document.getElementById(a.hash.slice(1))).filter(Boolean);
-    if (sections.length) {
+    // Si el menú ya marca la página actual (p. ej. Marca), no se resalta además una sección
+    if (sections.length && !menu.querySelector("[aria-current=page]")) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((en) => {
           if (!en.isIntersecting) return;
@@ -336,7 +337,8 @@
   // Efecto "descifrado" de texto: letras aleatorias que se resuelven
   function scramble(el, finalText, { duration = 700 } = {}) {
     const text = finalText ?? el.textContent;
-    if (reduceMotion) { el.textContent = text; return; }
+    // Al imprimir, el texto final directamente (si no, el CV puede salir con letras a medio descifrar)
+    if (reduceMotion || matchMedia("print").matches) { el.textContent = text; return; }
     const chars = "!<>-_\\/[]{}—=+*^?#01";
     const start = performance.now();
     cancelAnimationFrame(el._scr);

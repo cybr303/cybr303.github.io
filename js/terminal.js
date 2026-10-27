@@ -102,6 +102,7 @@
     },
     open(arg) {
       if (!arg) return print(t("term.open.usage"), "term-line--err");
+      arg = arg.toLowerCase();
       if (!ids().includes(arg)) return print(t("term.open.missing", { x: arg }), "term-line--err");
       print(t("term.open.go", { x: arg }));
       location.href = `project.html?id=${encodeURIComponent(arg)}`;

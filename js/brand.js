@@ -247,6 +247,7 @@
 
   /* ---------- Arranque ---------- */
   function renderAll() {
+    document.title = `303/AIDEN - ${App.t("nav.brand")}`;
     renderSwatches();
     renderSpec();
     renderRefs();
