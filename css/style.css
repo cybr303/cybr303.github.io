@@ -941,3 +941,53 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 /* Táctil: 16px evita que iOS haga zoom al enfocar el campo con el teclado virtual */
 @media (pointer: coarse) { .term-input { font-size: 16px; } }
+/* ===== cv-imprimible ===== */
+/* Fila de acciones de "Sobre mí": LinkedIn + descargar el PDF + imprimir esta página como CV (css/print.css) */
+.about-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.about-actions .about__linkedin { margin-top: 0; }
+@media (max-width: 720px) { .about-actions .btn { flex: 1 1 100%; } }
+
+/* ===== pagina-404 ===== */
+/* Reutiliza el hero y el monitor de la home; la pantalla se "cuelga" en Signal Blue (pantallazo azul de la casa) */
+.e404 { min-height: 100vh; border-bottom: 0; }
+.e404 .hero-name { font-size: clamp(4rem, 12vw, 10.5rem); }
+.e404__text { max-width: 46ch; color: var(--text-2); }
+.e404__path { font-family: var(--f-mono); color: var(--accent); overflow-wrap: anywhere; }
+.e404__state { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+.e404__dot { width: 8px; height: 8px; flex: none; background: var(--signal); animation: blink 1s steps(1) infinite; }
+.e404__actions { display: flex; flex-wrap: wrap; gap: 10px; align-self: stretch; }
+.e404__machine { padding-right: 0; }
+
+.monitor__screen--panic {
+  color: var(--on-signal);
+  background:
+    linear-gradient(rgb(242 242 248 / 0.12) 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(90deg, rgb(242 242 248 / 0.12) 1px, transparent 1px) 0 0 / 16px 16px,
+    var(--signal);
+}
+.monitor__screen--panic .screen-bar { color: var(--on-signal); border-bottom-color: var(--on-signal); }
+.monitor__screen--panic .screen-bar__dots i { border-color: var(--on-signal); }
+.monitor__screen--panic .screen-bar__dots i:nth-child(1) { background: var(--on-signal); border-color: var(--on-signal); }
+.monitor__screen--panic .boot { color: var(--on-signal); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.monitor__screen--panic .term, .monitor__screen--panic .term--out, .monitor__screen--panic .caret { color: var(--on-signal); }
+.monitor__screen--panic .term__prompt { color: rgb(242 242 248 / 0.7); }
+.monitor__screen--panic .screen-logo { border-color: var(--on-signal); }
+.monitor__screen--panic .screen-body { grid-template-columns: minmax(0, 2.6fr) minmax(0, 1fr); }
+/* En lugar del logo, el código del error en grande dentro del recuadro discontinuo */
+.e404__glyph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 8%; }
+.e404__glyph span { font-family: var(--f-title); font-weight: 800; font-stretch: 62%; font-size: clamp(2rem, 4.4vw, 4.2rem); line-height: 0.85; }
+.e404__glyph small { font-size: 0.62rem; letter-spacing: 0.2em; opacity: 0.8; }
+/* Las líneas del terminal aparecen una a una, como un volcado de memoria */
+.monitor__screen--panic .term { animation: fade-up 0.4s var(--ease) both; }
+.monitor__screen--panic .term:nth-child(3) { animation-delay: 0.15s; }
+.monitor__screen--panic .term:nth-child(4) { animation-delay: 0.3s; }
+.monitor__screen--panic .term:nth-child(5) { animation-delay: 0.45s; }
+.monitor__screen--panic .term:nth-child(6) { animation-delay: 0.6s; }
+@media (max-width: 720px) {
+  .e404 { min-height: 0; }
+  .e404 .hero-name { font-size: clamp(4rem, 26vw, 7rem); }
+  .monitor__screen--panic .screen-body { grid-template-columns: minmax(0, 1fr) 72px; }
+  .e404__glyph span { font-size: 1.6rem; }
+  .e404__glyph small { display: none; }
+  .e404__actions .btn { flex: 1 1 100%; }
+}
