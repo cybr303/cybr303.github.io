@@ -11,6 +11,7 @@ Publicado con GitHub Pages en **https://cybr303.github.io**.
 | `index.html`      | Home: monitor, carrusel de proyectos y contacto     |
 | `about.html`      | Sobre mí → Mi proceso → Skills → Experiencia y estudios → Cosas que me gustan |
 | `project.html`    | Ficha de cada proyecto (`project.html?id=<id>`)     |
+| `brand.html`      | Marca: manual de identidad AXON vivo (logo, color, tipografía, retícula, usos incorrectos); lee los tokens de `css/style.css` |
 
 La identidad visual se inspira en AXON (Signal Blue `#0057FF`, IBM Plex Mono, tipografía
 ancha, retícula y barras técnicas). Tema claro por defecto y oscuro con el botón de la cabecera. Títulos en Archivo (anchura variable); Syncopate solo en la marca.
