@@ -268,10 +268,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .section-title {
   font-family: var(--f-title); font-weight: 800; font-stretch: 62%; text-transform: uppercase;
   font-size: clamp(3.2rem, 9vw, 7.5rem); letter-spacing: -0.005em; line-height: 0.82; color: var(--text);
-  display: inline-block; min-height: 0.82em; transition: font-stretch 0.5s var(--ease);
+  display: inline-block; min-height: 0.82em;
 }
-/* Microinteracción tipográfica: el título se ensancha al pasar el ratón (eje wdth) */
-.section-head:hover .section-title { font-stretch: 100%; }
 /* Índice de sección: /01 ······ dato */
 .section-index {
   display: flex; justify-content: space-between; gap: 16px; padding-bottom: 10px; margin-bottom: 18px; border-bottom: 1px solid var(--text);
@@ -1325,7 +1323,5 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .pj-band--er .pj-er__ref { color: var(--er-blue); }
 
 /* ===== ajustes: título de Proyectos y nombre ===== */
-/* El título "Proyectos" ya no se ensancha al pasar el ratón */
-#projects .section-head:hover .section-title { font-stretch: 62%; }
 /* El nombre del hero invita a tocarlo (cada letra se ensancha al acercar el cursor) */
 .hero-name { cursor: pointer; }
