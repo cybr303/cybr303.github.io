@@ -79,7 +79,29 @@
     restartTitles() {
       clearTimeout(this.timer);
       $("[data-typed]").textContent = "";
+      if (this.stopped) return this.showStatic();
       this.loopTitles();
+    },
+
+    // La terminal interactiva (js/terminal.js) toma el control: se para la animación y
+    // queda el estado final fijo (arranque hecho y los títulos completos, sin cursor)
+    stop() {
+      if (this.stopped) return;
+      this.stopped = true;
+      this.token = null;
+      clearTimeout(this.timer);
+      this.booted = true;
+      $("[data-boot]").textContent = `${t("hero.boot")}...`;
+      const screen = $(".monitor__screen");
+      if (screen.classList.contains("is-booting")) {
+        screen.classList.remove("is-booting");
+        screen.classList.add("is-on");
+      }
+      this.showStatic();
+    },
+    showStatic() {
+      $("[data-typed]").textContent = tr(P.titles).join(" · ");
+      $(".hero-titles .caret").hidden = true;
     },
 
     async boot() {
@@ -91,6 +113,7 @@
         await this.type(bootEl, `${t("hero.boot")}...`, 30);
         await this.wait(250);
       }
+      if (this.stopped) return;
       this.booted = true;
       bootEl.textContent = `${t("hero.boot")}...`; // por si se cambió el idioma mientras tecleaba
       screen.classList.remove("is-booting");
@@ -100,15 +123,12 @@
 
     clock() {
       const el = $("[data-clock]");
-      const local = $("[data-local-time]");
       const tick = () => {
         const locale = App.lang === "es" ? "es-ES" : "en-GB";
         el.textContent = new Date().toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
-        // Hora de Madrid, la del autor, aunque el visitante esté en otra zona
-        local.textContent = new Date().toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Europe/Madrid" }) + " CET";
       };
       tick();
-      setInterval(tick, 1000);
+      setInterval(tick, 10000);
     },
 
     // Cotas: miden el monitor de verdad y se actualizan al cambiar el tamaño de la ventana
@@ -392,17 +412,24 @@
           <h3 class="tl-item__title">${esc(tr(e.title))}</h3>
           <span class="tl-item__leader" aria-hidden="true"></span>
           <p class="tl-item__date mono">
-            <time datetime="${esc(e.start)}">${esc(App.formatYM(e.start))}</time> | ${e.end ? `<time datetime="${esc(e.end)}">${esc(App.formatYM(e.end))}</time>` : `<span class="is-now">${esc(t("exp.present"))}</span>`}
+            ${e.start ? `<time datetime="${esc(e.start)}">${esc(App.formatYM(e.start))}</time> | ` : ""}${e.end ? `<time datetime="${esc(e.end)}">${esc(App.formatYM(e.end))}</time>` : `<span class="is-now">${esc(t("exp.present"))}</span>`}
           </p>
         </div>
-        <p class="tl-item__place">${esc(tr(e.place))} <span class="tl-item__dur mono">· ${esc(App.duration(e.start, e.end))}</span></p>
+        <p class="tl-item__place">${esc(tr(e.place))}${/-/.test(e.start) ? ` <span class="tl-item__dur mono">· ${esc(App.duration(e.start, e.end))}</span>` : ""}</p>
         ${tasks ? `<ul class="tl-item__tasks">${tasks}</ul>` : ""}
       </li>`;
     },
     render() {
-      const byDate = (a, b) => String(b.start).localeCompare(String(a.start));
-      $("[data-experience]").innerHTML = [...P.experience].sort(byDate).map((e) => this.item(e)).join("");
-      $("[data-studies]").innerHTML = [...P.studies].sort(byDate).map((e) => this.item(e)).join("");
+      // Lo más reciente primero: lo que sigue en curso arriba; si no hay inicio, cuenta el fin
+      const key = (e) => (e.end ? String(e.end) : "9999") + String(e.start || "9999");
+      const list = (items = []) => [...items].sort((a, b) => key(b).localeCompare(key(a))).map((e) => this.item(e)).join("");
+      $("[data-experience]").innerHTML = list(P.experience);
+      $("[data-studies]").innerHTML = list(P.studies);
+      const awards = $("[data-awards]");
+      if (awards) {
+        awards.innerHTML = list(P.awards);
+        awards.hidden = awards.previousElementSibling.hidden = !P.awards?.length;
+      }
     },
   };
 
@@ -484,7 +511,7 @@
   const COUNTS = {
     process: () => (P.process || []).length,
     skills: () => P.skills.length,
-    exp: () => P.experience.length + P.studies.length,
+    exp: () => P.experience.length + P.studies.length + (P.awards?.length || 0),
     hobbies: () => (P.hobbies || []).length,
   };
   function renderCounts() {
@@ -501,7 +528,10 @@
     App.observeReveal();
   }
 
-  if (hero.exists) hero.init();
+  if (hero.exists) {
+    hero.init();
+    document.addEventListener("terminal:start", () => hero.stop());
+  }
   if (projects.exists) projects.init();
   renderAll();
 

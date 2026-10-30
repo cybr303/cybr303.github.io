@@ -53,6 +53,7 @@
     },
     formatYM(ym) {
       if (!ym) return App.t("exp.present");
+      if (/^\d{4}$/.test(ym)) return ym; // solo el año (p. ej. año de titulación)
       const d = App.parseYM(ym);
       const locale = App.lang === "es" ? "es-ES" : "en-GB";
       return d.toLocaleDateString(locale, { month: "short", year: "numeric" }).replace(".", "");
@@ -112,7 +113,8 @@
   const home = page === "home" ? "" : "index.html";
   // En "Sobre mí" los enlaces son anclas de la propia página; desde el resto llevan a about.html
   const aboutBase = page === "about" ? "" : "about.html";
-  const menuLink = (href, key) => `<li><a href="${href}" data-i18n="${key}"></a></li>`;
+  // current: enlace a la página en la que estamos (se marca como actual)
+  const menuLink = (href, key, current) => `<li><a href="${href}" data-i18n="${key}"${current ? ' class="is-current" aria-current="page"' : ""}></a></li>`;
 
   function headerHTML() {
     return `
@@ -146,6 +148,7 @@
           ${menuLink(`${aboutBase}#skills`, "nav.skills")}
           ${menuLink(`${aboutBase}#experience`, "nav.experience")}
           ${menuLink(`${aboutBase}#hobbies`, "nav.hobbies")}
+          ${menuLink("brand.html", "nav.brand", page === "brand")}
           ${menuLink("#contact", "nav.contact")}
         </ul>
       </div>
@@ -256,7 +259,8 @@
     // Resalta la sección visible en el menú
     const links = [...menu.querySelectorAll('a[href^="#"]')];
     const sections = links.map((a) => document.getElementById(a.hash.slice(1))).filter(Boolean);
-    if (sections.length) {
+    // Si el menú ya marca la página actual (p. ej. Marca), no se resalta además una sección
+    if (sections.length && !menu.querySelector("[aria-current=page]")) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((en) => {
           if (!en.isIntersecting) return;
@@ -334,7 +338,8 @@
   // Efecto "descifrado" de texto: letras aleatorias que se resuelven
   function scramble(el, finalText, { duration = 700 } = {}) {
     const text = finalText ?? el.textContent;
-    if (reduceMotion) { el.textContent = text; return; }
+    // Al imprimir, el texto final directamente (si no, el CV puede salir con letras a medio descifrar)
+    if (reduceMotion || matchMedia("print").matches) { el.textContent = text; return; }
     const chars = "!<>-_\\/[]{}—=+*^?#01";
     const start = performance.now();
     cancelAnimationFrame(el._scr);

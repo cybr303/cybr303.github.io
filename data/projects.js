@@ -10,7 +10,11 @@
    headline  → título de la sección Contexto
    statement → frase corta que resume el problema
    system    → { title, label?, nodes: [{ title, text, tags? }], core? } (banda azul)
-   before / after → { src, title, caption } y delta: [cambios] (antes / después)
+   schema    → { tables: [{ name, col (0–3), cols: ["id:pk", "user_id:fk", "email:uq", …] }],
+                 relations: [[tablaPadre, "tablaHija.columnaFK", "1-N"]] } (diagrama de BD tras Sistema)
+   construction → { title, viewBox: [w, h], module, axis, angle, angleAt: [x, y], ink?: [índices de paths en tinta], paths: [d…] } (logo dibujándose)
+   before / after → { src, title, caption } y delta: [cambios] (antes / después).
+                 Si las dos imágenes tienen proporciones parecidas se muestran con un comparador deslizable.
    result    → frase de la sección Resultado
    ========================================================================== */
 window.PROJECT_CATEGORIES = {
@@ -93,6 +97,41 @@ window.PROJECTS = [
           "text": { "es": "Tres planes con checkout de Stripe.", "en": "Three plans with Stripe checkout." },
           "tags": ["plans", "user_subscriptions", "payment"]
         }
+      ]
+    },
+    "schema": {
+      "tables": [
+        { "name": "users", "col": 1, "cols": ["id:pk", "nombre", "email:uq", "email_verified_at", "stripe_customer_id", "password", "foto_perfil", "fecha_registro"] },
+        { "name": "dogs", "col": 2, "cols": ["id:pk", "usuario_id:fk", "nombre", "raza", "nivel_entrenamiento"] },
+        { "name": "training_progress", "col": 2, "cols": ["id:pk", "usuario_id:fk", "perro_id:fk", "entrenamiento_id:fk", "fecha_completado", "notas"] },
+        { "name": "progress_tracking", "col": 2, "cols": ["id:pk", "user_id:fk", "training_id:fk", "progress", "current_step", "completed"] },
+        { "name": "user_nutrition_plans", "col": 2, "cols": ["id:pk", "user_id:fk", "dog_id:fk", "activity_level", "diet_preference", "status"] },
+        { "name": "trainings", "col": 3, "cols": ["id:pk", "titulo", "dificultad", "premium", "pasos", "video_url"] },
+        { "name": "nutrition_guides", "col": 3, "cols": ["id:pk", "title", "category", "difficulty", "premium"] },
+        { "name": "supplements", "col": 3, "cols": ["id:pk", "name", "category", "dosage", "benefits"] },
+        { "name": "nutrition", "col": 1, "cols": ["id:pk", "titulo", "tipo", "ingredientes", "calorias_por_porcion"] },
+        { "name": "enriquecimiento", "col": 1, "cols": ["id:pk", "nombre_actividad", "tipo", "nivel_energia", "pasos", "imagen"] },
+        { "name": "community", "col": 0, "cols": ["id:pk", "usuario_id:fk", "titulo", "contenido", "categoria"] },
+        { "name": "comment", "col": 0, "cols": ["id:pk", "post_id:fk", "usuario_id:fk", "contenido"] },
+        { "name": "plans", "col": 0, "cols": ["id:pk", "tipo", "precio", "stripe_price_id"] },
+        { "name": "user_subscriptions", "col": 0, "cols": ["id:pk", "user_id:fk", "plan_id:fk", "fecha_inicio", "fecha_vencimiento", "estado"] },
+        { "name": "payment", "col": 0, "cols": ["id:pk", "usuario_id:fk", "suscripcion_id:fk", "monto", "metodo_pago"] }
+      ],
+      "relations": [
+        ["users", "dogs.usuario_id", "1-N"],
+        ["users", "community.usuario_id", "1-N"],
+        ["users", "comment.usuario_id", "1-N"],
+        ["community", "comment.post_id", "1-N"],
+        ["users", "training_progress.usuario_id", "1-N"],
+        ["dogs", "training_progress.perro_id", "1-N"],
+        ["trainings", "training_progress.entrenamiento_id", "1-N"],
+        ["users", "progress_tracking.user_id", "1-N"],
+        ["trainings", "progress_tracking.training_id", "1-N"],
+        ["users", "user_nutrition_plans.user_id", "1-N"],
+        ["dogs", "user_nutrition_plans.dog_id", "1-N"],
+        ["users", "user_subscriptions.user_id", "1-N"],
+        ["plans", "user_subscriptions.plan_id", "1-N"],
+        ["users", "payment.usuario_id", "1-N"]
       ]
     },
     "before": {
@@ -215,22 +254,19 @@ window.PROJECTS = [
         "text": { "es": "Tarjeta de visita, identificación, papel de carta, merchandising, firma de email, redes sociales, favicon y web.", "en": "Business card, ID badge, letterhead, merchandise, email signature, social media, favicon and website." }
       }
     },
-    "before": {
-      "src": "img/projects/axon/17.jpg",
-      "title": { "es": "Prototipo A", "en": "Prototype A" },
-      "caption": { "es": "X inclinada · descartado", "en": "Tilted X · discarded" }
+    "construction": {
+      "title": { "es": "Logotipo", "en": "Logotype" },
+      "viewBox": [574, 127.5],
+      "module": 16,
+      "axis": 65.3,
+      "ink": [0, 2, 3],
+      "paths": [
+        "M93 85.1L73.9 44.1L55.9 85.1ZM104.9 110L43.1 110L34.5 127.5L0 127.5L63.3 0L86.5 0L147.5 127.5L113.5 127.5ZM104.9 110",
+        "M147.5 0L186.8 0L219.1 65.3L253.5 65.3L234.9 32.7L253.5 0L288.4 2.3L254.5 69L288.4 127.5L253.5 127.5L218.7 65.7L184.4 65.4L201.3 95.8L184.5 127.5L147.5 127.5L183.6 64.8ZM147.5 0",
+        "M398.6 64.7C398.6 43.9 381.7 26.9 360.9 26.9C339.9 26.9 323.1 43.9 323.1 64.7C323.1 85.5 339.9 102.4 360.9 102.4C381.7 102.4 398.6 85.5 398.6 64.7M428 64.7C428 101.8 398 131.8 360.9 131.8C323.7 131.8 293.7 101.8 293.7 64.7C293.7 27.6 323.7 -2.6 360.9 -2.6C398 -2.6 428 27.6 428 64.7",
+        "M573.7 0L573.7 127.5L543.1 127.5L479.6 51.2L479.6 127.5L449 127.5L449 0L479.6 0L543.1 79.4L543.1 0ZM573.7 0"
+      ]
     },
-    "after": {
-      "src": "img/projects/axon/18.jpg",
-      "title": { "es": "Prototipo B", "en": "Prototype B" },
-      "caption": { "es": "X en forma de sinapsis · elegido y corregido", "en": "Synapse-shaped X · chosen and refined" }
-    },
-    "delta": [
-      { "es": "X más cerca de la A", "en": "X moved closer to the A" },
-      { "es": "X más estrecha", "en": "Narrower X" },
-      { "es": "5 soluciones probadas para el hueco A–X", "en": "5 fixes tested for the A–X gap" },
-      { "es": "A, O y N en Aktiv Grotesk", "en": "A, O and N in Aktiv Grotesk" }
-    ],
     "result": { "es": "Una marca que uso todos los días: la de este portfolio.", "en": "A brand I use every day: this portfolio's." },
     "links": {}
   },
@@ -292,21 +328,6 @@ window.PROJECTS = [
         "text": { "es": "Bolsa kraft, tote, vasos, envoltorios, papelería y caja.", "en": "Kraft bag, tote, cups, wrappers, stationery and food box." }
       }
     },
-    "before": {
-      "src": "img/projects/greenbite/05.jpg",
-      "title": { "es": "Prototipos explorados", "en": "Explored prototypes" },
-      "caption": { "es": "Iconos de producto, monograma gb y arco mediterráneo", "en": "Product icons, gb monogram and Mediterranean arch" }
-    },
-    "after": {
-      "src": "img/projects/greenbite/02.jpg",
-      "title": { "es": "Sello circular", "en": "Circular badge" },
-      "caption": { "es": "Elegido por su doble lectura", "en": "Chosen for its double reading" }
-    },
-    "delta": [
-      { "es": "Fuera los iconos literales", "en": "Literal icons ruled out" },
-      { "es": "Cuatro prototipos finalistas", "en": "Four shortlisted prototypes" },
-      { "es": "Elegido el sello", "en": "The badge chosen" }
-    ],
     "result": { "es": "Un símbolo con doble lectura, listo para el foodtruck.", "en": "A symbol with a double reading, ready for the food truck." },
     "links": {}
   },
@@ -364,21 +385,6 @@ window.PROJECTS = [
         }
       ]
     },
-    "before": {
-      "src": "img/projects/gestalt/09.jpg",
-      "title": { "es": "Boceto a mano", "en": "Hand sketch" },
-      "caption": { "es": "Proceso del logotipo de FitPup", "en": "FitPup logo process" }
-    },
-    "after": {
-      "src": "img/projects/gestalt/02.jpg",
-      "title": { "es": "Logotipo vectorial", "en": "Vector logo" },
-      "caption": { "es": "FitPup · ley de cierre", "en": "FitPup · law of closure" }
-    },
-    "delta": [
-      { "es": "De orejas tiernas a logo deportivo", "en": "From cute ears to a sporty logo" },
-      { "es": "Sin contorno inferior", "en": "No bottom outline" },
-      { "es": "Tipografía Bebas Neue", "en": "Bebas Neue typeface" }
-    ],
     "result": { "es": "El logotipo de FitPup nació aquí.", "en": "The FitPup logo was born here." },
     "links": {}
   },

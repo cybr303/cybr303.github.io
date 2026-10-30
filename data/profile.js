@@ -12,7 +12,7 @@ window.PROFILE = {
     es: ["Desarrollador web", "Diseñador gráfico"],
     en: ["Web developer", "Graphic designer"],
   },
-  location: { es: "España", en: "Spain" },
+  location: { es: "Madrid, España", en: "Madrid, Spain" },
   available: true, // muestra el indicador "disponible para trabajar"
 
   careerStart: "2022-09",
@@ -20,7 +20,7 @@ window.PROFILE = {
   copyrightStart: 2025,
 
   email: "cybr303@gmail.com",
-  linkedin: "https://www.linkedin.com/in/tu-usuario/",
+  linkedin: "https://www.linkedin.com/in/aiden-jimenez-393320329/",
   github: "https://github.com/cybr303",
   // Repositorio de esta web: la barra de estado del footer muestra su último commit
   repo: "cybr303/cybr303.github.io",
@@ -44,8 +44,8 @@ window.PROFILE = {
     ],
     lead: { es: "Desarrollador web & diseñador gráfico", en: "Web developer & graphic designer" },
     body: {
-      es: "Me muevo entre el código y el diseño: construyo aplicaciones web completas con Laravel y JavaScript, y cuido que cada interfaz sea clara, accesible y con personalidad. Me gusta entender el problema antes de abrir el editor, prototipar rápido en Figma y pulsar el detalle hasta que todo encaja.",
-      en: "I work between code and design: I build full web applications with Laravel and JavaScript, and I make sure every interface is clear, accessible and has personality. I like to understand the problem before opening the editor, prototype quickly in Figma and polish the details until everything clicks.",
+      es: "Tengo un perfil híbrido: soy Técnico Superior en Desarrollo de Aplicaciones Web y estudio Diseño y Edición de Publicaciones Impresas y Multimedia. Combino el desarrollo front-end con una mirada de diseño UI/UX, así que puedo llevar un proyecto desde la arquitectura de la aplicación hasta su identidad visual. Participé en el HP Codewars Madrid 2023 y ya he aplicado lo que sé en proyectos reales.",
+      en: "I have a hybrid profile: I hold a Higher Diploma in Web Application Development and I'm studying Print & Multimedia Publishing Design. I combine front-end development with a UI/UX design eye, so I can take a project from the application's architecture to its visual identity. I took part in HP Codewars Madrid 2023 and have already put what I know to work on real projects.",
     },
   },
 
@@ -57,6 +57,7 @@ window.PROFILE = {
     { name: "JavaScript", icon: "javascript", abbr: "JS" },
     { name: "PHP", icon: "php", abbr: "PHP" },
     { name: "Laravel", icon: "laravel", abbr: "Lv" },
+    { name: "Spring", abbr: "Sp" },
     { name: "Blade", icon: "blade", abbr: "{{ }}" },
     { name: "MySQL", icon: "mysql", abbr: "SQL" },
     { name: "Bootstrap", icon: "bootstrap", abbr: "Bs" },
@@ -138,55 +139,99 @@ window.PROFILE = {
     },
   ],
 
-  // Experiencia laboral — la más reciente primero
+  // Experiencia laboral (se ordena sola, la más reciente primero).
+  // Si no se sabe el inicio, deja `start: null`: solo se muestra el fin (o "Actualidad").
   experience: [
     {
-      title: { es: "Desarrollador web (prácticas)", en: "Web developer (internship)" },
-      place: "Nombre de la empresa · Ciudad",
-      start: "2025-03",
-      end: "2025-06",
+      title: { es: "Asistente técnico", en: "Technical assistant" },
+      place: "Working Capital Management Group S.A. · Madrid",
+      start: "2023-04",
+      end: "2023-07",
       tasks: [
-        { es: "Maquetación responsive", en: "Responsive layouts" },
-        { es: "Back-end en Laravel", en: "Laravel back-end" },
-        { es: "Mantenimiento de webs", en: "Website maintenance" },
+        { es: "Soporte técnico a teleoperadores", en: "Tech support for call-centre agents" },
+        { es: "Scripts en PHP para automatizar tareas", en: "PHP scripts to automate tasks" },
+        { es: "Consultas y gestión en MySQL", en: "MySQL queries and management" },
       ],
     },
     {
-      title: { es: "Diseñador gráfico freelance", en: "Freelance graphic designer" },
-      place: "Autónomo · Remoto",
-      start: "2024-01",
+      title: { es: "Personal de equipo / Entrenador", en: "Crew member / Trainer" },
+      place: "McDonald's · Madrid",
+      start: "2024-03",
       end: null,
       tasks: [
-        { es: "Identidad visual", en: "Visual identity" },
-        { es: "Cartelería y RRSS", en: "Posters & social media" },
-        { es: "Prototipos en Figma", en: "Figma prototypes" },
+        { es: "Atención al cliente", en: "Customer service" },
+        { es: "Trabajo en equipo bajo presión", en: "Teamwork under pressure" },
+        { es: "Gestión del flujo de pedidos", en: "Order flow management" },
+      ],
+    },
+    {
+      title: { es: "Auxiliar de producción", en: "Production assistant" },
+      place: "Etcétera Graphics · Madrid",
+      start: "2025-04",
+      end: "2025-05",
+      tasks: [
+        { es: "Acabados: laminado, plastificado, guillotinado, hendido", en: "Finishing: laminating, guillotine cutting, creasing" },
+        { es: "Encuadernación, tarjetas, carteles y lanyards", en: "Bookbinding, cards, posters and lanyards" },
+        { es: "Calidad y plazos en taller de impresión digital", en: "Quality and deadlines in a digital print shop" },
+      ],
+    },
+    {
+      title: { es: "Asistente técnico en desarrollo web", en: "Web development technical assistant" },
+      place: "Universidad Rey Juan Carlos · Madrid",
+      start: "2024-04",
+      end: "2024-07",
+      tasks: [
+        { es: "Web del proyecto PROMISE (LAIMBIO, URJC)", en: "Website for the PROMISE project (LAIMBIO, URJC)" },
+        { es: "Interfaces en HTML, CSS y JavaScript", en: "HTML, CSS and JavaScript interfaces" },
+        { es: "Trabajo directo con investigadores", en: "Working directly with researchers" },
       ],
     },
   ],
 
-  // Formación
+  // Formación (las fechas pueden ser solo el año, "AAAA")
   studies: [
     {
       title: {
-        es: "CFGS Desarrollo de Aplicaciones Web (DAW)",
+        es: "Técnico Superior en Diseño y Edición de Publicaciones Impresas y Multimedia",
+        en: "Higher Diploma in Print & Multimedia Publishing Design",
+      },
+      place: "IES Virgen de la Paloma · Madrid",
+      start: "2025",
+      end: "2027",
+    },
+    {
+      title: {
+        es: "Técnico Superior en Desarrollo de Aplicaciones Web",
         en: "Higher Diploma in Web Application Development",
       },
-      place: "Nombre del centro · Ciudad",
-      start: "2023-09",
-      end: "2025-06",
+      place: "IES Rosa Chacel · Madrid",
+      start: "2023",
+      end: "2025",
       tasks: [
-        { es: "Full-stack", en: "Full-stack" },
         { es: "Proyecto final: FitPup", en: "Final project: FitPup" },
       ],
     },
     {
-      title: { es: "Curso de diseño gráfico", en: "Graphic design course" },
-      place: "Nombre del centro · Online",
-      start: "2022-10",
-      end: "2023-06",
+      title: {
+        es: "Técnico en Sistemas Microinformáticos y Redes",
+        en: "Vocational Diploma in Computer Systems and Networks",
+      },
+      place: "IES Rosa Chacel · Madrid",
+      start: "2021",
+      end: "2023",
+    },
+  ],
+
+  // Otros eventos (competiciones, premios…)
+  awards: [
+    {
+      title: { es: "HP Codewars Madrid 2023", en: "HP Codewars Madrid 2023" },
+      place: "Hewlett Packard Enterprise",
+      start: null,
+      end: "2023",
       tasks: [
-        { es: "Adobe Suite", en: "Adobe Suite" },
-        { es: "Tipografía y color", en: "Typography & colour" },
+        { es: "Competición de programación en equipo", en: "Team programming competition" },
+        { es: "Retos algorítmicos a contrarreloj", en: "Timed algorithmic challenges" },
       ],
     },
   ],

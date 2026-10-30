@@ -1,0 +1,163 @@
+/* ==========================================================================
+   CV imprimible — solo se carga al imprimir about.html (media="print").
+   Convierte "Sobre mí" en un CV A4 con el mismo sistema: Archivo estrecha,
+   IBM Plex Mono, líneas de 1 px y Signal Blue como único color sobre tinta negra.
+   Sin fondos oscuros aunque esté activo el tema oscuro.
+   ========================================================================== */
+
+@page { size: A4; margin: 12mm 14mm 16mm; }
+
+/* Tokens del papel: los del tema claro, con el gris sustituido por tinta (el azul es el único color) */
+:root, :root[data-theme="light"] {
+  --bg: #fff;
+  --bg-2: #fff;
+  --surface: #fff;
+  --surface-solid: #fff;
+  --band: #fff;
+  --text: #0a0a0f;
+  --text-2: #2a2d3e;
+  --muted: #2a2d3e;
+  --line: rgb(10 10 15 / 0.18);
+  --line-strong: #0057ff;
+  --accent: #0057ff;
+  --accent-rgb: 0 87 255;
+  --signal: #0057ff;
+  --on-signal: #f2f2f8;
+  --open-text: #0a0a0f;
+  color-scheme: light;
+}
+
+html { font-size: 9pt; scroll-behavior: auto; }
+body {
+  min-height: 0; overflow: visible; background: #fff; color: var(--text);
+  font-size: 1rem; line-height: 1.42;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+a { text-decoration: none; }
+
+/* Sin movimiento: todo aparece ya en su sitio */
+*, *::before, *::after { animation: none !important; transition: none !important; }
+[data-reveal] { opacity: 1 !important; transform: none !important; }
+
+/* ---------- Lo que no va en el papel ---------- */
+.bg-fx, .skip-link, .site-header, .site-footer, .toast,
+#process, #hobbies,
+.section-index, .about__hello, .about__lead, .about-photo, .stats, .about-actions,
+.btn, button, .skill__icon,
+.tl-item__dur { display: none !important; }
+
+/* Bloques que en pantalla están ocultos con [hidden] */
+.print-cv[data-print-only] { display: block !important; }
+.section-title[data-print-only] { display: flex !important; }
+
+/* ---------- Cabecera: nombre + rol + ficha de contacto ---------- */
+.print-cv { margin-bottom: 5mm; break-inside: avoid; }
+.print-cv__rail {
+  display: flex; justify-content: space-between; gap: 16px; padding-bottom: 2mm; margin-bottom: 4mm;
+  border-bottom: 1px solid var(--text); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text);
+}
+.print-cv__rail > span:first-child { color: var(--accent); font-weight: 600; }
+.print-cv__grid { display: grid; grid-template-columns: minmax(0, 1fr) 78mm; gap: 8mm; align-items: end; }
+.print-cv__name {
+  font-family: var(--f-title); font-weight: 800; font-stretch: 62%; text-transform: uppercase;
+  font-size: 50pt; line-height: 0.86; letter-spacing: -0.01em; color: var(--text);
+  display: flex; flex-direction: column; gap: 0.06em;
+}
+.print-cv__name span + span { color: var(--accent); padding-top: 0.04em; }
+.print-cv__role { margin-top: 3.5mm; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+/* Reutiliza .spec (ficha técnica de la home) */
+.print-cv__spec { width: 100%; font-size: 0.8rem; }
+.print-cv__spec .spec__row { grid-template-columns: 15mm 1fr; gap: 3mm; padding: 1.4mm 0; }
+.print-cv__spec dt { font-size: 0.66rem; color: var(--text-2); }
+.print-cv__spec dd { color: var(--text); overflow-wrap: anywhere; }
+
+/* ---------- Retícula del CV: columna principal + columna lateral ---------- */
+.page {
+  display: grid; grid-template-columns: minmax(0, 1fr) 58mm; column-gap: 9mm; align-items: start;
+}
+.container { width: auto; margin: 0; }
+.section, .page .section:first-child, .section.section--band { padding: 0; margin: 0; border: 0; background: none; }
+#about { grid-column: 1; grid-row: 1; }
+#experience { grid-column: 1; grid-row: 2; }
+#skills { grid-column: 2; grid-row: 1 / span 2; border-left: 1px solid var(--line); padding-left: 5mm; }
+.section-head { margin: 0; }
+.about { display: block; }
+
+/* Títulos de bloque: Archivo estrecha con índice /01, /02… sobre una línea de tinta.
+   El índice sigue el orden de lectura del papel (columna principal y después la lateral), no el del DOM */
+.section-title, .section-title--sm {
+  display: flex; align-items: baseline; gap: 2.5mm; width: 100%; min-height: 0;
+  margin: 0 0 3mm; padding-bottom: 1.5mm; border-bottom: 1px solid var(--text);
+  font-size: 17pt; line-height: 0.95; font-stretch: 62%; color: var(--text);
+  break-after: avoid;
+}
+.section-title::before {
+  content: "/01";
+  font-family: var(--f-mono); font-weight: 500; font-size: 7pt; letter-spacing: 0.1em; color: var(--accent);
+  transform: translateY(-0.4em);
+}
+.section-title--sm { margin-top: 3.5mm; }
+#experience .section-title::before { content: "/02"; }
+#experience .section-title--sm::before { content: "/03"; }
+#skills .section-title::before { content: "/04"; }
+/* Otros eventos: en papel van en la columna lateral (hay sitio y el CV cabe en una hoja) */
+#experience .section-title--awards, [data-awards] { display: none !important; }
+.print-awards[data-print-only] { display: block !important; }
+.print-awards .tl-item__row { display: block; }
+.print-awards .tl-item__leader { display: none; }
+.print-awards .tl-item__tasks li + li::before { content: none; }
+
+/* Perfil */
+.about__body { max-width: none; color: var(--text-2); font-size: 1rem; margin-bottom: 3.5mm; }
+
+/* ---------- Experiencia y estudios ---------- */
+.timeline { border-top: 0; }
+.tl-item { padding: 1.3mm 0 1.6mm; border-bottom: 1px solid var(--line); break-inside: avoid; }
+.tl-item:first-child { padding-top: 0; }
+.tl-item__row { gap: 3mm; }
+.tl-item__title { font-size: 11pt; font-stretch: 75%; line-height: 1; }
+.tl-item__leader { border-bottom-color: var(--text-2); transform: translateY(-2px); }
+.tl-item__date { font-size: 0.78rem; color: var(--text); }
+.tl-item__date .is-now { padding: 0 1.2mm; }
+.tl-item__place { margin-top: 1mm; font-size: 0.92rem; color: var(--text-2); }
+.tl-item__tasks { margin-top: 1.2mm; font-size: 0.92rem; color: var(--text); }
+.tl-item__tasks li + li::before { margin-inline: 2mm; }
+
+/* ---------- Columna lateral: skills, soft skills e idiomas ---------- */
+.skills { display: block; }
+.skills > div { background: none; border: 0; padding: 0; margin-bottom: 5mm; break-inside: avoid; }
+.skills .sub-title, .sub-title {
+  margin: 0 0 1.6mm; padding: 0 0 1.2mm; border-left: 0; border-bottom: 1px solid var(--line);
+  font-size: 0.68rem; letter-spacing: 0.14em; color: var(--accent);
+}
+.skills .sub-title--spaced { margin-top: 5mm; }
+/* Retícula de iconos → lista de nombres separados por "/" */
+.skill-grid { display: block; border: 0; background: none; line-height: 1.7; }
+.skill { display: inline; aspect-ratio: auto; border: 0; white-space: nowrap; }
+.skill::before { display: none; }
+.skill:not(:last-child)::after { content: "/"; margin-inline: 0.5em 0.3em; color: var(--accent); font-family: var(--f-mono); font-size: 0.8rem; }
+.skill__name { display: inline; padding: 0; font-size: 0.82rem; letter-spacing: 0.02em; color: var(--text); }
+.soft-list li { grid-template-columns: 6mm 1fr; padding: 1.1mm 0; font-size: 0.92rem; border-bottom: 1px solid var(--line); }
+.soft-list li::before { font-size: 0.7rem; padding-top: 0.15em; }
+.lang-list li { padding: 1.3mm 0; }
+.lang-list strong { font-size: 10.5pt; }
+.lang-list .mono { font-size: 0.72rem; }
+
+/* ---------- Pie técnico y marcas de corte (cajas de margen de @page: se repiten en cada hoja) ---------- */
+@page {
+  @bottom-left {
+    content: var(--print-foot, "");
+    vertical-align: top; padding-top: 3mm;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.5pt; letter-spacing: 0.14em; text-transform: uppercase; color: #0a0a0f;
+  }
+  @bottom-right {
+    content: "A4 · " counter(page) "/" counter(pages);
+    vertical-align: top; padding-top: 3mm;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.5pt; letter-spacing: 0.14em; color: #0057ff;
+  }
+  /* Marcas de corte en Signal Blue en las cuatro esquinas de la caja de contenido */
+  @top-left-corner { content: ""; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M16 4H4v12' fill='none' stroke='%230057ff' stroke-width='1'/%3E%3C/svg%3E") right 2mm bottom 2mm / 4mm 4mm no-repeat; }
+  @top-right-corner { content: ""; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M0 4h12v12' fill='none' stroke='%230057ff' stroke-width='1'/%3E%3C/svg%3E") left 2mm bottom 2mm / 4mm 4mm no-repeat; }
+  @bottom-left-corner { content: ""; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M16 12H4V0' fill='none' stroke='%230057ff' stroke-width='1'/%3E%3C/svg%3E") right 2mm top 2mm / 4mm 4mm no-repeat; }
+  @bottom-right-corner { content: ""; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M0 12h12V0' fill='none' stroke='%230057ff' stroke-width='1'/%3E%3C/svg%3E") left 2mm top 2mm / 4mm 4mm no-repeat; }
+}

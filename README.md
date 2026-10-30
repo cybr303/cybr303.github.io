@@ -11,6 +11,7 @@ Publicado con GitHub Pages en **https://cybr303.github.io**.
 | `index.html`      | Home: monitor, carrusel de proyectos y contacto     |
 | `about.html`      | Sobre mí → Mi proceso → Skills → Experiencia y estudios → Cosas que me gustan |
 | `project.html`    | Ficha de cada proyecto (`project.html?id=<id>`)     |
+| `brand.html`      | Marca: manual de identidad AXON vivo (logo, color, tipografía, retícula, usos incorrectos); lee los tokens de `css/style.css` |
 
 La identidad visual se inspira en AXON (Signal Blue `#0057FF`, IBM Plex Mono, tipografía
 ancha, retícula y barras técnicas). Tema claro por defecto y oscuro con el botón de la cabecera. Títulos en Archivo (anchura variable); Syncopate solo en la marca.
@@ -21,9 +22,9 @@ La cabecera, el menú y el footer (contacto) son comunes y se generan desde `js/
 
 Directamente en GitHub o en el ordenador y hacer `git push`. (el progreso se ve en la pestaña **Actions**).
 
-> **Importante — caché del navegador:** los `.html` cargan el CSS y el JS con `?v=13`.
+> **Importante — caché del navegador:** los `.html` cargan el CSS y el JS con `?v=19`.
 > Cuando cambies un archivo `.css` o `.js` (incluidos los de `data/`), sube ese número
-> en los 3 `.html` (busca y reemplaza `?v=13` por `?v=14`). Si no, algunos visitantes
+> en los 5 `.html` (busca y reemplaza `?v=19` por `?v=20`). Si no, algunos visitantes
 > pueden ver una mezcla de archivos nuevos y viejos durante un rato.
 
 | Quiero cambiar…                                       | Dónde                                                        |
@@ -50,7 +51,7 @@ Directamente en GitHub o en el ordenador y hacer `git push`. (el progreso se ve 
 - **Lo más fácil:** subir el icono en formato SVG con el mismo nombre, `img/battery.svg`.
 - **Si es PNG u otro nombre:** subirlo a `img/` y cambia esta línea en los 3 archivos `.html`:
   ```html
-  <link rel="icon" href="img/battery.svg?v=13" type="image/svg+xml">
+  <link rel="icon" href="img/battery.svg?v=19" type="image/svg+xml">
   ```
   por, por ejemplo:
   ```html

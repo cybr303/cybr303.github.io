@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GitHub Pages sirve esta página en cualquier ruta que no exista (/a/b/c…):
+         <base> hace que los enlaces relativos que genera js/main.js salgan siempre desde la raíz -->
+    <base href="/">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Página no encontrada · Page not found">
+    <meta name="theme-color" content="#f2f2f8">
+    <!-- Aplica el tema antes de pintar para evitar un parpadeo (claro por defecto) -->
+    <script>(function(){var t;try{t=localStorage.getItem("portfolio-theme")}catch(e){}if(t!=="dark")document.documentElement.dataset.theme="light"})()</script>
+    <link rel="icon" href="/img/battery.svg?v=19" type="image/svg+xml">
+    <link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=19">
+    <title>404 · 303/AIDEN</title>
+</head>
+
+<body data-page="404">
+    <div class="bg-fx" aria-hidden="true"><div class="bg-fx__cols"></div></div>
+
+    <div data-include="header"></div>
+
+    <main id="main">
+
+        <!-- ============ ERROR 404: "kernel panic" en el monitor de la home ============ -->
+        <section class="hero e404" aria-labelledby="e404-title">
+            <div class="container">
+                <div class="hero__rail mono" aria-hidden="true">
+                    <span class="hero__index">/404</span>
+                    <span data-i18n="e404.kicker"></span>
+                </div>
+
+                <div class="hero__grid">
+                    <div class="hero__main">
+                        <h1 class="hero-name" id="e404-title">
+                            <span class="sr-only">404 — <span data-i18n="e404.title"></span></span>
+                            <span class="hero-name__line" aria-hidden="true">Error</span>
+                            <span class="hero-name__line glitch" data-text="404" aria-hidden="true">404</span>
+                        </h1>
+                        <p class="e404__text" data-i18n="e404.text"></p>
+
+                        <dl class="spec mono">
+                            <div class="spec__row"><dt data-i18n="e404.path"></dt><dd><code class="e404__path" data-e404-path></code></dd></div>
+                            <div class="spec__row"><dt data-i18n="e404.code"></dt><dd>404 · NOT_FOUND</dd></div>
+                            <div class="spec__row"><dt data-i18n="e404.state"></dt><dd class="e404__state"><span class="e404__dot" aria-hidden="true"></span><span data-i18n="e404.stateValue"></span></dd></div>
+                        </dl>
+
+                        <div class="e404__actions">
+                            <a class="btn btn--primary btn--lg" href="/"><span data-i18n="e404.home"></span> <span class="btn__arrow" aria-hidden="true">↗</span></a>
+                            <a class="btn btn--ghost btn--lg" href="/#projects"><span data-i18n="e404.projects"></span></a>
+                        </div>
+                    </div>
+
+                    <figure class="machine e404__machine" aria-hidden="true">
+                        <div class="monitor">
+                            <div class="monitor__bezel">
+                                <div class="monitor__screen monitor__screen--panic">
+                                    <div class="screen-bar mono">
+                                        <span class="screen-bar__dots"><i></i><i></i><i></i></span>
+                                        <span>~/portfolio — zsh</span>
+                                        <span>ERR 404</span>
+                                    </div>
+                                    <div class="screen-body mono">
+                                        <div class="screen-text">
+                                            <p class="boot">&gt; <span data-i18n="e404.panic"></span></p>
+                                            <p class="term"><span class="term__prompt">$</span> cd <span data-e404-path></span></p>
+                                            <p class="term term--out">zsh: <span data-i18n="e404.fault"></span></p>
+                                            <p class="term"><span class="term__prompt">$</span> echo $?</p>
+                                            <p class="term term--out">404</p>
+                                            <p class="term"><span class="term__prompt">_</span> <span data-i18n="e404.hint"></span><span class="caret">▍</span></p>
+                                        </div>
+                                        <div class="screen-logo e404__glyph"><span>404</span><small>SIGSEGV</small></div>
+                                    </div>
+                                </div>
+                                <div class="monitor__chin">
+                                    <span class="monitor__brand mono">303·PC</span>
+                                    <span class="monitor__vents"></span>
+                                    <span class="monitor__knobs"><i></i><i></i></span>
+                                    <span class="monitor__power"><span class="monitor__led"></span></span>
+                                </div>
+                            </div>
+                            <div class="monitor__neck"></div>
+                            <div class="computer-case">
+                                <span class="computer-case__label mono">303/AIDEN</span>
+                                <span class="computer-case__floppy"><i></i></span>
+                                <span class="computer-case__leds"><i></i><i></i></span>
+                                <span class="computer-case__vents"></span>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script src="/data/profile.js?v=19"></script>
+    <script src="/js/i18n.js?v=19"></script>
+    <script src="/js/main.js?v=19"></script>
+    <script src="/js/not-found.js?v=19"></script>
+</body>
+</html>
