@@ -161,7 +161,7 @@
     return `
     <footer class="site-footer" id="contact">
       <div class="container">
-        <p class="section-index mono" aria-hidden="true"><span>/99</span><span data-i18n="nav.contact"></span></p>
+        <p class="section-index mono" aria-hidden="true"><span data-i18n="nav.contact"></span></p>
         <h2 class="footer-title">
           <span class="footer-title__a" data-i18n="footer.like"></span>
           <span class="footer-title__b" data-i18n="footer.talk"></span>

@@ -7,11 +7,11 @@
     <meta name="theme-color" content="#f2f2f8">
     <!-- Aplica el tema antes de pintar para evitar un parpadeo (claro por defecto) -->
     <script>(function(){var t;try{t=localStorage.getItem("portfolio-theme")}catch(e){}if(t!=="dark")document.documentElement.dataset.theme="light"})()</script>
-    <link rel="icon" href="img/battery.svg?v=19" type="image/svg+xml">
+    <link rel="icon" href="img/battery.svg?v=23" type="image/svg+xml">
     <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=19">
+    <link rel="stylesheet" href="css/style.css?v=23">
     <!-- Hoja de impresión: al imprimir o "Guardar como PDF" esta página sale como un CV en A4 -->
-    <link rel="stylesheet" href="css/print.css?v=19" media="print">
+    <link rel="stylesheet" href="css/print.css?v=23" media="print">
     <title>303/AIDEN - Portfolio</title>
 </head>
 
@@ -37,7 +37,7 @@
         <!-- ============ SOBRE MÍ ============ -->
         <section class="section about-section" id="about" aria-labelledby="about-title">
             <div class="container">
-                <p class="section-index mono"><span>/01 <span data-i18n="about.heading"></span></span><span data-about-where></span></p>
+                <p class="section-index mono"><span><span data-i18n="about.heading"></span></span><span data-about-where></span></p>
             </div>
             <div class="container about">
                 <div class="about__text" data-reveal>
@@ -83,10 +83,10 @@
         </section>
 
         <!-- ============ PROCESO DE TRABAJO (estilo Riley) ============ -->
-        <section class="section section--band" id="process" aria-labelledby="process-title">
+        <section class="section section--band section--dark" id="process" aria-labelledby="process-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <p class="section-index mono" aria-hidden="true"><span>/02</span><span data-count="process"></span></p>
+                    <p class="section-index mono" aria-hidden="true"><span data-count="process"></span></p>
                     <h2 class="section-title" id="process-title" data-reveal data-scramble><span data-i18n="process.heading"></span></h2>
                     <p class="section-intro" data-i18n="process.intro"></p>
                 </header>
@@ -98,7 +98,7 @@
         <section class="section" id="skills" aria-labelledby="skills-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <p class="section-index mono" aria-hidden="true"><span>/03</span><span data-count="skills"></span></p>
+                    <p class="section-index mono" aria-hidden="true"><span data-count="skills"></span></p>
                     <h2 class="section-title" id="skills-title" data-reveal data-scramble><span data-i18n="skills.heading"></span></h2>
                 </header>
 
@@ -126,7 +126,7 @@
         <section class="section section--band" id="experience" aria-labelledby="exp-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <p class="section-index mono" aria-hidden="true"><span>/04</span><span data-count="exp"></span></p>
+                    <p class="section-index mono" aria-hidden="true"><span data-count="exp"></span></p>
                     <h2 class="section-title" id="exp-title" data-reveal data-scramble><span data-i18n="exp.heading"></span></h2>
                 </header>
                 <ol class="timeline" data-experience></ol>
@@ -143,7 +143,7 @@
         <section class="section" id="hobbies" aria-labelledby="hobbies-title">
             <div class="container">
                 <header class="section-head" data-reveal>
-                    <p class="section-index mono" aria-hidden="true"><span>/05</span><span data-count="hobbies"></span></p>
+                    <p class="section-index mono" aria-hidden="true"><span data-count="hobbies"></span></p>
                     <h2 class="section-title" id="hobbies-title" data-reveal data-scramble><span data-i18n="hobbies.heading"></span></h2>
                     <p class="section-intro" data-i18n="hobbies.intro"></p>
                 </header>
@@ -156,11 +156,11 @@
 
     <div data-include="footer"></div>
 
-    <script src="data/profile.js?v=19"></script>
-    <script src="data/projects.js?v=19"></script>
-    <script src="js/i18n.js?v=19"></script>
-    <script src="js/main.js?v=19"></script>
-    <script src="js/sections.js?v=19"></script>
-    <script src="js/print.js?v=19"></script>
+    <script src="data/profile.js?v=23"></script>
+    <script src="data/projects.js?v=23"></script>
+    <script src="js/i18n.js?v=23"></script>
+    <script src="js/main.js?v=23"></script>
+    <script src="js/sections.js?v=23"></script>
+    <script src="js/print.js?v=23"></script>
 </body>
 </html>

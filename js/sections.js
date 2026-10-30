@@ -32,6 +32,21 @@
       $("[data-sticky-text]").textContent = tr(P.stickyNote);
       $("[data-status]").hidden = !P.available;
       if (this.booted) $("[data-boot]").textContent = `${t("hero.boot")}...`;
+      this.metrics();
+    },
+
+    // Banda de cifras bajo el hero: los mismos datos reales que en "Sobre mí"
+    metrics() {
+      const dl = $("[data-metrics]");
+      if (!dl) return;
+      const items = [
+        { n: window.PROJECTS.length, label: t("about.stat.projects"), text: t("metrics.projects"), pad: true },
+        { n: P.skills.length, label: t("about.stat.tools"), text: t("metrics.tools") },
+        { n: App.yearsSince(P.careerStart), label: t("about.stat.years"), text: t("metrics.years"), plus: true },
+      ];
+      dl.innerHTML = items.map((m) => `
+        <div class="metric"><dt>${esc(m.label)}</dt><dd class="metric__n">${m.pad && m.n < 10 ? "0" : ""}<span data-count-to="${m.n}">${m.n}</span>${m.plus ? "<i>+</i>" : ""}</dd><dd class="metric__text">${esc(m.text)}</dd></div>`).join("");
+      about.countUp(dl);
     },
 
     // Teclea texto carácter a carácter
@@ -131,21 +146,6 @@
       setInterval(tick, 10000);
     },
 
-    // Cotas: miden el monitor de verdad y se actualizan al cambiar el tamaño de la ventana
-    dims() {
-      const mon = $(".monitor__bezel");
-      const w = $("[data-dim-w]");
-      const h = $("[data-dim-h]");
-      const update = () => {
-        const r = mon.getBoundingClientRect();
-        w.textContent = `${Math.round(r.width)} px`;
-        h.textContent = `${Math.round(r.height)} px`;
-        mon.closest("[data-machine]").style.setProperty("--bezel-h", `${r.height}px`);
-      };
-      update();
-      if ("ResizeObserver" in window) new ResizeObserver(update).observe(mon);
-    },
-
     // Anchura de las letras del nombre según la distancia al cursor
     pointer() {
       const section = $(".hero");
@@ -177,7 +177,6 @@
     init() {
       this.boot();
       this.clock();
-      this.dims();
       this.pointer();
     },
   };
