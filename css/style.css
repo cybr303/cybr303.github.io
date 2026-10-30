@@ -1323,3 +1323,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .pj-band--er .pj-er__t.is-hot .pj-er__name { background: var(--er-blue); color: #fff; }
 .pj-band--er .pj-er__rel.is-hot path { stroke: var(--er-ink); }
 .pj-band--er .pj-er__ref { color: var(--er-blue); }
+
+/* ===== ajustes: título de Proyectos y nombre ===== */
+/* El título "Proyectos" ya no se ensancha al pasar el ratón */
+#projects .section-head:hover .section-title { font-stretch: 62%; }
+/* El nombre del hero invita a tocarlo (cada letra se ensancha al acercar el cursor) */
+.hero-name { cursor: pointer; }
