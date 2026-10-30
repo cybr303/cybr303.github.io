@@ -1390,13 +1390,8 @@ body[data-page="home"] .site-footer { margin-top: 0; }
 .site-footer .btn:hover .btn__hint { color: #f2f2f8; }
 .site-footer ::selection { background: #f2f2f8; color: var(--signal); }
 
-/* ---------- Índices de sección: sin número ni línea; el recuento va pequeño junto al título ---------- */
-.section-index { border-bottom: 0; padding-bottom: 0; justify-content: flex-start; }
-.section-index span:first-child { color: var(--muted); }
-.section-head { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; align-items: start; }
-.section-head > .section-index { grid-column: 2; grid-row: 1; margin: 0; padding-top: 0.5em; }
-.section-head > .section-title { grid-column: 1; grid-row: 1; }
-.section-head > :not(.section-index):not(.section-title) { grid-column: 1 / -1; }
+/* ---------- Índices de sección (/01 ··· recuento): fuera en todas las páginas ---------- */
+.section-index { display: none; }
 
 /* ---------- Móvil ---------- */
 @media (max-width: 1000px) {
@@ -1408,6 +1403,4 @@ body[data-page="home"] .site-footer { margin-top: 0; }
   .metric + .metric { padding-left: 10px; }
   .metric__text { font-size: 0.8125rem; }
   .btn--lg { padding-left: 18px; }
-  .section-head { display: block; }
-  .section-head > .section-index { margin-bottom: 10px; padding-top: 0; }
 }
